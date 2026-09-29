@@ -1,0 +1,27 @@
+# 花惹發運動彩券行 — agent93021016.com
+# 這是純資訊網站，沒有需要遮蔽的內容，全部開放抓取。
+
+User-agent: *
+Allow: /
+
+# 明確放行 AI 爬蟲。這些預設多半是允許的，寫出來是為了「明示同意」，
+# 避免日後某家改成 opt-in 時被漏掉。
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://agent93021016.com/sitemap.xml

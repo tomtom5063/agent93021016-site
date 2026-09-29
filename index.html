@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 標題刻意把關鍵字放最前面。已查證同業有效的做法就是這個：
+     win1398.com 的標題是「運彩推薦入會經銷商證號92143023」、
+     92141001.url.tw 是「第三屆台灣運彩線上投注,立即申辦: 經銷商證號93151020」。
+     搜尋的人打的就是這串字。 -->
+<title>台灣運彩推薦經銷商證號 93021016｜花惹發運動彩券行</title>
+
+<meta name="description" content="花惹發運動彩券行，台灣運彩績優經銷商（2024、2025 連續兩年獲頒），經銷證號 93021016。申辦台灣運彩網路會員時填寫推薦經銷商證號 93021016。實體店面位於台北市中山區。不打電話推銷、不私訊騷擾。">
+<link rel="canonical" href="https://agent93021016.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="台灣運彩推薦經銷商證號 93021016｜花惹發運動彩券行">
+<meta property="og:description" content="台灣運彩績優經銷商，證號 93021016。申辦網路會員時填寫推薦經銷商證號 93021016。">
+<meta property="og:url" content="https://agent93021016.com/">
+<meta property="og:locale" content="zh_TW">
+
+<style>
+  /* 配色取自同業慣例（紅為主、金黃為輔、白底）。
+     實際抓過 8-sport、toplottery、vip1398、gogo178、taipeilottery 五站的
+     HTML 與外部 CSS，主色分別是 #da2500 / #ff0000 / #d12926 / #ffd700 / #cf2e2e。
+     台灣運彩官方主站擋機器人（403），品牌色碼取不到，
+     所以這是「同業慣例色」，不是官方色。
+
+     不照抄 #ff0000 當文字色——白底對比不足。
+     文字用 --brand-deep，大面積填色才用 --brand。 */
+  :root{
+    --bg:#ffffff; --fg:#16191d; --muted:#5b6470; --line:#e3e6ea;
+    --surface:#f7f7f8;
+    --brand:#d32027;        /* 填色：頁首、按鈕、編號圓圈 */
+    --brand-deep:#a3151b;   /* 文字與連結 */
+    --gold:#f5b500;         /* 輔色：證號徽章 */
+    --gold-soft:#fff6e0;
+    --accent:var(--brand-deep);
+    --warn-bg:#fff6e0; --warn-line:#e0b23c;
+    --todo-bg:#ffe8e8; --todo-fg:#9b1c1c;
+    --max:760px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171a; --fg:#e8eaed; --muted:#9aa4b0; --line:#2a2f35;
+      --surface:#1b1f24;
+      /* #e0343a 配白字只有 4.45:1，差一點點不合格，壓深到 #d92e34 得 4.78:1 */
+      --brand:#d92e34;
+      --brand-deep:#ff8f8f;  /* 深色底上要「提亮」才有對比，不是加深 */
+      --gold:#f5b500; --gold-soft:#2b2413;
+      --warn-bg:#2b2413; --warn-line:#5c4c1e;
+      --todo-bg:#3a1414; --todo-fg:#ff9b9b;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding-inline:20px}
+  a{color:var(--accent)}
+
+  /* 頁首紅底白字＋金色證號徽章，是五家同業最一致的組合 */
+  header.site{background:var(--brand); color:#fff; padding-block:14px}
+  .brand{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:baseline}
+  .brand b{font-size:1.05rem}
+  .cert{
+    font-variant-numeric:tabular-nums; font-weight:700;
+    color:#3a2400; background:var(--gold);
+    border-radius:6px; padding:2px 8px; white-space:nowrap;
+  }
+
+  h1{font-size:1.6rem; line-height:1.4; margin:28px 0 10px}
+  h2{
+    font-size:1.2rem; margin:38px 0 10px; padding-top:18px;
+    border-top:3px solid var(--brand);
+  }
+  h3{font-size:1rem; margin:22px 0 4px}
+  p,li{color:var(--fg)}
+  .lead{color:var(--muted); margin-top:0}
+
+  .steps{counter-reset:s; list-style:none; padding:0; margin:18px 0}
+  .steps li{
+    counter-increment:s; position:relative; padding:12px 0 12px 46px;
+    border-bottom:1px solid var(--line);
+  }
+  .steps li::before{
+    content:counter(s); position:absolute; left:0; top:12px;
+    width:30px; height:30px; border-radius:50%; background:var(--brand); color:#fff;
+    display:grid; place-items:center; font-weight:700; font-size:.95rem;
+  }
+
+  .promise{list-style:none; padding:0; margin:14px 0}
+  .promise li{padding:8px 0 8px 28px; position:relative}
+  .promise li::before{content:"—"; position:absolute; left:4px; color:var(--brand); font-weight:700}
+
+  dl.faq{margin:14px 0}
+  dl.faq dt{font-weight:700; margin-top:20px}
+  dl.faq dd{margin:6px 0 0; color:var(--fg)}
+
+  table.info{border-collapse:collapse; width:100%; margin:14px 0}
+  table.info th,table.info td{
+    text-align:left; vertical-align:top; padding:10px 8px;
+    border-bottom:1px solid var(--line);
+  }
+  table.info th{width:7.5em; color:var(--muted); font-weight:600; white-space:nowrap}
+
+  .notice{
+    background:var(--warn-bg); border:1px solid var(--warn-line);
+    border-radius:8px; padding:12px 14px; margin:18px 0; font-size:.94rem;
+  }
+  .notice strong{display:block}
+
+  /* 未確認的資料一律用這個標，上線前必須清空。
+     搜尋 class="todo" 就能找出全部。 */
+  .todo{
+    background:var(--todo-bg); color:var(--todo-fg);
+    border-radius:4px; padding:1px 6px; font-weight:700; font-size:.92em;
+  }
+
+  /* 內容已寫好但還沒決定要不要留的區塊。上線前必須清空。 */
+  .draft{
+    border:2px dashed var(--warn-line); background:var(--warn-bg);
+    border-radius:8px; padding:4px 16px 14px; margin:18px 0;
+  }
+  .draft::before{
+    content:"草案　待你決定要不要留";
+    display:inline-block; margin:12px 0 0;
+    background:var(--warn-line); color:#3a2f0a;
+    border-radius:4px; padding:2px 10px; font-size:.8rem; font-weight:700;
+  }
+
+  /* 榮譽條。金色系是刻意的——獎項配金，和證號徽章同一個語彙。 */
+  .honors{
+    margin:22px 0; padding:16px 18px; border-radius:10px;
+    background:var(--gold-soft); border:1px solid var(--warn-line);
+  }
+  .honors h2{
+    margin:0 0 10px; padding:0; border:0; font-size:1.05rem;
+  }
+  .honors ul{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+  .honors li{
+    display:flex; gap:10px; align-items:baseline;
+  }
+  .honors .yr{
+    flex:0 0 auto; font-variant-numeric:tabular-nums; font-weight:700;
+    background:var(--gold); color:#3a2400;
+    border-radius:5px; padding:1px 8px; font-size:.9rem; white-space:nowrap;
+  }
+
+  .sell{display:grid; gap:14px; margin:18px 0; padding:0; list-style:none}
+  @media (min-width:620px){ .sell{grid-template-columns:1fr 1fr} }
+  .sell li{
+    border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:8px; padding:14px 16px; background:var(--surface);
+  }
+  .sell b{display:block; margin-bottom:4px}
+  .sell p{margin:0; color:var(--muted); font-size:.95rem}
+
+  /* 底色維持 LINE 品牌綠 #06C755。白字在這個綠上只有 2.26:1，
+     連大字的 3:1 都不到，所以文字改深色（6.83:1）。
+     保留品牌色的辨識度，同時讓字讀得到。 */
+  .linebtn{
+    display:inline-block; background:#06C755; color:#062b12; text-decoration:none;
+    font-weight:700; border-radius:8px; padding:11px 20px; margin:6px 0;
+  }
+
+  footer.site{
+    margin-top:44px; border-top:4px solid var(--brand);
+    padding-block:22px 34px; color:var(--muted); font-size:.9rem;
+  }
+</style>
+
+<!-- ── 結構化資料 ──────────────────────────────────────────────
+     給 Google 與 AI 讀的。原則：只寫已確認為真的欄位。
+
+     address：使用者已確認，2026-09-22 填入。
+     telephone：使用者只給了 LINE，沒有電話，故不放。
+     openingHours：刻意不放。該欄位語意是「實體店面營業時間」，
+       而使用者提供的是「線上 24 小時服務」，不是同一件事，
+       填 24/7 會是錯誤資訊。實體營業時間取得後再補。       -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "花惹發運動彩券行",
+  "alternateName": "花惹發運彩",
+  "url": "https://agent93021016.com/",
+  "description": "台灣運彩績優經銷商，經銷證號 93021016。提供台灣運彩投注與網路會員申辦協助。",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "台灣運彩經銷商證號",
+    "value": "93021016"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "民生東路2段115巷16號",
+    "addressLocality": "中山區",
+    "addressRegion": "臺北市",
+    "addressCountry": "TW"
+  },
+  "award": [
+    "2024 年台灣運彩績優經銷商",
+    "2025 年台灣運彩績優經銷商",
+    "2026 年世界盃足球賽銷售卓越獎"
+  ],
+  "sameAs": ["https://line.me/R/ti/p/%40w93021016"],
+  "areaServed": { "@type": "City", "name": "臺北市" },
+  "currenciesAccepted": "TWD"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "申辦台灣運彩網路會員時，推薦經銷商證號要填什麼？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "填 93021016，這是花惹發運動彩券行的台灣運彩經銷商證號。此欄位在申請流程中用來指定服務你的經銷商，填寫後由本店提供後續服務。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "花惹發運動彩券行的經銷商證號是多少？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "93021016。花惹發運動彩券行為台灣運彩績優經銷商，2024 與 2025 年連續兩年獲台灣運彩頒發績優經銷商，2026 年獲世界盃足球賽銷售卓越獎。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "已經是台灣運彩會員，可以更換服務的經銷商嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。台灣運彩會員可申請變更服務經銷商，實際流程與所需文件以台灣運彩官方規定為準，建議直接洽詢台灣運彩客服或到店詢問。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "填了推薦經銷商證號，會被推銷或騷擾嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "花惹發運動彩券行的三不承諾：不主動打電話推銷、不私訊騷擾、不索取與服務無關的個人資料。有需要時由你主動聯繫本店。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "網路投注和到店投注有什麼不同？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "網路投注需先申辦台灣運彩網路會員，可於官方平台自行下單；到店投注則是直接在實體店面購買紙本彩券。兩者的賠率與玩法均由台灣運彩統一訂定，經銷商無法變更。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<header class="site">
+  <div class="wrap brand">
+    <b>花惹發運動彩券行</b>
+    <span>台灣運彩績優經銷商</span>
+    <span class="cert">經銷商證號 93021016</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>台灣運彩推薦經銷商證號：93021016</h1>
+  <p class="lead">
+    申辦台灣運彩網路會員時，「推薦經銷商證號」欄位填 <strong>93021016</strong>，
+    由花惹發運動彩券行為你服務。
+  </p>
+
+  <section class="honors">
+    <h2>台灣運彩頒發的實績</h2>
+    <ul>
+      <li><span class="yr">2024</span><span>台灣運彩績優經銷商</span></li>
+      <li><span class="yr">2025</span><span>台灣運彩績優經銷商（連續第二年）</span></li>
+      <li><span class="yr">2026</span><span>世界盃足球賽 銷售卓越獎</span></li>
+    </ul>
+  </section>
+
+  <h2>怎麼填、填在哪</h2>
+  <ol class="steps">
+    <li>
+      <h3>到台灣運彩官方網站申辦網路會員</h3>
+      <p>
+        一律在官方平台完成申辦：
+        <a href="https://www.sportslottery.com.tw/" rel="noopener">www.sportslottery.com.tw</a>。
+        本店不經手你的帳號密碼，也不代為註冊。
+      </p>
+    </li>
+    <li>
+      <h3>「推薦經銷商證號」填 <span class="cert">93021016</span></h3>
+      <p>這一欄決定由哪一家經銷商提供你後續的服務，填錯可事後申請變更。</p>
+    </li>
+    <li>
+      <h3>依官方指示完成身分驗證</h3>
+      <p>所需文件與審核時間以台灣運彩官方公告為準。</p>
+    </li>
+  </ol>
+
+  <div class="notice">
+    <strong>未成年人不得購買或兌領運動彩券。</strong>
+    勿過度投注。運動彩券為娛樂性消費，請量力而為。
+  </div>
+
+  <h2>為什麼選花惹發</h2>
+  <p class="lead">這裡只寫本店真的做得到的事。</p>
+
+  <ul class="sell">
+    <li>
+      <b>線上 24 小時服務</b>
+      <p>LINE 隨時找得到人。不必等營業時間，也不必跑一趟。</p>
+    </li>
+    <li>
+      <b>有實體店面，找得到人</b>
+      <p>台北市中山區民生東路二段。線上處理不完的事，可以直接來店裡談。</p>
+    </li>
+    <li>
+      <b>三不承諾：不推銷、不騷擾、不要個資</b>
+      <p>加了 LINE 不會被每天洗訊息。需要時你找我們，不需要時我們不吵你。</p>
+    </li>
+    <li>
+      <b>不騙你賠率</b>
+      <p>賠率、玩法、結果全由台灣運彩統一訂定，哪一家經銷商都一樣。
+         差別只在服務。會說自己賠率比較好的，那家在唬你。</p>
+    </li>
+  </ul>
+
+  <h3>三不承諾的實際內容</h3>
+  <ul class="promise">
+    <li><strong>不主動打電話推銷。</strong>你不會接到本店的推銷電話。</li>
+    <li><strong>不私訊騷擾。</strong>不會有人加你好友後天天傳訊息。</li>
+    <li><strong>不索取與服務無關的個人資料。</strong>帳號密碼、提款資料本店一概不經手。</li>
+  </ul>
+  <p>需要協助時由你主動聯繫本店，這是我們認為經銷商該有的距離。</p>
+
+  <h3>每日賽事數據分析</h3>
+  <p>
+    本店自行建置資料庫，每天抓取各聯盟的初盤賠率與賽事資料，
+    整理成當日的數據分析。我們不報保證會中的明牌——
+    <strong>運動彩券含有莊家抽水，長期投注的期望值仍為負</strong>，
+    任何方法都不能改變這件事。能做的是把盤口實際隱含的機率算給你看，
+    讓你自己判斷。
+  </p>
+
+  <h2>店家資訊</h2>
+  <table class="info">
+    <tr><th>店名</th><td>花惹發運動彩券行</td></tr>
+    <tr><th>經銷商證號</th><td><span class="cert">93021016</span></td></tr>
+    <tr><th>地址</th><td>臺北市中山區民生東路2段115巷16號</td></tr>
+    <tr><th>服務時間</th><td>線上 24 小時服務</td></tr>
+    <tr>
+      <th>LINE</th>
+      <td>
+        官方帳號 <strong>@w93021016</strong><br>
+        <a class="linebtn" href="https://line.me/R/ti/p/%40w93021016" rel="noopener">加入 LINE 好友</a>
+      </td>
+    </tr>
+  </table>
+
+  <h2>常見問題</h2>
+  <dl class="faq">
+
+    <dt>推薦經銷商證號要填什麼？</dt>
+    <dd>填 <strong>93021016</strong>。這是花惹發運動彩券行的台灣運彩經銷商證號。</dd>
+
+    <dt>已經是會員了，可以換成你們嗎？</dt>
+    <dd>
+      可以，台灣運彩會員能申請變更服務的經銷商。實際流程與所需文件以官方規定為準，
+      建議直接洽詢台灣運彩客服或到店詢問。
+    </dd>
+
+    <dt>填了證號會被推銷嗎？</dt>
+    <dd>不會。見上方三不承諾——本店不主動打電話、不私訊，有需要時由你聯繫我們。</dd>
+
+    <dt>透過你們申辦，賠率會比較好嗎？</dt>
+    <dd>
+      不會。<strong>賠率、玩法、開獎結果全部由台灣運彩統一訂定，經銷商無法變更，
+      任何一家都一樣。</strong>經銷商之間的差別在服務，不在賠率。
+      任何宣稱能給你更好賠率的說法都不成立。
+    </dd>
+
+    <dt>你們會報明牌嗎？</dt>
+    <dd>
+      本店不做保證式的推薦。運動彩券含有莊家抽水，
+      <strong>長期而言投注的期望值仍為負</strong>，沒有任何方法能改變這件事。
+      請把它當成娛樂消費，不要當成收入來源。
+    </dd>
+
+    <dt>網路投注和到店投注差在哪？</dt>
+    <dd>
+      網路投注需先申辦網路會員，於官方平台自行下單；到店投注是在實體店面購買紙本彩券。
+      兩者賠率相同。
+    </dd>
+
+  </dl>
+
+  <div class="notice">
+    <strong>未成年人不得購買或兌領運動彩券。</strong>
+    勿過度投注。若你或身邊的人有賭博困擾，請尋求專業協助。
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>
+      花惹發運動彩券行｜台灣運彩績優經銷商｜
+      <span class="cert">經銷商證號 93021016</span>
+    </p>
+    <p>
+      本網站為經銷商資訊網站，<strong>不提供線上投注功能</strong>，
+      投注與會員申辦一律於
+      <a href="https://www.sportslottery.com.tw/" rel="noopener">台灣運彩官方平台</a>進行。
+    </p>
+    <p><strong>未成年人不得購買或兌領運動彩券。勿過度投注。</strong></p>
+    <p><a href="privacy.html">隱私權政策</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
