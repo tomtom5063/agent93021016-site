@@ -1040,7 +1040,8 @@
 <script>
   (function () {
     var m = /[?&]ref=([A-Za-z0-9_-]{1,32})(?:&|$)/.exec(location.search);
-    var siteUrl = "https://agent93021016.com/" + (m && m[1] !== "share" ? "?ref=" + m[1] : "");
+    var OG_VER = 2;
+    var siteUrl = "https://agent93021016.com/" + (m && m[1] !== "share" ? "?ref=" + m[1] + "&v=" + OG_VER : "?v=" + OG_VER);
     var shareText = "花惹發運動彩券行｜台灣運彩績優經銷商 93021016\n加入花惹發，開啟會員福利 👉 " + siteUrl;
     var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     var shareUrl = isMobile
