@@ -1042,7 +1042,10 @@
     var m = /[?&]ref=([A-Za-z0-9_-]{1,32})(?:&|$)/.exec(location.search);
     var siteUrl = "https://agent93021016.com/" + (m && m[1] !== "share" ? "?ref=" + m[1] : "");
     var shareText = "花惹發運動彩券行｜台灣運彩績優經銷商 93021016\n加入花惹發，開啟會員福利 👉 " + siteUrl;
-    var shareUrl = "https://line.me/R/share?text=" + encodeURIComponent(shareText);
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    var shareUrl = isMobile
+      ? "https://line.me/R/share?text=" + encodeURIComponent(shareText)
+      : "https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(siteUrl);
     var shares = document.querySelectorAll(".js-share");
     for (var s = 0; s < shares.length; s++) shares[s].href = shareUrl;
 
