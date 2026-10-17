@@ -497,6 +497,166 @@
   .bf-band p{margin:0 0 18px; opacity:.92}
   .bf-band .btn-line{box-shadow:inset 0 0 0 2px #fff}
 
+    .mascot{position:absolute; z-index:-1; pointer-events:none; user-select:none; height:auto;
+    filter:drop-shadow(0 12px 16px rgba(80,20,40,.20))}
+  .m-hero,.m-sec{display:none}
+  @media (min-width:1240px){ .m-hero{display:block; top:-6px; right:244px; width:430px} #apply .lead{max-width:570px} }
+  @media (min-width:1100px){
+    .m-sec{display:block; top:-14px; right:244px; width:170px}
+    #data .lead{padding-right:190px}
+  }
+  @media (min-width:1781px){ .m-hero,.m-sec{right:24px} }
+  .bf-band{position:relative; margin-top:96px}
+  .bm{position:absolute; left:0; right:0; bottom:0; pointer-events:none}
+  .bm img{position:absolute; bottom:0; height:228px; width:auto; filter:drop-shadow(0 10px 14px rgba(40,0,50,.35))}
+  .bm .bm-l{left:14px}
+  .bm .bm-r{right:14px}
+  @media (max-width:700px){
+    .bf-band{margin-top:100px; padding-top:84px}
+    .bm{bottom:auto; top:-78px; display:flex; justify-content:center; gap:4px}
+    .bm img{position:static; height:132px}
+  }
+
+    .point > .pt-img{position:absolute; z-index:1; pointer-events:none; width:auto; height:128px; right:10px; bottom:0;
+    filter:drop-shadow(0 8px 10px rgba(80,20,40,.18))}
+  @media (min-width:800px){ .point > p:not(.mix-no), .point > small{padding-right:128px} }
+  @media (max-width:799px){
+    .point > .pt-img{height:66px; top:8px; bottom:auto; right:8px}
+    .point > .mix-no{display:none}
+    .point h3{padding-right:78px; min-height:50px}
+  }
+  .shopgrid .ph{position:relative}
+  .shopgrid figure .shop-mascot{position:absolute; right:-14px; bottom:-8px; width:auto; height:80%; border:0; border-radius:0; pointer-events:none;
+    filter:drop-shadow(0 10px 12px rgba(40,20,20,.28))}
+  @media (max-width:879px){ .shopgrid figure .shop-mascot{height:74%} }
+  .honors-mascot{display:block; width:auto; height:200px; margin:14px 0 0 auto; pointer-events:none; filter:drop-shadow(0 10px 12px rgba(80,20,40,.2))}
+  @media (max-width:859px){ .honors-mascot{height:170px; margin-inline:auto} }
+  .ic-sport{width:30px; height:30px; flex:none; align-self:center; display:inline-block; filter:drop-shadow(0 3px 3px rgba(0,0,0,.2))}
+  .ic-trophy{width:38px; height:38px}
+
+    @keyframes bob{0%,100%{translate:0 0} 50%{translate:0 -7px}}
+  @keyframes popin{0%{opacity:0; scale:.55; translate:-50% 26px} 60%{opacity:1; scale:1.05; translate:-50% -4px} 100%{opacity:1; scale:1; translate:-50% 0}}
+  @keyframes rise{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
+  @keyframes bub{0%{opacity:0; scale:.4} 70%{opacity:1; scale:1.08} 100%{opacity:1; scale:1}}
+  @keyframes hsf{from{transform:translateY(0) rotate(-6deg)} to{transform:translateY(-9px) rotate(6deg)}}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  @keyframes facepop{0%{transform:scale(.6) rotate(-12deg)} 100%{transform:none}}
+
+  .hero-chips{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px; padding:0}
+  .hero-chips li{display:inline-flex; align-items:center; gap:7px; padding:5px 13px; border-radius:99px; background:#fff; border:1px solid var(--line);
+    font-size:.84rem; font-weight:800; line-height:1.5; box-shadow:0 2px 8px rgba(40,20,20,.06)}
+  .hero-chips li::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--brand)}
+  .hero-chips li:nth-child(2)::before{background:var(--gold)}
+  .hero-chips li:nth-child(3)::before{background:var(--line-green)}
+
+  .hero-stage{position:relative; width:min(360px,94%); height:228px; margin:12px auto 0; pointer-events:none; --mx:0; --my:0}
+  .hs-glow{position:absolute; left:50%; top:56%; width:120%; aspect-ratio:1; translate:-50% -50%; border-radius:50%;
+    background:radial-gradient(circle, rgba(254,222,0,.55) 0, rgba(245,181,0,.28) 34%, rgba(211,32,39,.15) 56%, rgba(211,32,39,0) 70%)}
+  .hs-duo{position:absolute; left:50%; bottom:0; width:88%; height:auto; translate:-50% 0; filter:drop-shadow(0 14px 16px rgba(80,20,40,.22));
+    animation:popin .9s .1s cubic-bezier(.2,.9,.3,1.2) both}
+  .hs-ic{position:absolute; width:var(--w,36px); height:auto; filter:drop-shadow(0 6px 6px rgba(60,20,20,.22));
+    translate:calc(var(--mx) * var(--d,10) * 1px) calc(var(--my) * var(--d,10) * 1px); transition:translate .3s ease-out;
+    animation:hsf 4.2s ease-in-out infinite alternate; animation-delay:var(--t,0s)}
+  .i-soccer{left:-1%; top:40%; --w:42px; --d:16; --t:.2s}
+  .i-basket{right:-2%; top:36%; --w:40px; --d:-14; --t:.9s}
+  .i-base{left:7%; top:4%; --w:34px; --d:12; --t:1.4s}
+  .i-trophy{right:3%; top:2%; --w:38px; --d:-18; --t:.5s}
+  .i-star{left:50%; top:-5%; --w:28px; --d:8; --t:1.1s}
+  .i-shuttle{left:30%; top:-3%; --w:34px; --d:-10; --t:1.7s}
+  .hs-bub{position:absolute; padding:4px 12px; border-radius:16px; background:#fff; color:var(--brand-deep); font-weight:900; font-size:.82rem; line-height:1.45;
+    white-space:nowrap; border:2px solid var(--brand); box-shadow:0 6px 16px rgba(60,20,30,.18); animation:bub .5s var(--t,1s) both}
+  .hs-bub::after{content:""; position:absolute; bottom:-8px; left:var(--ax,22px); width:11px; height:11px; background:#fff;
+    border-right:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(45deg)}
+  .hs-bub.gold{border-color:var(--gold); color:var(--gold-ink)}
+  .hs-bub.gold::after{border-color:var(--gold)}
+  .b-afa{left:2%; top:14%; --t:1.2s; --ax:30px}
+  .b-xh{right:0; top:10%; --t:1.9s; --ax:70%}
+  @media (min-width:1240px){
+    .hero-stage{position:absolute; top:-14px; right:244px; width:440px; height:292px; margin:0}
+    .hs-bub{font-size:.92rem}
+  }
+  @media (min-width:1781px){ .hero-stage{right:24px} }
+  @media (prefers-reduced-motion:no-preference){
+    #apply .eyebrow, #apply .bf-title, #apply .lead, #apply .hero-chips, #apply .hero-cta, #apply .hero-note{animation:rise .7s ease both}
+    #apply .bf-title{animation-delay:.08s} #apply .lead{animation-delay:.16s} #apply .hero-chips{animation-delay:.22s}
+    #apply .hero-cta{animation-delay:.3s} #apply .hero-note{animation-delay:.38s}
+  }
+
+  .ribbon{overflow:hidden; background:linear-gradient(90deg,#FEDE00,#ffee80 50%,#FEDE00); border-block:2px solid rgba(163,21,27,.35); position:relative; z-index:2}
+  .rb-track{display:flex; width:max-content; animation:marq 46s linear infinite}
+  .rb-half{display:flex; align-items:center; gap:70px; padding:10px 35px}
+  .rb-half img{height:46px; width:auto; filter:drop-shadow(0 4px 4px rgba(90,40,0,.25))}
+  .ribbon:hover .rb-track{animation-play-state:paused}
+
+  .hr-group{position:relative; padding-top:64px}
+  .hr-group > .hg-img{position:absolute; right:8px; top:-6px; height:128px; width:auto; pointer-events:none; filter:drop-shadow(0 8px 10px rgba(80,20,40,.2)); animation:bob 5.2s ease-in-out infinite}
+  @media (max-width:640px){ .hr-group{padding-top:44px} .hr-group > .hg-img{height:88px; top:-4px} }
+  .bars-js .hr-bar{clip-path:inset(0 100% 0 0 round 8px); transition:clip-path 1s cubic-bezier(.2,.8,.2,1)}
+  .bars-js .hr-group.in-view .hr-bar{clip-path:inset(0 0 0 0 round 8px)}
+  .bars-js .hr-group.in-view .hr-row:nth-of-type(2) .hr-bar{transition-delay:.08s}
+  .bars-js .hr-group.in-view .hr-row:nth-of-type(3) .hr-bar{transition-delay:.16s}
+  .bars-js .hr-group.in-view .hr-row:nth-of-type(4) .hr-bar{transition-delay:.24s}
+  .bars-js .hr-group.in-view .hr-row:nth-of-type(5) .hr-bar{transition-delay:.32s}
+  .bars-js .hr-group.in-view .hr-row:nth-of-type(6) .hr-bar{transition-delay:.4s}
+
+  .meet-grid{display:grid; gap:22px; margin-top:26px}
+  @media (min-width:900px){ .meet-grid{grid-template-columns:1fr 1fr} }
+  .meet-card{position:relative; display:grid; grid-template-columns:minmax(0,190px) 1fr; gap:10px 16px; align-items:end; padding:22px 22px 20px 10px;
+    border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 12px 28px rgba(40,20,20,.08);
+    background:linear-gradient(160deg,#fff 36%,var(--tint,#ffe4e6))}
+  .mc-af{--tint:#ffefb8}
+  .mc-portrait{width:100%; height:auto; align-self:end; filter:drop-shadow(0 12px 12px rgba(80,20,40,.24)); transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+  .meet-card:hover .mc-portrait{transform:translateY(-5px) rotate(-2deg) scale(1.04)}
+  .mc-tag{margin:0; font-size:.78rem; font-weight:900; letter-spacing:.12em; color:var(--brand-deep)}
+  .mc-af .mc-tag{color:#8a5b00}
+  .meet-card h3{margin:0 0 4px; font-size:1.8rem; font-weight:900; line-height:1.3}
+  .mc-desc{margin:0 0 12px; color:var(--muted); font-size:.94rem; line-height:1.7}
+  .mc-say{display:flex; align-items:center; gap:10px; min-height:72px; padding:8px 12px; background:#fff; border:2px solid var(--brand); border-radius:16px; box-shadow:0 6px 14px rgba(40,20,20,.08)}
+  .mc-af .mc-say{border-color:var(--gold)}
+  .mc-face{flex:none; width:54px; height:54px; object-fit:contain; border-radius:50%; background:#fff3e8; border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .mc-face.pop{animation:facepop .45s cubic-bezier(.34,1.56,.64,1)}
+  .mc-line{font-weight:800; line-height:1.5; font-size:.95rem}
+  .mc-chips{display:flex; gap:10px; margin-top:12px}
+  .mc-chips button{width:50px; height:50px; padding:0; border-radius:50%; border:3px solid #fff; background:#fff3e8; cursor:pointer; overflow:hidden;
+    box-shadow:0 3px 8px rgba(0,0,0,.18); transition:transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s}
+  .mc-chips button img{width:100%; height:100%; object-fit:contain; display:block}
+  .mc-chips button:hover{transform:translateY(-3px) scale(1.1)}
+  .mc-chips button[aria-pressed="true"]{border-color:var(--brand)}
+  .mc-af .mc-chips button[aria-pressed="true"]{border-color:var(--gold)}
+  .mc-chips button:focus-visible{outline:3px solid var(--fg); outline-offset:2px}
+  @media (max-width:560px){
+    .meet-card{grid-template-columns:1fr; padding:18px 16px 18px}
+    .mc-portrait{max-width:190px; margin:0 auto}
+  }
+
+  #faq .wrap{position:relative}
+  .faq-mascot{position:absolute; top:-16px; right:40px; height:190px; width:auto; pointer-events:none; animation:bob 5.4s ease-in-out infinite; filter:drop-shadow(0 10px 12px rgba(80,20,40,.2))}
+  @media (max-width:899px){ .faq-mascot{height:96px; top:-8px; right:16px} }
+
+  footer.site{position:relative}
+  .foot-stage{position:absolute; right:244px; bottom:18px; width:180px; height:206px; pointer-events:none}
+  .foot-stage img{position:absolute; right:0; bottom:0; height:100%; width:auto; filter:drop-shadow(0 10px 12px rgba(0,0,0,.35)); animation:bob 5.6s ease-in-out infinite}
+  .foot-bub{position:absolute; right:calc(100% - 6px); top:10px; padding:5px 12px; border-radius:16px; background:#fff; color:var(--fg); font-weight:900; font-size:.82rem; line-height:1.5; white-space:nowrap;
+    border:2px solid var(--gold); box-shadow:0 6px 16px rgba(0,0,0,.25)}
+  .foot-bub::after{content:""; position:absolute; bottom:-8px; right:26px; width:11px; height:11px; background:#fff; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); transform:rotate(45deg)}
+  @media (min-width:1781px){ .foot-stage{right:24px} }
+  @media (max-width:1100px){
+    .foot-stage{position:relative; right:auto; bottom:auto; width:auto; height:150px; margin:0 0 6px}
+    .foot-stage img{right:6px}
+    .foot-bub{right:150px; top:30px; font-size:.8rem}
+  }
+
+  .shop-mascot, .honors-mascot, .bm img, .m-sec{animation:bob 5.4s ease-in-out infinite}
+  .bm .bm-r{animation-delay:-2.2s}
+  .point > .pt-img{animation:bob 5s ease-in-out infinite}
+  .point:nth-child(2) > .pt-img{animation-delay:-1.2s}
+  .point:nth-child(3) > .pt-img{animation-delay:-2.4s}
+  .point:nth-child(4) > .pt-img{animation-delay:-3.4s}
+  @media (prefers-reduced-motion:reduce){
+    .hs-duo,.hs-ic,.hs-bub,.rb-track,.hg-img,.faq-mascot,.foot-stage img,.shop-mascot,.honors-mascot,.bm img,.m-sec,.point > .pt-img{animation:none !important}
+    .bars-js .hr-bar{clip-path:none !important}
+  }
+
     .tbl-scroll{overflow-x:auto; margin:16px 0 8px; -webkit-overflow-scrolling:touch}
   table.data{border-collapse:collapse; width:100%; min-width:560px; font-size:.95rem}
   table.data th,table.data td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left}
@@ -692,6 +852,7 @@
     <p class="eyebrow">MEMBER BENEFITS</p>
     <h1 class="h2 bf-title">加入花惹發，<em>開啟會員福利</em></h1>
     <p class="lead">花惹發會員除了每日分析與玩法攻略，還有專屬福利，加入 LINE 告訴客服就能<strong>一對一開啟</strong>。</p>
+    <ul class="hero-chips"><li>台灣運彩績優經銷商</li><li>經銷商證號 93021016</li><li>LINE 客服 24 小時</li></ul>
     <div class="hero-cta">
       <a class="btn btn-brand btn-xl" href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerId=93021016" target="_blank" rel="noopener">
         <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1"/><circle cx="8.5" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><span><b>新會員申辦</b><small>自動帶入證號 93021016</small></span></a>
@@ -699,6 +860,18 @@
         <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 4.6 4h14.8L21 9"/><path d="M4.2 9v11h15.6V9"/><path d="M9.2 20v-6h5.6v6"/></svg></span><span><b>已有會員・指定經銷商</b><small>服務經銷商填 93021016</small></span></a>
     </div>
     <p class="hero-note">完成後記得 <a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<mark class="perk-tag">🎁 開啟會員福利</mark></p>
+    <div class="hero-stage" aria-hidden="true">
+      <span class="hs-glow"></span>
+      <img class="hs-ic i-soccer" src="img/mascot/ic-soccer.webp" alt="" width="42" height="42">
+      <img class="hs-ic i-basket" src="img/mascot/ic-basketball.webp" alt="" width="40" height="40">
+      <img class="hs-ic i-base" src="img/mascot/ic-baseball.webp" alt="" width="34" height="34">
+      <img class="hs-ic i-trophy" src="img/mascot/ic-trophy.webp" alt="" width="38" height="38">
+      <img class="hs-ic i-star" src="img/mascot/ic-star.webp" alt="" width="28" height="28">
+      <img class="hs-ic i-shuttle" src="img/mascot/ic-shuttle.webp" alt="" width="34" height="34">
+      <img class="hs-duo" src="img/mascot/hero-duo.webp" alt="" width="430" height="281" fetchpriority="high" decoding="async">
+      <span class="hs-bub gold b-afa">數據交給我！</span>
+      <span class="hs-bub b-xh">福利問我～</span>
+    </div>
         <details class="howto">
       <summary><span>第一次操作？看詳細步驟</span></summary>
       <h2 class="howto-t">申辦會員與指定服務經銷商</h2>
@@ -749,6 +922,7 @@
 
 
     <div class="bf-band">
+      <div class="bm" aria-hidden="true"><img class="bm-l" src="img/mascot/xiaohua-sign.webp" alt="" width="234" height="228" loading="lazy"><img class="bm-r" src="img/mascot/afa-invite.webp" alt="" width="221" height="228" loading="lazy"></div>
       <h2>加入 LINE，開啟會員福利</h2>
       <p>台灣運彩績優經銷商｜證號 93021016｜線上客服 24 小時全年無休</p>
       <a class="btn btn-line" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">加入 LINE 好友</a>
@@ -761,13 +935,18 @@
   </div>
 </section>
 
+<div class="ribbon" aria-hidden="true"><div class="rb-track"><div class="rb-half"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"></div><div class="rb-half"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"></div></div></div>
+
 <section id="shop">
   <div class="wrap">
     <p class="eyebrow">STORE</p>
     <h2>店家資訊</h2>
     <div class="shopgrid">
       <figure>
-        <img src="img/storefront.jpg" alt="花惹發運動彩券行店面外觀" width="1200" height="900" loading="lazy">
+        <div class="ph">
+          <img src="img/storefront.jpg" alt="花惹發運動彩券行店面外觀" width="1200" height="900" loading="lazy">
+          <img class="shop-mascot" src="img/mascot/shop-duo.webp" alt="" width="230" height="280" loading="lazy" aria-hidden="true">
+        </div>
         <figcaption>店面外觀｜臺北市中山區民生東路2段115巷16號</figcaption>
       </figure>
       <table class="info">
@@ -792,7 +971,7 @@
 <section id="honors" class="tex">
   <div class="wrap">
     <p class="eyebrow">台灣運彩頒發</p>
-    <h2>績優實績</h2>
+    <h2>績優實績<img class="ic-sport ic-trophy" src="img/mascot/ic-trophy.webp" alt="" width="38" height="38" loading="lazy"></h2>
     <p class="lead col">兩座績優經銷商都是<strong>「全國線上通路」</strong>的年度業績獎——線上服務正是我們的主力。</p>
     <div class="honors-grid">
       <figure class="honors-photo">
@@ -806,6 +985,7 @@
           <div><span class="yr">2026</span><span class="ttl">北一區　2026 世足銷售卓越獎</span></div>
         </div>
         <p class="src">以上獎項皆由台灣運彩頒發。</p>
+        <img class="honors-mascot" src="img/mascot/honors-duo.webp" alt="" width="216" height="200" loading="lazy" aria-hidden="true">
       </div>
     </div>
   </div>
@@ -819,6 +999,7 @@
     <div class="points">
             <div class="point">
         <p class="mix-no">01</p>
+        <img class="pt-img" src="img/mascot/why-1.webp" alt="" width="103" height="128" loading="lazy" aria-hidden="true">
         <h3>賠率每家都一樣，回饋可不一樣</h3>
         <p>賠率由台灣運彩統一訂定，在哪一家投注都一樣。差別在於：<strong>透過我們開啟福利，投注可累積紅利、兌換商品贈品</strong>。</p>
         <p>同樣一筆投注，在沒有回饋的地方，這份紅利就白白流掉了。</p>
@@ -827,6 +1008,7 @@
 
       <div class="point">
         <p class="mix-no">02</p>
+        <img class="pt-img" src="img/mascot/why-2.webp" alt="" width="109" height="128" loading="lazy" aria-hidden="true">
         <h3>已經是會員？只差一步</h3>
         <p>你已經有台灣運彩帳號，最難的部分早就完成了。把<strong>服務經銷商指定 93021016</strong>，福利就開啟了。</p>
         <p>還不是會員？可申請<strong>「試玩金」</strong>，起跑就快一步。</p>
@@ -835,6 +1017,7 @@
 
       <div class="point">
         <p class="mix-no">03</p>
+        <img class="pt-img" src="img/mascot/why-3.webp" alt="" width="120" height="128" loading="lazy" aria-hidden="true">
         <h3>不推銷、不騷擾、不打折扣</h3>
         <p>加了 LINE 不會被每天洗訊息，也不會接到推銷電話。</p>
         <p>答應你的福利，<strong>說到做到、不打折扣</strong>。這就是我們的三不承諾。</p>
@@ -842,6 +1025,7 @@
 
       <div class="point">
         <p class="mix-no">04</p>
+        <img class="pt-img" src="img/mascot/why-4.webp" alt="" width="127" height="128" loading="lazy" aria-hidden="true">
         <h3>找得到人，線上與實體都是</h3>
         <p><strong>線上客服 24 小時全年無休</strong>，LINE 隨時找得到人。實體店面在台北市中山區，週一～週六 10:00~20:00。</p>
       </div>
@@ -851,6 +1035,7 @@
 
 <section id="data" class="tex">
   <div class="wrap">
+    <img class="mascot m-sec" src="img/mascot/xiaohua-analyst.webp" alt="" width="190" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">DAILY ANALYSIS</p>
     <h2>每日分析</h2>
     <p class="lead col">每天挑一場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，最後才給推薦。</p>
@@ -903,7 +1088,8 @@
     </p>
 
     <div class="hr-group">
-      <h3>⚾ 棒球<small>美國職棒、日本職棒、中華職棒，約 2,400 場</small></h3>
+      <img class="hg-img" src="img/mascot/sport-baseball.webp" alt="" width="110" height="128" loading="lazy" aria-hidden="true">
+      <h3><img class="ic-sport" src="img/mascot/ic-baseball.webp" alt="" width="30" height="30" loading="lazy">棒球<small>美國職棒、日本職棒、中華職棒，約 2,400 場</small></h3>
           <div class="hr-row"><span class="hr-lb">獨贏（強弱）</span><span class="hr-bar"><span class="seg s0" style="flex:57.1"><b>熱門贏</b> 57.1%</span><span class="seg s1" style="flex:42.9"><b>冷門贏</b> 42.9%</span></span></div>
           <div class="hr-row"><span class="hr-lb">獨贏（主客）</span><span class="hr-bar"><span class="seg s0" style="flex:52.4"><b>主隊贏</b> 52.4%</span><span class="seg s1" style="flex:47.6"><b>客隊贏</b> 47.6%</span></span></div>
           <div class="hr-row"><span class="hr-lb">讓分</span><span class="hr-bar"><span class="seg s0" style="flex:58.9"><b>受讓方過</b> 58.9%</span><span class="seg s1" style="flex:41.1"><b>讓分方過</b> 41.1%</span></span></div>
@@ -911,7 +1097,8 @@
           <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:57.8"><b>單</b> 57.8%</span><span class="seg s1" style="flex:42.2"><b>雙</b> 42.2%</span></span></div>
     </div>
     <div class="hr-group">
-      <h3>⚽ 足球<small>各國聯賽，約 1,000 場</small></h3>
+      <img class="hg-img" src="img/mascot/sport-football.webp" alt="" width="104" height="128" loading="lazy" aria-hidden="true">
+      <h3><img class="ic-sport" src="img/mascot/ic-soccer.webp" alt="" width="30" height="30" loading="lazy">足球<small>各國聯賽，約 1,000 場</small></h3>
           <div class="hr-row"><span class="hr-lb">獨贏（三選一）</span><span class="hr-bar"><span class="seg s0" style="flex:43.0"><b>主勝</b> 43.0%</span><span class="seg s1" style="flex:27.2"><b>和局</b> 27.2%</span><span class="seg s2" style="flex:29.8"><b>客勝</b> 29.8%</span></span></div>
           <div class="hr-row"><span class="hr-lb">大小 1.5</span><span class="hr-bar"><span class="seg s0" style="flex:79.0"><b>大分</b> 79.0%</span><span class="seg s1" style="flex:21.0"><b>小分</b> 21.0%</span></span></div>
           <div class="hr-row"><span class="hr-lb">大小 2.5</span><span class="hr-bar"><span class="seg s0" style="flex:57.6"><b>大分</b> 57.6%</span><span class="seg s1" style="flex:42.4"><b>小分</b> 42.4%</span></span></div>
@@ -947,8 +1134,39 @@
   </div>
 </section>
 
+<section id="meet" class="tex">
+  <div class="wrap">
+    <p class="eyebrow">MEET THE FOXES</p>
+    <h2>認識小花與阿發</h2>
+    <p class="lead col">花惹發的兩位小夥伴：一個管福利與客服，一個管數據與攻略。點點下面的表情，聽聽他們怎麼說。</p>
+    <div class="meet-grid">
+      <article class="meet-card mc-xh">
+        <img class="mc-portrait" src="img/mascot/meet-xiaohua.webp" alt="吉祥物小花" width="190" height="218" loading="lazy">
+        <div>
+          <p class="mc-tag">福利與客服擔當</p>
+          <h3>小花</h3>
+          <p class="mc-desc">申辦、指定、兌換，不懂的就問我，LINE 客服 24 小時都在。</p>
+          <div class="mc-say"><img class="mc-face" src="img/mascot/face-xh1.webp" alt="" width="54" height="54"><span class="mc-line" aria-live="polite">歡迎加入花惹發！</span></div>
+          <div class="mc-chips" role="group" aria-label="小花的表情"><button type="button" aria-label="開心" aria-pressed="true" data-face="img/mascot/face-xh1.webp" data-say="歡迎加入花惹發！"><img src="img/mascot/face-xh1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="眨眼" aria-pressed="false" data-face="img/mascot/face-xh2.webp" data-say="福利怎麼開啟，LINE 問我就對了～"><img src="img/mascot/face-xh2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-xh3.webp" data-say="咦？指定經銷商填 93021016 了嗎？"><img src="img/mascot/face-xh3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="思考" aria-pressed="false" data-face="img/mascot/face-xh4.webp" data-say="步驟看不懂？展開上面的詳細步驟，或直接問客服"><img src="img/mascot/face-xh4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
+        </div>
+      </article>
+      <article class="meet-card mc-af">
+        <img class="mc-portrait" src="img/mascot/meet-afa.webp" alt="吉祥物阿發" width="190" height="203" loading="lazy">
+        <div>
+          <p class="mc-tag">數據與攻略擔當</p>
+          <h3>阿發</h3>
+          <p class="mc-desc">每日分析、各玩法過關率，我來整理，攤開給你看。</p>
+          <div class="mc-say"><img class="mc-face" src="img/mascot/face-af1.webp" alt="" width="54" height="54"><span class="mc-line" aria-live="polite">每天一篇賽事分析，我幫你攤開來看</span></div>
+          <div class="mc-chips" role="group" aria-label="阿發的表情"><button type="button" aria-label="壞笑" aria-pressed="true" data-face="img/mascot/face-af1.webp" data-say="每天一篇賽事分析，我幫你攤開來看"><img src="img/mascot/face-af1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="挑眉" aria-pressed="false" data-face="img/mascot/face-af2.webp" data-say="各玩法的過關率都整理好了，下注前先看一眼"><img src="img/mascot/face-af2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-af3.webp" data-say="同樣是大小，不同門檻的差距可不小喔"><img src="img/mascot/face-af3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="專注" aria-pressed="false" data-face="img/mascot/face-af4.webp" data-say="分析只是參考，勿過度投注、量力而為"><img src="img/mascot/face-af4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="tex">
   <div class="wrap col">
+    <img class="faq-mascot" src="img/mascot/faq-xiaohua.webp" alt="" width="162" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">FAQ</p>
     <h2>常見問題</h2>
     <dl class="faq">
@@ -975,6 +1193,7 @@
 
 <footer class="site">
   <div class="wrap">
+    <div class="foot-stage" aria-hidden="true"><span class="foot-bub">有空來店坐坐～</span><img src="img/mascot/foot-duo.webp" alt="" width="210" height="240" loading="lazy"></div>
     <p>花惹發運動彩券行｜台灣運彩績優經銷商｜<strong>證號 93021016</strong>｜統一編號 93126882</p>
     <p>
       本網站為經銷商資訊網站，<strong>不提供線上投注功能</strong>，
@@ -1171,5 +1390,49 @@
   })();
 </script>
 
+<script>
+(function () {
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var stage = document.querySelector(".hero-stage");
+  var hero = document.getElementById("apply");
+  if (stage && hero && !reduce && window.matchMedia && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    hero.addEventListener("mousemove", function (e) {
+      var r = hero.getBoundingClientRect();
+      stage.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5) * 2);
+      stage.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5) * 2);
+    });
+    hero.addEventListener("mouseleave", function () {
+      stage.style.setProperty("--mx", 0);
+      stage.style.setProperty("--my", 0);
+    });
+  }
+  var groups = document.querySelectorAll(".mc-chips");
+  for (var g = 0; g < groups.length; g++) {
+    groups[g].addEventListener("click", function (e) {
+      var b = e.target.closest("button");
+      if (!b) return;
+      var card = b.closest(".meet-card");
+      var face = card.querySelector(".mc-face");
+      card.querySelector(".mc-line").textContent = b.getAttribute("data-say");
+      face.src = b.getAttribute("data-face");
+      face.classList.remove("pop");
+      void face.offsetWidth;
+      face.classList.add("pop");
+      var all = b.parentNode.querySelectorAll("button");
+      for (var i = 0; i < all.length; i++) all[i].setAttribute("aria-pressed", all[i] === b ? "true" : "false");
+    });
+  }
+  var hg = document.querySelectorAll(".hr-group");
+  if (hg.length && "IntersectionObserver" in window && !reduce) {
+    document.documentElement.classList.add("bars-js");
+    var bio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in-view"); bio.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    for (var k = 0; k < hg.length; k++) bio.observe(hg[k]);
+  }
+})();
+</script>
 </body>
 </html>
