@@ -376,6 +376,14 @@
   @keyframes perk-shine{0%, 55%{left:-60%} 100%{left:130%}}
   @media (prefers-reduced-motion:reduce){ .perk-tag::after{animation:none; display:none} }
   .path .fine{font-size:.86rem; color:var(--muted); margin:0 0 14px}
+    .perk-pair{display:inline-flex; flex-wrap:wrap; gap:6px 8px; vertical-align:middle}
+  #apply a.perk-trial{color:#fff; text-decoration:none;
+    background:linear-gradient(135deg,#d6145a,#ec4a1c); box-shadow:0 3px 12px rgba(214,20,90,.40);
+    transition:transform .2s ease, box-shadow .2s ease}
+  #apply a.perk-trial::after{animation-delay:1.6s}
+  #apply a.perk-trial:hover{transform:translateY(-2px); box-shadow:0 6px 16px rgba(214,20,90,.45)}
+  #apply a.perk-trial:focus-visible{outline:3px solid var(--fg); outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){ #apply a.perk-trial{transition:none} #apply a.perk-trial:hover{transform:none} }
 
     .news{display:grid; gap:28px; align-items:stretch; margin:22px 0 8px}
   @media (min-width:900px){ .news{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)} }
@@ -860,7 +868,7 @@
       <a class="btn btn-gold btn-xl" href="https://modify.sportslottery.com.tw/zh-tw/Update/step1" target="_blank" rel="noopener">
         <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 4.6 4h14.8L21 9"/><path d="M4.2 9v11h15.6V9"/><path d="M9.2 20v-6h5.6v6"/></svg></span><span><b>已有會員・指定經銷商</b><small>服務經銷商填 93021016</small></span></a>
     </div>
-    <p class="hero-note">完成後記得 <a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<mark class="perk-tag">🎁 開啟會員福利</mark></p>
+    <p class="hero-note">完成後記得 <a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></p>
     <div class="hero-stage" aria-hidden="true">
       <span class="hs-glow"></span>
       <img class="hs-ic i-soccer" src="img/mascot/ic-soccer.webp" alt="" width="42" height="42">
@@ -873,8 +881,7 @@
       <span class="hs-bub gold b-afa">數據交給我！</span>
       <span class="hs-bub b-xh">福利問我～</span>
     </div>
-        <details class="howto">
-      <summary><span>第一次操作？看詳細步驟</span></summary>
+        <div class="howto">
       <h2 class="howto-t">申辦會員與指定服務經銷商</h2>
     <p class="lead">會員全程自行在台灣運彩官方平台完成，本店不經手帳號密碼，個資安全有保障！</p>
     <div class="paths">
@@ -884,7 +891,7 @@
         <ol>
           <li>點下方按鈕進入台灣運彩官網申辦頁</li>
           <li>依官網指示完成資料填寫</li>
-          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<mark class="perk-tag">🎁 開啟會員福利</mark></li>
+          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></li>
         </ol>
         <a class="btn btn-brand" href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerId=93021016" target="_blank" rel="noopener">前往官網申辦</a>
       </div>
@@ -894,12 +901,12 @@
         <ol>
           <li>點下方按鈕進入台灣運彩官網的會員資料變更頁</li>
           <li>服務經銷商指定 <strong>93021016</strong></li>
-          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<mark class="perk-tag">🎁 開啟會員福利</mark></li>
+          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></li>
         </ol>
         <a class="btn btn-gold" href="https://modify.sportslottery.com.tw/zh-tw/Update/step1" target="_blank" rel="noopener">前往指定經銷商</a>
       </div>
     </div>
-    </details>
+    </div>
     <p class="lead howto-help">操作有任何問題，歡迎隨時詢問 24 小時 LINE 客服，也可以到台北市中山區的實體店面，我們當面協助您處理。</p>
 
     <div class="bf-cards">
