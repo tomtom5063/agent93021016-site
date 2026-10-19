@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://agent93021016.com/">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="花惹發運動彩券行">
-<meta property="og:image" content="https://agent93021016.com/img/og-image.jpg?v=2">
+<meta property="og:image" content="https://agent93021016.com/img/og-image.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="花惹發運動彩券行，台灣運彩績優經銷商，證號 93021016，加入花惹發開啟會員福利">
@@ -477,6 +477,23 @@
   .howto-t{margin:22px 0 4px; font-size:1.25rem}
   .howto-t::before{display:none}
   .howto-help{margin:6px 0 0; font-size:.95rem}
+    .steps3{margin:28px 0 8px}
+  .steps3 .howto-t{margin:0 0 4px}
+  .steps-sub{margin:0 0 16px; color:var(--muted); font-size:.92rem}
+  .st-list{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+  @media (min-width:860px){ .st-list{grid-template-columns:1fr 1fr 1.2fr} }
+  .st{display:flex; gap:14px; align-items:flex-start; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04), 0 4px 12px rgba(16,24,40,.05)}
+  .st > div{min-width:0}
+  .st-n{flex:0 0 34px; height:34px; border-radius:50%; display:grid; place-items:center; background:var(--brand); color:#fff; font-weight:900; font-size:1.05rem}
+  .st h3{margin:3px 0 6px; font-size:1.06rem; font-weight:900}
+  .st p{margin:0; font-size:.9rem; color:var(--muted); line-height:1.7}
+  .st a.k-red{color:var(--brand-deep); font-weight:800; text-underline-offset:3px}
+  .st a.k-gold{color:#8a5a00; font-weight:800; text-underline-offset:3px}
+  .st-3{border-color:rgba(122,47,214,.32); background:linear-gradient(135deg,#fff 40%,#faf5ff)}
+  .st-3 .st-n{background:linear-gradient(135deg,#7a2fd6,#b0287a)}
+  .st-3 h3 a{color:#06803a; text-decoration-thickness:2px; text-underline-offset:3px}
+  .st-perks{margin-top:2px !important}
   .hero-note a{font-weight:800; color:#06803a; text-decoration-thickness:2px; text-underline-offset:3px}
   @media (max-width:560px){ .btn-xl{flex:1 1 100%} }
   .bf-cards{display:grid; gap:18px; margin-top:24px}
@@ -494,6 +511,15 @@
   .bf-card p{margin:0; color:var(--muted)}
   .bf-card small{display:block; margin-top:8px; font-size:.8rem; color:var(--muted)}
   .bf-wish{display:block; margin:-2px 0 8px; font-size:.84rem; font-weight:800; color:#7a2fd6}
+  .bf-card p + p{margin-top:6px}
+  #why .bf-band{margin-top:96px}
+    @media (max-width:560px){
+    .bf-cards{gap:12px; margin-top:18px}
+    .bf-card{padding:18px 16px; gap:14px}
+    .bf-card .em{flex-basis:46px; height:46px; border-radius:13px}
+    .bf-card .em svg{width:24px; height:24px}
+    .bf-card h3{font-size:1.08rem}
+  }
   .gifts{display:grid; gap:14px; grid-template-columns:repeat(2,1fr); margin-top:16px}
   @media (min-width:800px){ .gifts{grid-template-columns:repeat(4,1fr)} }
   .gift{aspect-ratio:1/1; border:2px dashed #c9cfd6; border-radius:12px; display:grid; place-items:center; text-align:center;
@@ -534,10 +560,19 @@
     .point > .mix-no{display:none}
     .point h3{padding-right:78px; min-height:50px}
   }
-  .shopgrid .ph{position:relative}
-  .shopgrid figure .shop-mascot{position:absolute; right:-14px; bottom:-8px; width:auto; height:80%; border:0; border-radius:0; pointer-events:none;
-    filter:drop-shadow(0 10px 12px rgba(40,20,20,.28))}
-  @media (max-width:879px){ .shopgrid figure .shop-mascot{height:74%} }
+      .shopgrid figure{--sl:10.8%; --sr:18.1%; --ch:62%}
+  .shopgrid .ph{position:relative; padding:0 var(--sr) 0 var(--sl)}
+  .shopgrid .ph > img:first-child{position:relative; z-index:1}
+  .shopgrid figcaption{padding-left:var(--sl)}
+  .shopgrid figure .lean{position:absolute; bottom:-4px; width:auto; height:var(--ch); border:0; border-radius:0; pointer-events:none;
+    filter:drop-shadow(0 10px 10px rgba(40,20,20,.22))}
+  .shopgrid figure .lean-l{z-index:0; right:calc(100% - var(--sl)); transform:translateX(13%)}
+  .shopgrid figure .lean-r{z-index:2; left:calc(100% - var(--sr))}
+    @media (min-width:600px) and (max-width:1239px){ .shopgrid{grid-template-columns:1fr} .shopgrid figure{max-width:640px; --sl:13%} }
+  @media (min-width:1240px){
+    .shopgrid{grid-template-columns:1.45fr 1fr}
+    .shopgrid figure{--sl:12.5%; --sr:19.8%; --ch:68%}
+  }
   .honors-mascot{display:block; width:auto; height:200px; margin:14px 0 0 auto; pointer-events:none; filter:drop-shadow(0 10px 12px rgba(80,20,40,.2))}
   @media (max-width:859px){ .honors-mascot{height:170px; margin-inline:auto} }
   .ic-sport{width:30px; height:30px; flex:none; align-self:center; display:inline-block; filter:drop-shadow(0 3px 3px rgba(0,0,0,.2))}
@@ -633,12 +668,22 @@
   .mc-chips button[aria-pressed="true"]{border-color:var(--brand)}
   .mc-af .mc-chips button[aria-pressed="true"]{border-color:var(--gold)}
   .mc-chips button:focus-visible{outline:3px solid var(--fg); outline-offset:2px}
-  @media (max-width:560px){
-    .meet-card{grid-template-columns:1fr; padding:18px 16px 18px}
-    .mc-portrait{max-width:190px; margin:0 auto}
+    @media (max-width:560px){
+    .meet-grid{gap:14px; margin-top:18px}
+    .meet-card{grid-template-columns:104px 1fr; gap:4px 12px; align-items:center; padding:14px 14px 14px 6px}
+    .mc-portrait{max-width:104px; align-self:center}
+    .meet-card h3{font-size:1.35rem}
+    .mc-desc{display:none}
+    .mc-say{min-height:0; padding:6px 10px; gap:8px; border-radius:12px}
+    .mc-face{width:40px; height:40px}
+    .mc-line{font-size:.86rem}
+    .mc-chips{gap:8px; margin-top:8px}
+    .mc-chips button{width:38px; height:38px; border-width:2px}
   }
 
   #faq .wrap{position:relative}
+    .honors-mascot, .m-sec, .faq-mascot, .hr-group > .hg-img, .hs-duo{
+    -webkit-mask-image:linear-gradient(to bottom,#000 76%,transparent); mask-image:linear-gradient(to bottom,#000 76%,transparent)}
   .faq-mascot{position:absolute; top:-16px; right:40px; height:190px; width:auto; pointer-events:none; animation:bob 5.4s ease-in-out infinite; filter:drop-shadow(0 10px 12px rgba(80,20,40,.2))}
   @media (max-width:899px){ .faq-mascot{height:96px; top:-8px; right:16px} }
 
@@ -655,14 +700,15 @@
     .foot-bub{right:150px; top:30px; font-size:.8rem}
   }
 
-  .shop-mascot, .honors-mascot, .bm img, .m-sec{animation:bob 5.4s ease-in-out infinite}
+  .shopgrid figure .lean, .honors-mascot, .bm img, .m-sec{animation:bob 5.4s ease-in-out infinite}
+  .shopgrid figure .lean-r{animation-delay:-2.7s}
   .bm .bm-r{animation-delay:-2.2s}
   .point > .pt-img{animation:bob 5s ease-in-out infinite}
   .point:nth-child(2) > .pt-img{animation-delay:-1.2s}
   .point:nth-child(3) > .pt-img{animation-delay:-2.4s}
   .point:nth-child(4) > .pt-img{animation-delay:-3.4s}
   @media (prefers-reduced-motion:reduce){
-    .hs-duo,.hs-ic,.hs-bub,.rb-track,.hg-img,.faq-mascot,.foot-stage img,.shop-mascot,.honors-mascot,.bm img,.m-sec,.point > .pt-img{animation:none !important}
+    .hs-duo,.hs-ic,.hs-bub,.rb-track,.hg-img,.faq-mascot,.foot-stage img,.shopgrid figure .lean,.honors-mascot,.bm img,.m-sec,.point > .pt-img{animation:none !important}
     .bars-js .hr-bar{clip-path:none !important}
   }
 
@@ -676,6 +722,7 @@
   table.data td small{color:var(--muted)}
   .src{font-size:.84rem; color:var(--muted); margin:6px 0 0}
     .h-note{font-size:.85rem; font-weight:400; color:var(--muted); letter-spacing:0; align-self:flex-end; margin-bottom:3px}
+    @media (max-width:560px){ #roi h2{flex-wrap:wrap; row-gap:2px} section h2 .h-note{flex-basis:100%; margin:0 0 0 42px} }
   .hr-group{margin:22px 0 6px}
   .hr-group h3{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 0 12px}
   .hr-group h3 small{font-size:.82rem; font-weight:700; color:var(--muted)}
@@ -844,9 +891,9 @@
       <ul>
         <li><a class="ext" href="https://www.sportslottery.com.tw/sportsbook/daily-coupons" target="_blank" rel="noopener">賽事表<span aria-hidden="true"> ↗</span></a></li>
         <li><a href="#apply">開啟福利</a></li>
+        <li><a href="#why">為什麼選我們</a></li>
         <li><a href="#shop">店家資訊</a></li>
         <li><a href="#honors">績優實績</a></li>
-        <li><a href="#why">為什麼選我們</a></li>
         <li><a href="#data">每日分析</a></li>
         <li><a href="#roi">玩法攻略</a></li>
         <li><a href="#faq">常見問題</a></li>
@@ -868,7 +915,6 @@
       <a class="btn btn-gold btn-xl" href="https://modify.sportslottery.com.tw/zh-tw/Update/step1" target="_blank" rel="noopener">
         <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 4.6 4h14.8L21 9"/><path d="M4.2 9v11h15.6V9"/><path d="M9.2 20v-6h5.6v6"/></svg></span><span><b>已有會員・指定經銷商</b><small>服務經銷商填 93021016</small></span></a>
     </div>
-    <p class="hero-note">完成後記得 <a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></p>
     <div class="hero-stage" aria-hidden="true">
       <span class="hs-glow"></span>
       <img class="hs-ic i-soccer" src="img/mascot/ic-soccer.webp" alt="" width="42" height="42">
@@ -881,60 +927,19 @@
       <span class="hs-bub gold b-afa">數據交給我！</span>
       <span class="hs-bub b-xh">福利問我～</span>
     </div>
-        <div class="howto">
-      <h2 class="howto-t">申辦會員與指定服務經銷商</h2>
-    <p class="lead">會員全程自行在台灣運彩官方平台完成，本店不經手帳號密碼，個資安全有保障！</p>
-    <div class="paths">
-      <div class="path">
-        <span class="tag">還不是會員</span>
-        <h3>申辦線上會員</h3>
-        <ol>
-          <li>點下方按鈕進入台灣運彩官網申辦頁</li>
-          <li>依官網指示完成資料填寫</li>
-          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></li>
-        </ol>
-        <a class="btn btn-brand" href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerId=93021016" target="_blank" rel="noopener">前往官網申辦</a>
-      </div>
-      <div class="path alt">
-        <span class="tag">已有會員</span>
-        <h3>指定服務經銷商</h3>
-        <ol>
-          <li>點下方按鈕進入台灣運彩官網的會員資料變更頁</li>
-          <li>服務經銷商指定 <strong>93021016</strong></li>
-          <li class="perk"><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a>，<span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></li>
-        </ol>
-        <a class="btn btn-gold" href="https://modify.sportslottery.com.tw/zh-tw/Update/step1" target="_blank" rel="noopener">前往指定經銷商</a>
-      </div>
-    </div>
+        <div class="howto steps3">
+      <h2 class="howto-t">3 步驟申辦會員・指定經銷商</h2>
+      <p class="steps-sub">全程在台灣運彩官方平台完成，本店不經手帳號密碼，個資安全有保障。</p>
+      <ol class="st-list">
+        <li class="st"><span class="st-n" aria-hidden="true">1</span><div><h3>點上方按鈕</h3>
+          <p>還不是會員點 <a class="k-red" href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerId=93021016" target="_blank" rel="noopener">新會員申辦</a><br>已有會員點 <a class="k-gold" href="https://modify.sportslottery.com.tw/zh-tw/Update/step1" target="_blank" rel="noopener">指定經銷商</a></p></div></li>
+        <li class="st"><span class="st-n" aria-hidden="true">2</span><div><h3>在台灣運彩官網完成</h3>
+          <p>新會員依指示填寫資料<br>已有會員把服務經銷商指定為 <strong>93021016</strong></p></div></li>
+        <li class="st st-3"><span class="st-n" aria-hidden="true">3</span><div><h3><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a></h3>
+          <p class="st-perks"><span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></p></div></li>
+      </ol>
     </div>
     <p class="lead howto-help">操作有任何問題，歡迎隨時詢問 24 小時 LINE 客服，也可以到台北市中山區的實體店面，我們當面協助您處理。</p>
-
-    <div class="bf-cards">
-      <div class="bf-card"><span class="em g1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.5" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8.5V21"/><path d="M12 8.5C9.3 8.5 7.2 7.2 7.2 5.6c0-1.4 1.5-2.3 3-1.4 1.2.7 1.8 2.6 1.8 4.3zM12 8.5c2.7 0 4.8-1.3 4.8-2.9 0-1.4-1.5-2.3-3-1.4-1.2.7-1.8 2.6-1.8 4.3z"/></svg></span><div>
-        <h3>新會員試玩金</h3>
-        <span class="bf-wish">（已有會員，新加入本店也可領取）</span>
-        <p>剛加入的新朋友，可以申請「試玩金」，起跑就快一步。</p>
-        <small>※ 試玩金事宜請洽 LINE 官方帳號詢問。</small></div></div>
-      <div class="bf-card"><span class="em g2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13.5V17M8.5 21h7M9.5 17h5v4h-5z"/></svg></span><div>
-        <h3>投注累積紅利，兌換精選商品</h3>
-        <span class="bf-wish">（會員可洽 LINE 許願想換的商品）</span>
-        <p>平常的投注都能累積紅利，累積到一定程度就能兌換商品贈品。</p>
-        <small>※ 紅利回饋事宜請洽 LINE 官方帳號詢問。</small></div></div>
-      <div class="bf-card"><span class="em g3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/><path d="m7 9 4-3 4 2 4-4"/></svg></span><div>
-        <h3>每日分析、玩法攻略會員全部免費</h3>
-        <p>每天一篇賽事分析，加上各玩法的<a href="#roi">過關率統計</a>，會員不用另外付費。</p></div></div>
-      <div class="bf-card"><span class="em g4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4A8 8 0 1 1 20 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-width="2.6"/></svg></span><div>
-        <h3>24 小時一對一客服</h3>
-        <p>申辦卡關、指定經銷商、兌獎問題，LINE 傳過來就有人回，全年無休。</p></div></div>
-    </div>
-
-
-    <div class="bf-band">
-      <div class="bm" aria-hidden="true"><img class="bm-l" src="img/mascot/xiaohua-sign.webp" alt="" width="234" height="228" loading="lazy"><img class="bm-r" src="img/mascot/afa-invite.webp" alt="" width="221" height="228" loading="lazy"></div>
-      <h2>加入 LINE，開啟會員福利</h2>
-      <p>台灣運彩績優經銷商｜證號 93021016｜線上客服 24 小時全年無休</p>
-      <a class="btn btn-line" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">加入 LINE 好友</a>
-    </div>
 
     <div class="notice">
       <strong>未成年人不得購買或兌領運動彩券。</strong>
@@ -943,9 +948,42 @@
   </div>
 </section>
 
+<section id="why">
+  <div class="wrap">
+        <p class="eyebrow">WHY US</p>
+    <h2>為什麼選我們</h2>
+    <div class="bf-cards">
+      <div class="bf-card"><span class="em g1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.5" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8.5V21"/><path d="M12 8.5C9.3 8.5 7.2 7.2 7.2 5.6c0-1.4 1.5-2.3 3-1.4 1.2.7 1.8 2.6 1.8 4.3zM12 8.5c2.7 0 4.8-1.3 4.8-2.9 0-1.4-1.5-2.3-3-1.4-1.2.7-1.8 2.6-1.8 4.3z"/></svg></span><div>
+        <h3>新會員試玩金</h3>
+        <span class="bf-wish">（已有會員，新加入本店也可領取）</span>
+        <p>還不是會員？申辦後可申請<strong>「試玩金」</strong>，起跑就快一步。已經有台灣運彩帳號，<strong>服務經銷商指定 93021016</strong> 就能開啟福利。</p>
+        <small>※ 試玩金事宜請洽 LINE 官方帳號詢問。</small></div></div>
+      <div class="bf-card"><span class="em g2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13.5V17M8.5 21h7M9.5 17h5v4h-5z"/></svg></span><div>
+        <h3>賠率每家都一樣，回饋可不一樣</h3>
+        <span class="bf-wish">（會員可洽 LINE 許願想換的商品）</span>
+        <p>賠率由台灣運彩統一訂定，在哪一家投注都一樣。差別在於：<strong>透過我們開啟福利，投注可累積紅利、兌換商品贈品</strong>；在沒有回饋的地方，這份紅利就白白流掉了。</p>
+        <small>※ 紅利回饋事宜請洽 LINE 官方帳號詢問。</small></div></div>
+      <div class="bf-card"><span class="em g3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/><path d="m7 9 4-3 4 2 4-4"/></svg></span><div>
+        <h3>每日分析、玩法攻略免費看</h3>
+        <p>每天的賽事分析，加上各玩法的<a href="#roi">過關率統計</a>，會員不用另外付費。</p></div></div>
+      <div class="bf-card"><span class="em g4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4A8 8 0 1 1 20 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-width="2.6"/></svg></span><div>
+        <h3>找得到人，不推銷、不騷擾</h3>
+        <p><strong>LINE 客服 24 小時全年無休</strong>，申辦卡關、指定經銷商、兌獎問題都能問；實體店面在台北市中山區，週一～週六 10:00~20:00。</p>
+        <p>加了 LINE 不會被每天洗訊息，答應的福利<strong>說到做到、不打折扣</strong>，這是我們的三不承諾。</p></div></div>
+    </div>
+
+    <div class="bf-band">
+      <div class="bm" aria-hidden="true"><img class="bm-l" src="img/mascot/xiaohua-sign.webp" alt="" width="234" height="228" loading="lazy"><img class="bm-r" src="img/mascot/afa-invite.webp" alt="" width="221" height="228" loading="lazy"></div>
+      <h2>加入 LINE，開啟會員福利</h2>
+      <p>台灣運彩績優經銷商｜證號 93021016｜線上客服 24 小時全年無休</p>
+      <a class="btn btn-line" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">加入 LINE 好友</a>
+    </div>
+  </div>
+</section>
+
 <div class="ribbon" aria-hidden="true"><div class="rb-track"><div class="rb-half"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"></div><div class="rb-half"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-soccer.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-basketball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-baseball.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-tennis.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-shuttle.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-trophy.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-star.webp" alt="" width="46" height="46" loading="lazy"><img src="img/mascot/ic-laurel.webp" alt="" width="46" height="46" loading="lazy"></div></div></div>
 
-<section id="shop">
+<section id="shop" class="tex">
   <div class="wrap">
     <p class="eyebrow">STORE</p>
     <h2>店家資訊</h2>
@@ -953,7 +991,8 @@
       <figure>
         <div class="ph">
           <img src="img/storefront.jpg" alt="花惹發運動彩券行店面外觀" width="1200" height="900" loading="lazy">
-          <img class="shop-mascot" src="img/mascot/shop-duo.webp" alt="" width="230" height="280" loading="lazy" aria-hidden="true">
+          <img class="lean lean-l" src="img/mascot/lean-afa.webp" alt="" width="302" height="560" loading="lazy" aria-hidden="true">
+          <img class="lean lean-r" src="img/mascot/lean-xh.webp" alt="" width="386" height="560" loading="lazy" aria-hidden="true">
         </div>
         <figcaption>店面外觀｜臺北市中山區民生東路2段115巷16號</figcaption>
       </figure>
@@ -976,7 +1015,7 @@
   </div>
 </section>
 
-<section id="honors" class="tex">
+<section id="honors">
   <div class="wrap">
     <p class="eyebrow">台灣運彩頒發</p>
     <h2>績優實績<img class="ic-sport ic-trophy" src="img/mascot/ic-trophy.webp" alt="" width="38" height="38" loading="lazy"></h2>
@@ -999,47 +1038,6 @@
   </div>
 </section>
 
-<section id="why">
-  <div class="wrap">
-    <p class="eyebrow">WHY US</p>
-    <h2>為什麼選我們</h2>
-
-    <div class="points">
-            <div class="point">
-        <p class="mix-no">01</p>
-        <img class="pt-img" src="img/mascot/why-1.webp" alt="" width="103" height="128" loading="lazy" aria-hidden="true">
-        <h3>賠率每家都一樣，回饋可不一樣</h3>
-        <p>賠率由台灣運彩統一訂定，在哪一家投注都一樣。差別在於：<strong>透過我們開啟福利，投注可累積紅利、兌換商品贈品</strong>。</p>
-        <p>同樣一筆投注，在沒有回饋的地方，這份紅利就白白流掉了。</p>
-        <small class="point-note">※ 紅利回饋事宜請洽 LINE 官方帳號詢問。</small>
-      </div>
-
-      <div class="point">
-        <p class="mix-no">02</p>
-        <img class="pt-img" src="img/mascot/why-2.webp" alt="" width="109" height="128" loading="lazy" aria-hidden="true">
-        <h3>已經是會員？只差一步</h3>
-        <p>你已經有台灣運彩帳號，最難的部分早就完成了。把<strong>服務經銷商指定 93021016</strong>，福利就開啟了。</p>
-        <p>還不是會員？可申請<strong>「試玩金」</strong>，起跑就快一步。</p>
-        <small class="point-note">※ 試玩金事宜請洽 LINE 官方帳號詢問。</small>
-      </div>
-
-      <div class="point">
-        <p class="mix-no">03</p>
-        <img class="pt-img" src="img/mascot/why-3.webp" alt="" width="120" height="128" loading="lazy" aria-hidden="true">
-        <h3>不推銷、不騷擾、不打折扣</h3>
-        <p>加了 LINE 不會被每天洗訊息，也不會接到推銷電話。</p>
-        <p>答應你的福利，<strong>說到做到、不打折扣</strong>。這就是我們的三不承諾。</p>
-      </div>
-
-      <div class="point">
-        <p class="mix-no">04</p>
-        <img class="pt-img" src="img/mascot/why-4.webp" alt="" width="127" height="128" loading="lazy" aria-hidden="true">
-        <h3>找得到人，線上與實體都是</h3>
-        <p><strong>線上客服 24 小時全年無休</strong>，LINE 隨時找得到人。實體店面在台北市中山區，週一～週六 10:00~20:00。</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="data" class="tex">
   <div class="wrap">
@@ -1155,7 +1153,7 @@
           <h3>小花</h3>
           <p class="mc-desc">申辦、指定、兌換，不懂的就問我，LINE 客服 24 小時都在。</p>
           <div class="mc-say"><img class="mc-face" src="img/mascot/face-xh1.webp" alt="" width="54" height="54"><span class="mc-line" aria-live="polite">歡迎加入花惹發！</span></div>
-          <div class="mc-chips" role="group" aria-label="小花的表情"><button type="button" aria-label="開心" aria-pressed="true" data-face="img/mascot/face-xh1.webp" data-say="歡迎加入花惹發！"><img src="img/mascot/face-xh1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="眨眼" aria-pressed="false" data-face="img/mascot/face-xh2.webp" data-say="福利怎麼開啟，LINE 問我就對了～"><img src="img/mascot/face-xh2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-xh3.webp" data-say="咦？指定經銷商填 93021016 了嗎？"><img src="img/mascot/face-xh3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="思考" aria-pressed="false" data-face="img/mascot/face-xh4.webp" data-say="步驟看不懂？展開上面的詳細步驟，或直接問客服"><img src="img/mascot/face-xh4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
+          <div class="mc-chips" role="group" aria-label="小花的表情"><button type="button" aria-label="開心" aria-pressed="true" data-face="img/mascot/face-xh1.webp" data-say="歡迎加入花惹發！"><img src="img/mascot/face-xh1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="眨眼" aria-pressed="false" data-face="img/mascot/face-xh2.webp" data-say="福利怎麼開啟，LINE 問我就對了～"><img src="img/mascot/face-xh2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-xh3.webp" data-say="咦？指定經銷商填 93021016 了嗎？"><img src="img/mascot/face-xh3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="思考" aria-pressed="false" data-face="img/mascot/face-xh4.webp" data-say="步驟看不懂？看上面的 3 步驟，或直接問客服"><img src="img/mascot/face-xh4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
         </div>
       </article>
       <article class="meet-card mc-af">
@@ -1172,7 +1170,7 @@
   </div>
 </section>
 
-<section id="faq" class="tex">
+<section id="faq">
   <div class="wrap col">
     <img class="faq-mascot" src="img/mascot/faq-xiaohua.webp" alt="" width="162" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">FAQ</p>
@@ -1267,7 +1265,7 @@
 <script>
   (function () {
     var m = /[?&]ref=([A-Za-z0-9_-]{1,32})(?:&|$)/.exec(location.search);
-    var OG_VER = 2;
+    var OG_VER = 3;
     var siteUrl = "https://agent93021016.com/" + (m && m[1] !== "share" ? "?ref=" + m[1] + "&v=" + OG_VER : "?v=" + OG_VER);
     var shareText = "花惹發運動彩券行｜台灣運彩績優經銷商 93021016\n加入花惹發，開啟會員福利 👉 " + siteUrl;
     var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
