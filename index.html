@@ -445,14 +445,24 @@
 
     .bf-title em{font-style:normal; background:linear-gradient(135deg,#7a2fd6,#b0287a);
     -webkit-background-clip:text; background-clip:text; color:transparent}
-    .bf-t{display:block}
-  .bf-trial{display:block; margin-top:4px; font-size:1.3em; line-height:1.25; letter-spacing:.02em;
-    background:linear-gradient(135deg,#d6145a,#ec4a1c); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
-  #apply .bf-title{align-items:flex-start}
-  #apply .bf-title::before{margin-top:.5em}
-  #apply .bf-title em{white-space:nowrap}
+    #apply .bf-title em{white-space:nowrap}
   @media (max-width:380px){ #apply .bf-title{font-size:1.32rem} }
+  .promo-card{display:flex; align-items:center; gap:12px; max-width:520px; margin:12px 0 14px; padding:10px 12px; border-radius:14px; text-decoration:none; color:var(--fg);
+    background:linear-gradient(135deg,#fff1f5,#fff4ec); border:2px solid #f3a3bd; box-shadow:0 6px 16px rgba(214,20,90,.12);
+    transition:transform .2s ease, box-shadow .2s ease}
+  .promo-card:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(214,20,90,.18)}
+  .promo-card:focus-visible{outline:3px solid var(--fg); outline-offset:2px}
+  .pc-ic{flex:none; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; font-size:1.3rem; background:linear-gradient(135deg,#d6145a,#ec4a1c)}
+  .pc-t{flex:1; min-width:0}
+  .pc-t > b{display:block; font-size:1.2rem; font-weight:900; color:#c8124f}
+  .pc-t small{display:block; font-size:.82rem; color:var(--muted); line-height:1.5}
+  .pc-go{flex:none; font-weight:900; color:#fff; font-size:.9rem; padding:6px 12px; border-radius:99px; background:linear-gradient(135deg,#d6145a,#ec4a1c)}
+  .pc-t .nw{display:inline-block}
+  .pc-say{color:#c8124f; font-weight:900}
+  .pc-arrow{display:none; flex:none; font-size:1.6rem; font-weight:900; color:#c8124f; line-height:1}
+    @media (max-width:440px){ .pc-go{display:none} .pc-arrow{display:block} .promo-card{gap:10px; padding:10px 10px 10px 12px} }
+  @media (prefers-reduced-motion:reduce){ .promo-card{transition:none} .promo-card:hover{transform:none} }
+  @media (prefers-reduced-motion:no-preference){ #apply .promo-card{animation:rise .7s .12s ease both} }
   .bf-sub{margin-top:44px}
     .hero-cta{display:flex; flex-wrap:wrap; gap:14px; margin:20px 0 10px}
   .btn-xl{padding:14px 26px 14px 18px; border-radius:12px; gap:14px; text-align:left; line-height:1.25;
@@ -914,7 +924,8 @@
 <section id="apply" class="tex">
   <div class="wrap">
     <p class="eyebrow">MEMBER BENEFITS</p>
-    <h1 class="h2 bf-title"><span class="bf-t">加入花惹發，<em>開啟會員福利</em><span class="bf-trial"><span class="vh">，</span>領取試玩金</span></span></h1>
+    <h1 class="h2 bf-title">加入花惹發，<em>開啟會員福利</em></h1>
+    <a class="promo-card" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><span class="pc-ic" aria-hidden="true">✨</span><span class="pc-t"><b>領取試玩金</b><small><span class="nw">新加入本店的會員皆能領取，</span><span class="nw">洽 LINE 客服說：<b class="pc-say">「我要試玩金」</b></span></small></span><span class="pc-go">領取 ›</span><span class="pc-arrow" aria-hidden="true">›</span></a>
     <p class="lead">花惹發會員除了每日分析與玩法攻略，還有專屬福利，加入 LINE 告訴客服就能<strong>一對一開啟</strong>。</p>
     <ul class="hero-chips"><li>台灣運彩績優經銷商</li><li>經銷商證號 93021016</li><li>LINE 客服 24 小時</li></ul>
     <div class="hero-cta">
