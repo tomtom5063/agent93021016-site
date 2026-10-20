@@ -1322,7 +1322,7 @@
       </div>
     </div>
 
-    <p class="src">計算方式：每組獎金＝每組金額 × 該組各場賠率相乘（元以下捨去），取消的場次以 1 倍計。每組金額以 10 元為單位，每張最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算估計，僅供參考。實際派彩以台灣運彩為準。</p>
+    <p class="src">計算方式：每組獎金＝每組金額 × 該組各場賠率相乘（元以下捨去），取消的場次以 1 倍計。每組金額以 10 元為單位，每張至少 100 元才能出單、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算估計，僅供參考。實際派彩以台灣運彩為準。</p>
     <div class="notice">
       <strong>未成年人不得購買或兌領運動彩券。</strong>
       勿過度投注。串越多關越難全過，請量力而為。
@@ -1636,7 +1636,7 @@
 (function () {
   var legsEl = document.getElementById("legs");
   if (!legsEl) return;
-  var MAX_LEGS = 12, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
+  var MAX_LEGS = 12, MIN_TICKET = 100, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
   var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;
   var FAIR = 0.86;
   var ST = ["未定", "過", "沒過", "取消"];
@@ -1798,6 +1798,7 @@
     var net = shown - stake;
     $("coNet").textContent = (net >= 0 ? "+" : "−") + money(Math.abs(net));
 
+    if (stake < MIN_TICKET) warn.push(["", "這張單合計 " + money(stake) + " 元，台灣運彩每張要滿 " + MIN_TICKET + " 元才能出單，可以提高每組金額或多選過關方式"]);
     if (stake > MAX_TICKET) warn.push(["err", "每張最多 10 萬元，現在 " + money(stake) + " 元，要拆成兩張買"]);
     if (taxed) warn.push(["", "有 " + taxed + " 組賠率超過 500 倍，中獎要扣 20% 所得稅與千分之 4 印花稅，稅後約 NT$ " + money(Math.min(bestAfter, PRIZE_CAP))]);
     if (capped) warn.push(["", "超過單張中獎上限 2,000 萬元，超過的部分不派彩"]);
