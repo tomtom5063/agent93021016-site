@@ -1302,15 +1302,16 @@
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
     function md(d) { var p = d.split("-"); return +p[1] + "/" + +p[2]; }
     function pickOf(p) { return p.market + "　" + p.selection + " @" + p.odds; }
+    function noLabel(s) { return s.replace(/運彩第\s*(\d+)\s*場/g, "賽事編號 $1").replace(/運彩編號/g, "賽事編號"); }
     function openPost(p) {
       document.getElementById("pdMeta").textContent =
-        (LG[p.league] || p.league) + "｜" + p.date + "｜運彩第 " + p.gameNum + " 場｜開賽（台北）" + p.startTW +
+        (LG[p.league] || p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + "｜開賽（台北）" + p.startTW +
         (p.trial ? "｜試產版（未實際發出）" : "");
       document.getElementById("pdTitle").textContent = p.away + " @ " + p.home;
       var body = document.getElementById("pdBody"); body.textContent = "";
       p.body.split(/\n+/).forEach(function (para) {
         if (!para.trim()) return;
-        body.appendChild(el("p", /^本場推薦/.test(para) ? "pick" : "", para));
+        body.appendChild(el("p", /^本場推薦/.test(para) ? "pick" : "", noLabel(para)));
       });
       if (dlg.showModal) { dlg.showModal(); dlg.scrollTop = 0; }
       else dlg.setAttribute("open", "");
@@ -1321,7 +1322,7 @@
     if (POSTS.length) {
       var b = document.getElementById("board"), p0 = POSTS[0];
       b.querySelector(".bd-lg").textContent = LG[p0.league] || p0.league;
-      b.querySelector(".bd-no").textContent = "運彩第 " + p0.gameNum + " 場" + (p0.stage ? "・" + p0.stage : "");
+      b.querySelector(".bd-no").textContent = "賽事編號 " + p0.gameNum + (p0.stage ? "・" + p0.stage : "");
       b.querySelector(".bd-away").textContent = p0.away;
       b.querySelector(".bd-home").textContent = p0.home;
       b.querySelector(".bd-time").textContent = "開賽（台北）" + p0.startTW;
