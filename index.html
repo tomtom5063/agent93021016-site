@@ -930,19 +930,11 @@
   .co-grid div{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:9px 12px}
   .co-grid dt{font-size:.76rem; font-weight:800; letter-spacing:.06em; color:#aeb8c6}
   .co-grid dd{margin:2px 0 0; font-size:1.16rem; font-weight:900; font-variant-numeric:tabular-nums; overflow-wrap:anywhere}
-  .co-prob{margin-top:12px; background:rgba(0,0,0,.2); border-radius:10px; padding:11px 13px}
-  .co-prob[hidden]{display:none}
-  .cp-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:.86rem; font-weight:800; color:#c5cdd8}
-  .cp-top b{font-size:1.25rem; color:#fff; font-variant-numeric:tabular-nums; white-space:nowrap}
-  .cp-bar{height:8px; margin-top:8px; border-radius:99px; background:rgba(255,255,255,.14); overflow:hidden}
-  .cp-bar i{display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#ffd84d,#ff8a3d);
-    transition:width .4s cubic-bezier(.2,.8,.2,1)}
-  .co-prob p{margin:6px 0 0; font-size:.8rem; color:#aeb8c6}
   .co-warn{list-style:none; margin:12px 0 0; padding:0; font-size:.84rem}
   .co-warn:empty{display:none}
   .co-warn li{margin-top:6px; padding:8px 10px; border-radius:8px; line-height:1.5; background:rgba(255,216,77,.12); color:#ffe9a6}
   .co-warn li.err{background:rgba(255,90,96,.18); color:#ffd0d2}
-  @media (prefers-reduced-motion:reduce){ .cp-bar i, .leg{transition:none} }
+  @media (prefers-reduced-motion:reduce){ .leg{transition:none} }
 </style>
 
 <script type="application/ld+json">
@@ -1317,19 +1309,14 @@
           <div><dt>總投注金額</dt><dd id="coStake">–</dd></div>
           <div><dt>扣掉本金</dt><dd id="coNet">–</dd></div>
         </dl>
-        <div class="co-prob" id="coProb">
-          <div class="cp-top"><span id="cpLabel">全部過關的機率（估）</span><b id="cpVal">–</b></div>
-          <div class="cp-bar"><i id="cpFill"></i></div>
-          <p id="cpNote"></p>
-        </div>
         <ul class="co-warn" id="coWarn"></ul>
       </div>
     </div>
 
-    <p class="src">計算方式：每組獎金＝每組投注金額 × 該組各場賠率相乘（四捨五入到元，同台灣運彩投注單的「最高可能中」），取消的場次以 1 倍計。每組合以 10 元為單位，每張至少 100 元才能出單、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算估計，僅供參考。實際派彩以台灣運彩為準。</p>
+    <p class="src">計算方式：每組獎金＝每組投注金額 × 該組各場賠率相乘（四捨五入到元，同台灣運彩投注單的「最高可能中」），取消的場次以 1 倍計。每組合以 10 元為單位，每張至少 100 元才能出單、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。實際派彩以台灣運彩為準。</p>
     <div class="notice">
       <strong>未成年人不得購買或兌領運動彩券。</strong>
-      勿過度投注。串越多關越難全過，請量力而為。
+      勿過度投注，請量力而為。
     </div>
   </div>
 </section>
@@ -1642,7 +1629,6 @@
   if (!legsEl) return;
   var UNIT = 10, MAX_LEGS = 12, MIN_TICKET = 100, MAX_TICKET = 100000, PRIZE_CAP = 20000000, MAX_MULT = 9999;
   var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;
-  var FAIR = 0.86;
   var ST = [[1, "過"], [2, "沒過"], [3, "取消"]];
   var NUM = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
   var DEMO = ["1.75", "1.80", "1.65"];
@@ -1666,18 +1652,6 @@
   function money(n) { return Math.round(n).toLocaleString("zh-TW"); }
   function prizeOf(stake, m) { return Math.round(stake * m + 1e-7); }
   function choose(n, k) { var r = 1; for (var i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); }
-  function pct(p) {
-    if (p >= 0.995) return "接近 100%";
-    if (p >= 0.1) return Math.round(p * 100) + "%";
-    if (p >= 0.001) return (Math.round(p * 1000) / 10) + "%";
-    return "不到 0.1%";
-  }
-  function per(p) {
-    if (p >= 0.995 || p <= 0) return "";
-    if (p >= 0.1) return "每 100 次大約過 " + Math.round(p * 100) + " 次";
-    if (p >= 0.01) return "每 1,000 次大約過 " + Math.round(p * 1000) + " 次";
-    return "大約 " + Math.round(1 / p).toLocaleString("zh-TW") + " 次才過 1 次";
-  }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
   function renderLegs() {
@@ -1801,11 +1775,10 @@
       show(empty && !warn.length ? "填好每一場的賠率就會自動算" : "請先修正下面標紅的地方", "–");
       $("coBreak").hidden = true;
       ["coOdds", "coCombos", "coStake", "coNet"].forEach(function (id) { $(id).textContent = "–"; });
-      $("coProb").hidden = true;
       return paint(warn);
     }
 
-    var combos = 0, stake = 0, all = 0, best = 0, bestAfter = 0, taxed = 0, kset = {}, parts = {};
+    var combos = 0, stake = 0, all = 0, best = 0, bestAfter = 0, taxed = 0, parts = {};
     var marked = legs.some(function (l) { return l.s !== 1; });
     for (var mask = 1; mask < (1 << n); mask++) {
       var k = 0, first = -1, pAll = 1, m = 1, dead = false;
@@ -1819,7 +1792,7 @@
       var mult = multOf(mask, k, first);
       if (!mult) continue;
       var bet = UNIT * mult;
-      combos++; stake += bet; kset[k] = true;
+      combos++; stake += bet;
       var key = mode === "single" ? "L" + first : "K" + k;
       var pt = parts[key] || (parts[key] = { k: k, i: first, c: 0, bet: bet, stake: 0, all: 0, best: 0 });
       var prizeAll = prizeOf(bet, pAll);
@@ -1835,7 +1808,6 @@
       show("在下面設定要買幾倍", "–");
       $("coBreak").hidden = true;
       ["coOdds", "coStake", "coNet"].forEach(function (id) { $(id).textContent = "–"; });
-      $("coProb").hidden = true;
       return paint(warn);
     }
 
@@ -1861,23 +1833,6 @@
     if (taxed) warn.push(["", "有 " + taxed + " 組賠率超過 500 倍，中獎要扣 20% 所得稅與千分之 4 印花稅，稅後約 NT$ " + money(Math.min(bestAfter, PRIZE_CAP))]);
     if (capped) warn.push(["", "超過單張中獎上限 2,000 萬元，超過的部分不派彩"]);
 
-    if (marked) { $("coProb").hidden = true; return paint(warn); }
-    var ps = legs.map(function (l, i) { return os[i] === 1 ? 1 : Math.min(0.95, FAIR / os[i]); });
-    var pAllHit = ps.reduce(function (a, p) { return a * p; }, 1);
-    var dist = [1];
-    ps.forEach(function (p) {
-      var nx = []; for (var h = 0; h <= dist.length; h++) nx[h] = (dist[h] || 0) * (1 - p) + (dist[h - 1] || 0) * p;
-      dist = nx;
-    });
-    var ks = Object.keys(kset).map(Number), kmin = Math.min.apply(null, ks), pAny = 0;
-    for (var h = kmin; h < dist.length; h++) pAny += dist[h];
-    var only = ks.length === 1 && ks[0] === n;
-    var p = only ? pAllHit : pAny;
-    $("coProb").hidden = false;
-    $("cpLabel").textContent = only ? "全部過關的機率（估）" : "至少中一組的機率（估）";
-    $("cpVal").textContent = pct(p);
-    $("cpFill").style.width = Math.max(p * 100, p > 0 ? 1.5 : 0) + "%";
-    $("cpNote").textContent = per(p) + (only || pAllHit === 0 ? "" : "；全部都中約 " + pct(pAllHit));
     paint(warn);
   }
   function paintBreak(parts, marked, n) {
