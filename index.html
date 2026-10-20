@@ -917,6 +917,16 @@
   .co-big b{font-size:clamp(2.2rem,6vw,3.1rem); font-variant-numeric:tabular-nums; letter-spacing:-.01em; overflow-wrap:anywhere}
   .co-sub{margin:6px 0 0; font-size:.9rem; color:#c5cdd8}
   .co-sub:empty{display:none}
+  .co-break{margin-top:14px; padding:10px 14px 4px; border-radius:10px; background:rgba(0,0,0,.2)}
+  .co-break[hidden]{display:none}
+  .cb-h{margin:0 0 2px; font-size:.78rem; font-weight:800; letter-spacing:.06em; color:#aeb8c6}
+  .co-break ul{list-style:none; margin:0; padding:0}
+  .co-break li{display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:7px 0}
+  .co-break li + li{border-top:1px dashed rgba(255,255,255,.16)}
+  .co-break li span{font-weight:800; font-size:.95rem}
+  .co-break li small{display:block; font-size:.76rem; font-weight:700; color:#aeb8c6}
+  .co-break li b{font-size:1.12rem; font-weight:900; color:#ffd84d; font-variant-numeric:tabular-nums; white-space:nowrap}
+  .co-break li.dead span, .co-break li.dead b{color:#8a94a3}
   .co-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:18px 0 0}
   .co-grid div{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:9px 12px}
   .co-grid dt{font-size:.76rem; font-weight:800; letter-spacing:.06em; color:#aeb8c6}
@@ -1301,6 +1311,7 @@
           <p class="co-big"><small>NT$</small><b id="coBig">–</b></p>
           <p class="co-sub" id="coSub"></p>
         </div>
+        <div class="co-break" id="coBreak" hidden><p class="cb-h" id="cbHead">各關明細</p><ul id="cbList"></ul></div>
         <dl class="co-grid">
           <div><dt id="coOddsLb">賠率相乘</dt><dd id="coOdds">–</dd></div>
           <div><dt>組數</dt><dd id="coCombos">–</dd></div>
@@ -1707,7 +1718,7 @@
     change();
     var n = legs.length;
     if (fullOnly && n !== oldN) { multCombo[n] = multCombo[oldN]; delete multCombo[oldN]; }
-    for (var k in multCombo) if (+k > n || +k < 2) delete multCombo[k];
+    for (var k in multCombo) if (+k > n || +k < 1) delete multCombo[k];
     renderLegs(); renderRows(); calc();
   }
 
@@ -1732,6 +1743,7 @@
     show();
     return box;
   }
+  function kName(k, n) { return k === n && n > 1 ? "全部過關" : NUM[k] + "關"; }
   function betRow(title, sub, box) {
     var r = el("div", "bet-row"), lb = el("span", "br-lb"), s = el("small", "", sub);
     lb.appendChild(el("b", "", title)); lb.appendChild(s);
@@ -1745,10 +1757,9 @@
     if (mode === "all") {
       betRow("全部過關", "1 組合 × NTD 10 ×", stepper(function () { return multAll; }, function (v) { multAll = v; }, 1, "全部過關"));
     } else if (mode === "combo") {
-      if (n < 2) { rowsEl.appendChild(el("p", "bet-empty", "過關組合至少要 2 場，請再加一場。")); return; }
-      for (var k = n; k >= 2; k--) (function (k) {
-        betRow(k === n ? "全部過關" : NUM[k] + "關", choose(n, k) + " 組合 × NTD 10 ×",
-          stepper(function () { return multCombo[k] || 0; }, function (v) { multCombo[k] = v; }, 0, k === n ? "全部過關" : NUM[k] + "關"));
+      for (var k = n; k >= 1; k--) (function (k) {
+        betRow(kName(k, n), choose(n, k) + " 組合 × NTD 10 ×",
+          stepper(function () { return multCombo[k] || 0; }, function (v) { multCombo[k] = v; }, 0, kName(k, n)));
       })(k);
     } else {
       legs.forEach(function (l, i) {
@@ -1762,7 +1773,7 @@
 
   function multOf(mask, k, first) {
     if (mode === "all") return k === legs.length ? multAll : 0;
-    if (mode === "combo") return k >= 2 ? multCombo[k] || 0 : 0;
+    if (mode === "combo") return multCombo[k] || 0;
     return k === 1 ? legs[first].m : 0;
   }
   function show(label, big, sub) {
@@ -1788,12 +1799,13 @@
 
     if (empty || warn.length) {
       show(empty && !warn.length ? "填好每一場的賠率就會自動算" : "請先修正下面標紅的地方", "–");
+      $("coBreak").hidden = true;
       ["coOdds", "coCombos", "coStake", "coNet"].forEach(function (id) { $(id).textContent = "–"; });
       $("coProb").hidden = true;
       return paint(warn);
     }
 
-    var combos = 0, stake = 0, all = 0, best = 0, sure = 0, bestAfter = 0, taxed = 0, kset = {};
+    var combos = 0, stake = 0, all = 0, best = 0, sure = 0, bestAfter = 0, taxed = 0, kset = {}, parts = {};
     var pending = false, settled = false;
     for (var mask = 1; mask < (1 << n); mask++) {
       var k = 0, first = -1, pAll = 1, m = 1, dead = false, pend = false;
@@ -1808,10 +1820,13 @@
       if (!mult) continue;
       var bet = UNIT * mult;
       combos++; stake += bet; kset[k] = true;
-      all += prizeOf(bet, pAll);
+      var key = mode === "single" ? "L" + first : "K" + k;
+      var pt = parts[key] || (parts[key] = { k: k, i: first, c: 0, bet: bet, stake: 0, all: 0, best: 0 });
+      var prizeAll = prizeOf(bet, pAll);
+      pt.c++; pt.stake += bet; pt.all += prizeAll; all += prizeAll;
       if (dead) continue;
       var prize = prizeOf(bet, m);
-      best += prize;
+      best += prize; pt.best += prize;
       if (m > TAX_ODDS) { taxed++; bestAfter += Math.floor(prize * TAX_KEEP); } else bestAfter += prize;
       if (!pend) sure += prize;
     }
@@ -1820,6 +1835,7 @@
 
     if (!combos) {
       show("在下面設定要買幾倍", "–");
+      $("coBreak").hidden = true;
       ["coOdds", "coStake", "coNet"].forEach(function (id) { $(id).textContent = "–"; });
       $("coProb").hidden = true;
       return paint(warn);
@@ -1832,6 +1848,8 @@
     if (!settled) show(lbAll, money(shown));
     else if (pending) show("剩下的都過，最多可拿", money(shown), sure > 0 ? "已經確定能拿 NT$ " + money(Math.min(sure, PRIZE_CAP)) : "");
     else show(best > 0 ? "這張單可以拿" : "這張單沒有中", money(shown));
+
+    paintBreak(parts, settled, pending, n);
 
     var prod = 1, top = 0;
     legs.forEach(function (l, i) { var o = l.s === 3 ? 1 : os[i]; prod *= o; if (o > top) top = o; });
@@ -1864,6 +1882,23 @@
     $("cpFill").style.width = Math.max(p * 100, p > 0 ? 1.5 : 0) + "%";
     $("cpNote").textContent = per(p) + (only || pAllHit === 0 ? "" : "；全部都中約 " + pct(pAllHit));
     paint(warn);
+  }
+  function paintBreak(parts, settled, pending, n) {
+    var list = Object.keys(parts).map(function (key) { return parts[key]; });
+    var box = $("coBreak"), ul = $("cbList");
+    box.hidden = list.length < 2;
+    if (box.hidden) return;
+    list.sort(function (a, b) { return mode === "single" ? a.i - b.i : b.k - a.k; });
+    var unit = mode === "single" ? "各場" : "各關";
+    $("cbHead").textContent = unit + (!settled ? (mode === "single" ? "中了可拿" : "全部過可拿") : pending ? "最多可拿" : "可以拿");
+    ul.textContent = "";
+    list.forEach(function (pt) {
+      var v = settled ? pt.best : pt.all;
+      var li = el("li", settled && v === 0 ? "dead" : ""), sp = el("span", "", mode === "single" ? "第 " + (pt.i + 1) + " 場" : kName(pt.k, n) + (pt.k === n && n > 1 ? "（" + n + " 關）" : ""));
+      sp.appendChild(el("small", "", mode === "single" ? "投 " + money(pt.stake) + " 元" : pt.c + " 組合・每組 " + money(pt.bet) + " 元・共 " + money(pt.stake) + " 元"));
+      li.appendChild(sp); li.appendChild(el("b", "", settled && v === 0 ? "沒中" : "NT$ " + money(Math.min(v, PRIZE_CAP))));
+      ul.appendChild(li);
+    });
   }
   function paint(warn) {
     var ul = $("coWarn"); ul.textContent = "";
