@@ -821,6 +821,119 @@
     .point, .path, .honors > div{transition:none}
     .point:hover, .path:hover, .honors > div:hover{transform:none}
   }
+
+    #calc{background:linear-gradient(180deg,#fbf6ef 0%,#fffdfa 100%); border-top:1px solid #f1e6d6}
+  @media (min-width:1100px){ #calc .lead{padding-right:190px} }
+  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+  .calc{display:grid; gap:20px; margin:22px 0 10px}
+  @media (min-width:1100px){
+    .calc{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); align-items:start}
+    .calc .calc-out{position:sticky; top:170px}     }
+  .calc-in{background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 16px rgba(16,24,40,.06)}
+  .cc-head{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px}
+  .cc-head b{font-size:1.05rem; font-weight:900}
+  .cc-reset{font:inherit; font-size:.84rem; font-weight:700; color:var(--muted); background:none; border:0; cursor:pointer;
+    text-decoration:underline; text-underline-offset:3px; padding:4px}
+  .legs{list-style:none; margin:0; padding:0}
+  .leg{display:grid; grid-template-columns:28px minmax(72px,1fr) auto 34px; align-items:center; gap:8px;
+    padding:8px; border-radius:10px; border:1px solid transparent; transition:background-color .15s, border-color .15s}
+  .leg + .leg{margin-top:4px}
+  .lg-no{width:28px; height:28px; border-radius:50%; background:var(--brand); color:#fff; font-weight:900; font-size:.88rem;
+    display:grid; place-items:center}
+  .lg-odds{display:block; min-width:0}
+  .calc input{font:inherit; font-weight:800; font-variant-numeric:tabular-nums; color:var(--fg); background:#fff}
+  .calc input::-webkit-outer-spin-button, .calc input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+  .calc input[type=number]{-moz-appearance:textfield; appearance:textfield}
+  .lg-odds input{width:100%; font-size:1.1rem; padding:7px 10px; border:1.5px solid #cfd5dc; border-radius:8px}
+  .lg-odds input:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 3px rgba(211,32,39,.15)}
+  .lg-odds input[aria-invalid="true"]{border-color:var(--brand); background:#fff5f5}
+  .lg-st{display:inline-flex; gap:2px; padding:3px; border-radius:99px; background:#f1f3f5}
+  .lg-st button{font:inherit; font-size:.84rem; font-weight:800; border:0; background:transparent; color:var(--muted);
+    min-width:44px; padding:6px 10px; border-radius:99px; cursor:pointer}
+  .lg-st button[aria-pressed="true"]{background:#fff; color:var(--fg); box-shadow:0 1px 3px rgba(0,0,0,.15)}
+  .lg-st button[data-s="1"][aria-pressed="true"]{background:#06a050; color:#fff}
+  .lg-st button[data-s="2"][aria-pressed="true"]{background:var(--brand); color:#fff}
+  .lg-st button[data-s="3"][aria-pressed="true"]{background:var(--muted); color:#fff}
+  .leg[data-st="1"]{background:#effaf3; border-color:#bfe8cf}
+  .leg[data-st="2"]{background:#fff3f3; border-color:#f3c4c6}
+  .leg[data-st="3"]{background:#f4f5f7; border-color:#e3e6ea}
+  .leg[data-st="2"] .lg-odds input, .leg[data-st="3"] .lg-odds input{text-decoration:line-through; color:var(--muted)}
+  .lg-x{width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--muted);
+    font:inherit; font-size:1.15rem; line-height:1; cursor:pointer}
+  .lg-x:disabled{opacity:.35; cursor:default}
+  @media (max-width:560px){
+    .calc-in{padding:14px 12px}
+    .leg{grid-template-columns:28px minmax(0,1fr) 34px; grid-template-areas:"no odds x" "st st st"; row-gap:7px}
+    .lg-no{grid-area:no} .lg-odds{grid-area:odds} .lg-x{grid-area:x}
+    .lg-st{grid-area:st; display:grid; grid-template-columns:repeat(4,1fr)}
+  }
+  .add-leg{margin-top:10px; width:100%; font:inherit; font-weight:800; color:var(--brand-deep); background:#fff;
+    border:1.5px dashed #e3a5a8; border-radius:10px; padding:10px; cursor:pointer}
+  .add-leg:hover{background:#fff6f6}
+  .add-leg:disabled{color:var(--muted); border-color:var(--line); background:#fafafa; cursor:default}
+  .cc-tip{margin:8px 0 0; font-size:.82rem; color:var(--muted)}
+  .calc-mini{display:none}
+  @media (max-width:1099px){
+    .calc-mini{display:flex; align-items:center; gap:10px; position:sticky; top:calc(var(--hdr, 108px) + 8px); z-index:3;
+      margin:0 0 10px; padding:9px 14px; border-radius:10px; text-decoration:none; color:#c5cdd8;
+      background:linear-gradient(135deg,#1b2230,#2a3242 70%,#3a1d22); box-shadow:0 6px 16px rgba(16,24,40,.22)}
+    .calc-mini span{font-size:.8rem; font-weight:800}
+    .calc-mini b{font-size:1.25rem; font-weight:900; color:#ffd84d; font-variant-numeric:tabular-nums; margin-right:auto; white-space:nowrap}
+    .calc-mini small{font-size:.78rem; font-weight:800; color:#fff; white-space:nowrap}
+  }
+  .cc-field{margin-top:16px; padding-top:14px; border-top:1px dashed #dde1e6}
+  .cc-lb{display:block; font-weight:900; margin-bottom:8px}
+  .cc-lb small{font-weight:700; color:var(--muted); font-size:.8rem; margin-left:6px}
+  .amt-row{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .amt-box{display:inline-flex; align-items:stretch; border:1.5px solid #cfd5dc; border-radius:8px; overflow:hidden; background:#fff}
+  .amt-box:focus-within{border-color:var(--brand); box-shadow:0 0 0 3px rgba(211,32,39,.15)}
+  .amt-box span{display:grid; place-items:center; padding:0 10px; background:#f4f5f7; color:var(--muted); font-weight:800; font-size:.86rem}
+  .amt-box input{width:112px; border:0; outline:0; font-size:1.1rem; padding:7px 10px}
+  .amt-chips, .ways{display:flex; flex-wrap:wrap; gap:6px}
+  .amt-chips button, .ways button{font:inherit; font-weight:800; cursor:pointer; border-radius:99px;
+    border:1.5px solid #d6dbe1; background:#fff; color:var(--fg)}
+  .amt-chips button{font-size:.86rem; padding:6px 12px}
+  .ways{gap:8px}
+  .ways button{display:inline-flex; align-items:baseline; gap:6px; padding:7px 14px; font-size:.92rem}
+  .ways button small{font-size:.78rem; font-weight:700; color:var(--muted)}
+  .ways button[aria-pressed="true"]{background:var(--brand); border-color:var(--brand); color:#fff}
+  .ways button[aria-pressed="true"] small{color:#ffdfe0}
+  @media (hover:hover) and (pointer:fine){
+    .amt-chips button:hover, .ways button[aria-pressed="false"]:hover{border-color:var(--brand); color:var(--brand-deep)}
+  }
+
+  .calc-out{position:relative; overflow:hidden; color:#fff; border-radius:14px; padding:24px 22px 20px;
+    background:
+      repeating-linear-gradient(118deg, rgba(255,255,255,.06) 0 3px, rgba(255,255,255,0) 3px 46px),
+      linear-gradient(135deg, #1b2230 0%, #2a3242 60%, #3a1d22 100%);
+    box-shadow:0 12px 30px rgba(0,0,0,.18)}
+  .calc-out::after{content:""; position:absolute; right:-40px; top:-40px; width:180px; height:180px; border-radius:50%;
+    background:radial-gradient(circle, rgba(245,181,0,.28), rgba(245,181,0,0) 70%); pointer-events:none}
+  .calc-out > *{position:relative; z-index:1}
+  .co-l{margin:0; font-size:.86rem; font-weight:800; letter-spacing:.08em; color:#c5cdd8}
+  .co-big{margin:4px 0 0; display:flex; align-items:baseline; gap:8px; color:#ffd84d; font-weight:900; line-height:1.1}
+  .co-big small{font-size:1rem; color:#ffe9a6}
+  .co-big b{font-size:clamp(2.2rem,6vw,3.1rem); font-variant-numeric:tabular-nums; letter-spacing:-.01em; overflow-wrap:anywhere}
+  .co-sub{margin:6px 0 0; font-size:.9rem; color:#c5cdd8}
+  .co-sub:empty{display:none}
+  .co-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:18px 0 0}
+  .co-grid div{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:9px 12px}
+  .co-grid dt{font-size:.76rem; font-weight:800; letter-spacing:.06em; color:#aeb8c6}
+  .co-grid dd{margin:2px 0 0; font-size:1.16rem; font-weight:900; font-variant-numeric:tabular-nums; overflow-wrap:anywhere}
+  .co-prob{margin-top:12px; background:rgba(0,0,0,.2); border-radius:10px; padding:11px 13px}
+  .co-prob[hidden]{display:none}
+  .cp-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:.86rem; font-weight:800; color:#c5cdd8}
+  .cp-top b{font-size:1.25rem; color:#fff; font-variant-numeric:tabular-nums; white-space:nowrap}
+  .cp-bar{height:8px; margin-top:8px; border-radius:99px; background:rgba(255,255,255,.14); overflow:hidden}
+  .cp-bar i{display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#ffd84d,#ff8a3d);
+    transition:width .4s cubic-bezier(.2,.8,.2,1)}
+  .co-prob p{margin:6px 0 0; font-size:.8rem; color:#aeb8c6}
+  .co-warn{list-style:none; margin:12px 0 0; padding:0; font-size:.84rem}
+  .co-warn:empty{display:none}
+  .co-warn li{margin-top:6px; padding:8px 10px; border-radius:8px; line-height:1.5; background:rgba(255,216,77,.12); color:#ffe9a6}
+  .co-warn li.err{background:rgba(255,90,96,.18); color:#ffd0d2}
+  @media (prefers-reduced-motion:reduce){ .cp-bar i, .leg{transition:none} }
 </style>
 
 <script type="application/ld+json">
@@ -914,6 +1027,7 @@
         <li><a href="#honors">績優實績</a></li>
         <li><a href="#data">每日分析</a></li>
         <li><a href="#roi">玩法攻略</a></li>
+        <li><a href="#calc">過關計算機</a></li>
         <li><a href="#faq">常見問題</a></li>
       </ul>
       <a class="cta" href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerId=93021016" target="_blank" rel="noopener">立即申辦</a>
@@ -1155,6 +1269,63 @@
     <div class="share-row">
       <a class="btn btn-line js-share" href="https://line.me/R/share?text=%E8%8A%B1%E6%83%B9%E7%99%BC%E9%81%8B%E5%8B%95%E5%BD%A9%E5%88%B8%E8%A1%8C%EF%BD%9C%E5%8F%B0%E7%81%A3%E9%81%8B%E5%BD%A9%E7%B8%BE%E5%84%AA%E7%B6%93%E9%8A%B7%E5%95%86%2093021016%0A%E5%8A%A0%E5%85%A5%E8%8A%B1%E6%83%B9%E7%99%BC%EF%BC%8C%E9%96%8B%E5%95%9F%E6%9C%83%E5%93%A1%E7%A6%8F%E5%88%A9%20%F0%9F%91%89%20https%3A%2F%2Fagent93021016.com%2F" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">分享給 LINE 好友或群組</a>
       <p>覺得有用，傳給一起看球的朋友。</p>
+    </div>
+  </div>
+</section>
+
+<section id="calc">
+  <div class="wrap">
+    <img class="mascot m-sec" src="img/mascot/afa-tactics.webp" alt="" width="411" height="420" loading="lazy" aria-hidden="true">
+    <p class="eyebrow">PARLAY CALCULATOR</p>
+    <h2>過關計算機</h2>
+    <p class="lead col">輸入每一場的賠率，馬上算出過關獎金。組合過關、比賽打到一半想知道還能拿多少，都可以算。</p>
+
+    <div class="calc">
+      <div class="calc-in">
+        <div class="cc-head"><b>我的過關單</b><button type="button" class="cc-reset" id="ccReset">清空重來</button></div>
+        <a class="calc-mini" href="#coPanel" aria-hidden="true" tabindex="-1"><span id="cmLabel">全部過關可拿</span><b id="cmBig">–</b><small>看明細 ↓</small></a>
+        <ol class="legs" id="legs"></ol>
+        <button type="button" class="add-leg" id="addLeg">＋ 再加一場</button>
+        <p class="cc-tip">每一場可以標「過／沒過／取消」，算出這張單現在的狀況。同一場比賽不能串在一起，最多 12 場。</p>
+
+        <div class="cc-field">
+          <label class="cc-lb" for="ccAmt">每組金額</label>
+          <div class="amt-row">
+            <span class="amt-box"><span>NT$</span><input id="ccAmt" type="number" inputmode="numeric" min="10" step="10" value="100"></span>
+            <span class="amt-chips" id="amtChips"><button type="button" data-v="100">100</button><button type="button" data-v="500">500</button><button type="button" data-v="1000">1,000</button><button type="button" data-v="5000">5,000</button></span>
+          </div>
+        </div>
+        <div class="cc-field">
+          <span class="cc-lb" id="waysLb">過關方式<small>可以複選，例如 3 場同時買過 2 關與過 3 關</small></span>
+          <div class="ways" id="ways" role="group" aria-labelledby="waysLb"></div>
+        </div>
+      </div>
+
+      <div class="calc-out" id="coPanel">
+        <div aria-live="polite">
+          <p class="co-l" id="coLabel">全部過關可拿</p>
+          <p class="co-big"><small>NT$</small><b id="coBig">–</b></p>
+          <p class="co-sub" id="coSub"></p>
+        </div>
+        <dl class="co-grid">
+          <div><dt>賠率相乘</dt><dd id="coOdds">–</dd></div>
+          <div><dt>組數</dt><dd id="coCombos">–</dd></div>
+          <div><dt>總投注</dt><dd id="coStake">–</dd></div>
+          <div><dt>扣掉本金</dt><dd id="coNet">–</dd></div>
+        </dl>
+        <div class="co-prob" id="coProb">
+          <div class="cp-top"><span id="cpLabel">全部過關的機率（估）</span><b id="cpVal">–</b></div>
+          <div class="cp-bar"><i id="cpFill"></i></div>
+          <p id="cpNote"></p>
+        </div>
+        <ul class="co-warn" id="coWarn"></ul>
+      </div>
+    </div>
+
+    <p class="src">計算方式：每組獎金＝每組金額 × 該組各場賠率相乘（元以下捨去），取消的場次以 1 倍計。每組金額以 10 元為單位，每張至少 100 元、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算、扣除抽水後估計，僅供參考。實際派彩以台灣運彩為準。</p>
+    <div class="notice">
+      <strong>未成年人不得購買或兌領運動彩券。</strong>
+      勿過度投注。串越多關越難全過，請量力而為。
     </div>
   </div>
 </section>
@@ -1458,6 +1629,216 @@
     }, { rootMargin: "0px 0px -12% 0px" });
     for (var k = 0; k < hg.length; k++) bio.observe(hg[k]);
   }
+})();
+</script>
+
+<script>
+(function () {
+  var legsEl = document.getElementById("legs");
+  if (!legsEl) return;
+  var MAX_LEGS = 12, MIN_TICKET = 100, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
+  var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;   // 單注 10 元獎金逾 5,000 元＝該組賠率逾 500 倍
+  var FAIR = 0.86;   // 賠率換算機率時扣掉的抽水（台灣運彩常見約 14%），只用在「機率（估）」
+  var ST = ["未定", "過", "沒過", "取消"];
+  var DEMO = ["1.75", "1.80", "1.65"];
+
+  var legs, ways;
+  var amtEl = document.getElementById("ccAmt"), waysEl = document.getElementById("ways"), addBtn = document.getElementById("addLeg");
+  var $ = function (id) { return document.getElementById(id); };
+
+  function reset(demo) {
+    legs = (demo ? DEMO : ["", ""]).map(function (o) { return { o: o, s: 0 }; });
+    ways = {}; ways[legs.length] = true;
+    amtEl.value = 100;
+    renderLegs(); renderWays(); calc();
+  }
+  function oddsOf(l) {
+    var t = String(l.o).trim().replace(/[,，。]/g, ".");
+    if (!/^\d+(\.\d+)?$/.test(t)) return NaN;
+    var v = parseFloat(t);
+    return v >= 1.01 && v <= 999 ? v : NaN;
+  }
+  function money(n) { return Math.floor(n + 1e-9).toLocaleString("zh-TW"); }
+  function choose(n, k) { var r = 1; for (var i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); }
+  function pct(p) {
+    if (p >= 0.995) return "接近 100%";
+    if (p >= 0.1) return Math.round(p * 100) + "%";
+    if (p >= 0.001) return (Math.round(p * 1000) / 10) + "%";
+    return "不到 0.1%";
+  }
+  function per(p) {
+    if (p >= 0.995 || p <= 0) return "";
+    if (p >= 0.1) return "每 100 次大約過 " + Math.round(p * 100) + " 次";
+    if (p >= 0.01) return "每 1,000 次大約過 " + Math.round(p * 1000) + " 次";
+    return "大約 " + Math.round(1 / p).toLocaleString("zh-TW") + " 次才過 1 次";
+  }
+
+  function renderLegs() {
+    legsEl.textContent = "";
+    legs.forEach(function (l, i) {
+      var li = document.createElement("li");
+      li.className = "leg"; li.setAttribute("data-st", l.s);
+      var no = document.createElement("span"); no.className = "lg-no"; no.textContent = i + 1; no.setAttribute("aria-hidden", "true");
+      var lab = document.createElement("label"); lab.className = "lg-odds";
+      var sr = document.createElement("span"); sr.className = "sr-only"; sr.textContent = "第 " + (i + 1) + " 場賠率";
+      var inp = document.createElement("input");
+      inp.type = "text"; inp.inputMode = "decimal"; inp.autocomplete = "off"; inp.placeholder = "賠率，例 1.75"; inp.value = l.o;
+      inp.addEventListener("input", function () { l.o = inp.value; calc(); });
+      lab.appendChild(sr); lab.appendChild(inp);
+      var st = document.createElement("span"); st.className = "lg-st"; st.setAttribute("role", "group"); st.setAttribute("aria-label", "第 " + (i + 1) + " 場結果");
+      ST.forEach(function (name, s) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = name;
+        b.setAttribute("data-s", s); b.setAttribute("aria-pressed", s === l.s ? "true" : "false");
+        b.addEventListener("click", function () {
+          l.s = s; li.setAttribute("data-st", s);
+          var bs = st.querySelectorAll("button");
+          for (var j = 0; j < bs.length; j++) bs[j].setAttribute("aria-pressed", j === s ? "true" : "false");
+          calc();
+        });
+        st.appendChild(b);
+      });
+      var x = document.createElement("button"); x.type = "button"; x.className = "lg-x"; x.textContent = "×";
+      x.setAttribute("aria-label", "刪除第 " + (i + 1) + " 場"); x.disabled = legs.length <= 1;
+      x.addEventListener("click", function () { setCount(function () { legs.splice(i, 1); }); });
+      li.appendChild(no); li.appendChild(lab); li.appendChild(st); li.appendChild(x);
+      legsEl.appendChild(li);
+    });
+    addBtn.disabled = legs.length >= MAX_LEGS;
+    addBtn.textContent = legs.length >= MAX_LEGS ? "已經 12 場（台灣運彩上限）" : "＋ 再加一場";
+  }
+  function setCount(change) {
+    var oldN = legs.length, keys = Object.keys(ways);
+    var fullOnly = keys.length === 1 && +keys[0] === oldN;
+    change();
+    var n = legs.length;
+    if (fullOnly) { ways = {}; ways[n] = true; }
+    else { for (var k in ways) if (+k > n) delete ways[k]; if (!Object.keys(ways).length) ways[n] = true; }
+    renderLegs(); renderWays(); calc();
+  }
+  function renderWays() {
+    waysEl.textContent = "";
+    var n = legs.length;
+    for (var k = 1; k <= n; k++) (function (k) {
+      var b = document.createElement("button"); b.type = "button";
+      b.setAttribute("aria-pressed", ways[k] ? "true" : "false");
+      var t = document.createElement("span"); t.textContent = k === 1 ? "單場" : "過 " + k + " 關";
+      var s = document.createElement("small"); s.textContent = choose(n, k) + " 組";
+      b.appendChild(t); b.appendChild(s);
+      b.addEventListener("click", function () {
+        if (ways[k]) { if (Object.keys(ways).length === 1) return; delete ways[k]; } else ways[k] = true;
+        b.setAttribute("aria-pressed", ways[k] ? "true" : "false");
+        calc();
+      });
+      waysEl.appendChild(b);
+    })(k);
+  }
+
+  function show(label, big, sub) {
+    $("coLabel").textContent = label; $("coBig").textContent = big; $("coSub").textContent = sub || "";
+    $("cmLabel").textContent = /^剩下/.test(label) ? "最多可拿" : label.length > 7 ? "目前" : label; $("cmBig").textContent = big === "–" ? "–" : "NT$ " + big;
+  }
+  var hdr = document.querySelector("header.site");
+  function setHdr() { if (hdr) document.documentElement.style.setProperty("--hdr", hdr.offsetHeight + "px"); }
+  setHdr(); window.addEventListener("resize", setHdr);
+  function calc() {
+    var n = legs.length, warn = [];
+    var os = legs.map(oddsOf);
+    var empty = legs.some(function (l) { return String(l.o).trim() === ""; });
+    legs.forEach(function (l, i) {
+      var inp = legsEl.children[i] && legsEl.children[i].querySelector("input");
+      var bad = String(l.o).trim() !== "" && isNaN(os[i]);
+      if (inp) inp.setAttribute("aria-invalid", bad ? "true" : "false");
+      if (bad) warn.push(["err", "第 " + (i + 1) + " 場的賠率請填數字，例如 1.75（最低 1.01）"]);
+    });
+    var amt = Number(amtEl.value);
+    var amtOk = amt >= 10 && amt % 10 === 0;
+    if (!amtOk) warn.push(["err", "每組金額要是 10 的倍數（台灣運彩以 10 元為一個單位）"]);
+    var ks = Object.keys(ways).map(Number);
+    var combos = 0; ks.forEach(function (k) { combos += choose(n, k); });
+    $("coCombos").textContent = combos + " 組";
+
+    if (empty || warn.length) {
+      show(empty && !warn.length ? "填好每一場的賠率就會自動算" : "請先修正下面標紅的地方", "–");
+      ["coOdds", "coStake", "coNet"].forEach(function (id) { $(id).textContent = "–"; });
+      $("coProb").hidden = true;
+      return paint(warn);
+    }
+
+    var all = 0, best = 0, sure = 0, bestAfter = 0, taxed = 0, pending = false, settled = false;
+    for (var mask = 1; mask < (1 << n); mask++) {
+      var k = 0, mAll = 1, m = 1, dead = false, pend = false;
+      for (var i = 0; i < n; i++) {
+        if (!(mask & (1 << i))) continue;
+        k++; mAll *= os[i];
+        var s = legs[i].s;
+        if (s === 2) dead = true;
+        else if (s !== 3) { m *= os[i]; if (s === 0) pend = true; }
+      }
+      if (!ways[k]) continue;
+      all += Math.floor(amt * mAll + 1e-9);
+      if (dead) continue;
+      var prize = Math.floor(amt * m + 1e-9);
+      best += prize;
+      if (m > TAX_ODDS) { taxed++; bestAfter += Math.floor(prize * TAX_KEEP); } else bestAfter += prize;
+      if (!pend) sure += prize;
+    }
+    legs.forEach(function (l) { if (l.s === 0) pending = true; else settled = true; });
+
+    var stake = combos * amt;
+    var shown = settled ? best : all;
+    var capped = shown > PRIZE_CAP;
+    if (capped) shown = PRIZE_CAP;
+    if (!settled) show("全部過關可拿", money(shown));
+    else if (pending) show("剩下的都過，最多可拿", money(shown), sure > 0 ? "已經確定能拿 NT$ " + money(Math.min(sure, PRIZE_CAP)) : "");
+    else show(best > 0 ? "這張單可以拿" : "這張單沒有過關", money(shown));
+
+    var prod = 1; legs.forEach(function (l, i) { prod *= l.s === 3 ? 1 : os[i]; });
+    $("coOdds").textContent = prod >= 1000 ? money(prod) + " 倍" : prod.toFixed(2) + " 倍";
+    $("coStake").textContent = "NT$ " + money(stake);
+    var net = shown - stake;
+    $("coNet").textContent = (net >= 0 ? "+" : "−") + money(Math.abs(net));
+
+    if (stake < MIN_TICKET) warn.push(["err", "台灣運彩每張至少 " + MIN_TICKET + " 元，現在只有 " + money(stake) + " 元，可以提高每組金額"]);
+    if (stake > MAX_TICKET) warn.push(["err", "每張最多 10 萬元，現在 " + money(stake) + " 元，要拆成兩張買"]);
+    if (taxed) warn.push(["", "有 " + taxed + " 組賠率超過 500 倍，中獎要扣 20% 所得稅與千分之 4 印花稅，稅後約 NT$ " + money(Math.min(bestAfter, PRIZE_CAP))]);
+    if (capped) warn.push(["", "超過單張中獎上限 2,000 萬元，超過的部分不派彩"]);
+
+    if (!pending || best === 0) { $("coProb").hidden = true; return paint(warn); }
+    var ps = legs.map(function (l, i) { return l.s === 2 ? 0 : l.s !== 0 ? 1 : Math.min(0.95, FAIR / os[i]); });
+    var pAll = ps.reduce(function (a, p) { return a * p; }, 1);
+    var dist = [1];   // dist[h]：剛好 h 場成立（過或取消）的機率
+    ps.forEach(function (p) {
+      var nx = []; for (var h = 0; h <= dist.length; h++) nx[h] = (dist[h] || 0) * (1 - p) + (dist[h - 1] || 0) * p;
+      dist = nx;
+    });
+    var kmin = Math.min.apply(null, ks), pAny = 0;
+    for (var h = kmin; h < dist.length; h++) pAny += dist[h];
+    var only = ks.length === 1 && ks[0] === n;
+    var p = only ? pAll : pAny;
+    $("coProb").hidden = false;
+    $("cpLabel").textContent = only ? (settled ? "剩下全過的機率（估）" : "全部過關的機率（估）") : "至少中一組的機率（估）";
+    $("cpVal").textContent = pct(p);
+    $("cpFill").style.width = Math.max(p * 100, p > 0 ? 1.5 : 0) + "%";
+    $("cpNote").textContent = per(p) + (only || pAll === 0 ? "" : "；全部過關約 " + pct(pAll));
+    paint(warn);
+  }
+  function paint(warn) {
+    var ul = $("coWarn"); ul.textContent = "";
+    warn.forEach(function (w) { var li = document.createElement("li"); if (w[0]) li.className = w[0]; li.textContent = w[1]; ul.appendChild(li); });
+  }
+
+  addBtn.addEventListener("click", function () {
+    if (legs.length >= MAX_LEGS) return;
+    setCount(function () { legs.push({ o: "", s: 0 }); });
+    var ins = legsEl.querySelectorAll("input"); ins[ins.length - 1].focus();
+  });
+  $("ccReset").addEventListener("click", function () { reset(false); legsEl.querySelector("input").focus(); });
+  amtEl.addEventListener("input", calc);
+  $("amtChips").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    amtEl.value = b.getAttribute("data-v"); calc();
+  });
+  reset(true);
 })();
 </script>
 </body>
