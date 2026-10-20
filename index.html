@@ -1637,8 +1637,8 @@
   var legsEl = document.getElementById("legs");
   if (!legsEl) return;
   var MAX_LEGS = 12, MIN_TICKET = 100, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
-  var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;   // 單注 10 元獎金逾 5,000 元＝該組賠率逾 500 倍
-  var FAIR = 0.86;   // 賠率換算機率時扣掉的抽水（台灣運彩常見約 14%），只用在「機率（估）」
+  var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;
+  var FAIR = 0.86;
   var ST = ["未定", "過", "沒過", "取消"];
   var DEMO = ["1.75", "1.80", "1.65"];
 
@@ -1806,7 +1806,7 @@
     if (!pending || best === 0) { $("coProb").hidden = true; return paint(warn); }
     var ps = legs.map(function (l, i) { return l.s === 2 ? 0 : l.s !== 0 ? 1 : Math.min(0.95, FAIR / os[i]); });
     var pAll = ps.reduce(function (a, p) { return a * p; }, 1);
-    var dist = [1];   // dist[h]：剛好 h 場成立（過或取消）的機率
+    var dist = [1];
     ps.forEach(function (p) {
       var nx = []; for (var h = 0; h <= dist.length; h++) nx[h] = (dist[h] || 0) * (1 - p) + (dist[h - 1] || 0) * p;
       dist = nx;
