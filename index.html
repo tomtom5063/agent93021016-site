@@ -1286,13 +1286,13 @@
         <a class="calc-mini" href="#coPanel" aria-hidden="true" tabindex="-1"><span id="cmLabel">全部過關可拿</span><b id="cmBig">–</b><small>看明細 ↓</small></a>
         <ol class="legs" id="legs"></ol>
         <button type="button" class="add-leg" id="addLeg">＋ 再加一場</button>
-        <p class="cc-tip">每一場可以標「過／沒過／取消」，算出這張單現在的狀況。同一場比賽不能串在一起，最多 12 場。</p>
+        <p class="cc-tip">每一場可以標「過／沒過／取消」，算出這張單現在的狀況；和局退款的場次，賠率直接填 1。同一場比賽不能串在一起，最多 12 場。</p>
 
         <div class="cc-field">
           <label class="cc-lb" for="ccAmt">每組金額</label>
           <div class="amt-row">
-            <span class="amt-box"><span>NT$</span><input id="ccAmt" type="number" inputmode="numeric" min="10" step="10" value="100"></span>
-            <span class="amt-chips" id="amtChips"><button type="button" data-v="100">100</button><button type="button" data-v="500">500</button><button type="button" data-v="1000">1,000</button><button type="button" data-v="5000">5,000</button></span>
+            <span class="amt-box"><span>NT$</span><input id="ccAmt" type="number" inputmode="numeric" min="10" step="10" value="10"></span>
+            <span class="amt-chips" id="amtChips"><button type="button" data-v="10">10</button><button type="button" data-v="100">100</button><button type="button" data-v="500">500</button><button type="button" data-v="1000">1,000</button><button type="button" data-v="5000">5,000</button></span>
           </div>
         </div>
         <div class="cc-field">
@@ -1322,7 +1322,7 @@
       </div>
     </div>
 
-    <p class="src">計算方式：每組獎金＝每組金額 × 該組各場賠率相乘（元以下捨去），取消的場次以 1 倍計。每組金額以 10 元為單位，每張至少 100 元、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算估計，僅供參考。實際派彩以台灣運彩為準。</p>
+    <p class="src">計算方式：每組獎金＝每組金額 × 該組各場賠率相乘（元以下捨去），取消的場次以 1 倍計。每組金額以 10 元為單位，每張最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。機率由賠率換算估計，僅供參考。實際派彩以台灣運彩為準。</p>
     <div class="notice">
       <strong>未成年人不得購買或兌領運動彩券。</strong>
       勿過度投注。串越多關越難全過，請量力而為。
@@ -1636,7 +1636,7 @@
 (function () {
   var legsEl = document.getElementById("legs");
   if (!legsEl) return;
-  var MAX_LEGS = 12, MIN_TICKET = 100, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
+  var MAX_LEGS = 12, MAX_TICKET = 100000, PRIZE_CAP = 20000000;
   var TAX_ODDS = 500, TAX_KEEP = 1 - 0.2 - 0.004;
   var FAIR = 0.86;
   var ST = ["未定", "過", "沒過", "取消"];
@@ -1649,14 +1649,14 @@
   function reset(demo) {
     legs = (demo ? DEMO : ["", ""]).map(function (o) { return { o: o, s: 0 }; });
     ways = {}; ways[legs.length] = true;
-    amtEl.value = 100;
+    amtEl.value = 10;
     renderLegs(); renderWays(); calc();
   }
   function oddsOf(l) {
     var t = String(l.o).trim().replace(/[,，。]/g, ".");
     if (!/^\d+(\.\d+)?$/.test(t)) return NaN;
     var v = parseFloat(t);
-    return v >= 1.01 && v <= 999 ? v : NaN;
+    return v >= 1 && v <= 999 ? v : NaN;
   }
   function money(n) { return Math.floor(n + 1e-9).toLocaleString("zh-TW"); }
   function choose(n, k) { var r = 1; for (var i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); }
@@ -1748,7 +1748,7 @@
       var inp = legsEl.children[i] && legsEl.children[i].querySelector("input");
       var bad = String(l.o).trim() !== "" && isNaN(os[i]);
       if (inp) inp.setAttribute("aria-invalid", bad ? "true" : "false");
-      if (bad) warn.push(["err", "第 " + (i + 1) + " 場的賠率請填數字，例如 1.75（最低 1.01）"]);
+      if (bad) warn.push(["err", "第 " + (i + 1) + " 場的賠率請填數字，例如 1.75（最低 1）"]);
     });
     var amt = Number(amtEl.value);
     var amtOk = amt >= 10 && amt % 10 === 0;
@@ -1798,13 +1798,12 @@
     var net = shown - stake;
     $("coNet").textContent = (net >= 0 ? "+" : "−") + money(Math.abs(net));
 
-    if (stake < MIN_TICKET) warn.push(["err", "台灣運彩每張至少 " + MIN_TICKET + " 元，現在只有 " + money(stake) + " 元，可以提高每組金額"]);
     if (stake > MAX_TICKET) warn.push(["err", "每張最多 10 萬元，現在 " + money(stake) + " 元，要拆成兩張買"]);
     if (taxed) warn.push(["", "有 " + taxed + " 組賠率超過 500 倍，中獎要扣 20% 所得稅與千分之 4 印花稅，稅後約 NT$ " + money(Math.min(bestAfter, PRIZE_CAP))]);
     if (capped) warn.push(["", "超過單張中獎上限 2,000 萬元，超過的部分不派彩"]);
 
     if (!pending || best === 0) { $("coProb").hidden = true; return paint(warn); }
-    var ps = legs.map(function (l, i) { return l.s === 2 ? 0 : l.s !== 0 ? 1 : Math.min(0.95, FAIR / os[i]); });
+    var ps = legs.map(function (l, i) { return l.s === 2 ? 0 : l.s !== 0 || os[i] === 1 ? 1 : Math.min(0.95, FAIR / os[i]); });
     var pAll = ps.reduce(function (a, p) { return a * p; }, 1);
     var dist = [1];
     ps.forEach(function (p) {
