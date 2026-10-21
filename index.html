@@ -400,6 +400,7 @@
   .bd-lg{background:var(--brand); color:#fff; font-weight:800; font-size:.78rem;
          letter-spacing:.08em; padding:3px 10px; border-radius:99px}
   .bd-no{font-weight:800; font-size:.86rem; color:#ffd84d}
+  .bd-res{margin-left:auto; font-weight:800; font-size:.86rem; color:#fff; white-space:nowrap}
   .bd-match{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 10px; margin-top:6px;
             font-size:clamp(1.35rem,2.6vw,1.9rem); font-weight:900; line-height:1.3; position:relative; z-index:1}
   .bd-at{color:#9aa6b8; font-weight:700; font-size:.8em}
@@ -426,6 +427,8 @@
   .fl-tag{flex:0 0 auto; font-weight:800; font-size:.86rem; color:var(--brand-deep)}
   .fl-t{flex:1 1 auto; min-width:0; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .fl-d{flex:0 0 auto; font-size:.84rem; color:var(--muted); font-variant-numeric:tabular-nums}
+    .fl-r{flex:0 0 auto; min-width:1.6em; text-align:center; font-size:1.2rem; line-height:1}
+  .fl-r.sm{font-size:.78rem; font-weight:800; color:var(--muted)}
   .feed-empty{color:var(--muted); padding:14px 4px; margin:0}
 
   .post-dlg{width:min(760px, calc(100% - 32px)); max-height:min(86vh, 900px); padding:0;
@@ -1179,7 +1182,7 @@
     <img class="mascot m-sec" src="img/mascot/xiaohua-analyst.webp" alt="" width="190" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">DAILY ANALYSIS</p>
     <h2>每日分析</h2>
-    <p class="lead col">每天挑一場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，最後才給推薦。</p>
+    <p class="lead col">每天挑幾場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，推薦寫在文章最後，點進去就看得到。比賽打完，清單後面會標上結果：😊 推薦過關、😢 沒過。</p>
 
     <div class="news">
       <a class="board" id="board" href="#" hidden>
@@ -1465,16 +1468,24 @@
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
     function md(d) { var p = d.split("-"); return +p[1] + "/" + +p[2]; }
     function pickOf(p) { return p.market + "　" + p.selection + " @" + p.odds; }
+    var RES = { win: ["😊", "推薦過關"], lose: ["😢", "推薦沒過"], push: ["走盤", "走盤，退還本金", 1], "void": ["延賽", "延賽，依規定退款", 1] };
+    function kickDate(p) { var m = String(p.startTW || "").match(/^\d{4}\/(\d{1,2})\/(\d{1,2})/); return m ? +m[1] + "/" + +m[2] : md(p.date); }
+    function resultOf(p) {
+      var r = RES[p.result]; if (!r) return null;
+      return { mark: r[0], sm: !!r[2], text: r[1] + (p.final && p.result !== "void" ? "（比分 " + p.final + "）" : "") };
+    }
     function noLabel(s) { return s.replace(/運彩第\s*(\d+)\s*場/g, "賽事編號 $1").replace(/運彩編號/g, "賽事編號"); }
     function openPost(p) {
       document.getElementById("pdMeta").textContent =
         (LG[p.league] || p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + "｜開賽（台北）" + p.startTW +
-        (p.trial ? "｜試產版（未實際發出）" : "");
+        (p.trial ? "｜試產版（未實際發出）" : "") +
+        (resultOf(p) ? "｜結果：" + resultOf(p).text + (resultOf(p).sm ? "" : " " + resultOf(p).mark) : "");
       document.getElementById("pdTitle").textContent = p.away + " @ " + p.home;
       var body = document.getElementById("pdBody"); body.textContent = "";
       p.body.split(/\n+/).forEach(function (para) {
         if (!para.trim()) return;
-        var cls = /^(🎯\s*)?本場推薦/.test(para) ? "pick" : (/^(分析文警語|本分析所載之觀點)/.test(para) ? "pd-disclaimer" : ""); body.appendChild(el("p", cls, noLabel(para)));
+        var cls = /^(🎯\s*)?本場推薦/.test(para) ? "pick" : (/^(分析文警語|本分析所載之觀點)/.test(para) ? "pd-disclaimer" : "");
+        body.appendChild(el("p", cls, noLabel(para)));
       });
       if (dlg.showModal) { dlg.showModal(); dlg.scrollTop = 0; }
       else dlg.setAttribute("open", "");
@@ -1486,6 +1497,8 @@
       var b = document.getElementById("board"), p0 = POSTS[0];
       b.querySelector(".bd-lg").textContent = LG[p0.league] || p0.league;
       b.querySelector(".bd-no").textContent = "賽事編號 " + p0.gameNum + (p0.stage ? "・" + p0.stage : "");
+      var r0 = resultOf(p0);
+      if (r0) b.querySelector(".bd-top").appendChild(el("span", "bd-res", r0.sm ? r0.mark : r0.mark + " " + (p0.result === "win" ? "過關" : "沒過")));
       b.querySelector(".bd-away").textContent = p0.away;
       b.querySelector(".bd-home").textContent = p0.home;
       b.querySelector(".bd-time").textContent = "開賽（台北）" + p0.startTW;
@@ -1500,8 +1513,11 @@
       rows.forEach(function (p) {
         var li = el("li"), a = el("a"); a.href = "#";
         a.appendChild(el("span", "fl-tag", "【" + (LG[p.league] || p.league) + "】"));
-        a.appendChild(el("span", "fl-t", (p.trial ? "（試產）" : "") + p.away + " @ " + p.home + "｜" + pickOf(p)));
-        a.appendChild(el("span", "fl-d", md(p.date)));
+        a.appendChild(el("span", "fl-d", kickDate(p)));
+        a.appendChild(el("span", "fl-t", (p.trial ? "（試產）" : "") + p.away + " @ " + p.home));
+        var r = resultOf(p), mk = el("span", "fl-r" + (r && r.sm ? " sm" : ""), r ? r.mark : "");
+        if (r) { mk.title = r.text; mk.setAttribute("aria-label", r.text); }
+        a.appendChild(mk);
         a.addEventListener("click", function (e) { e.preventDefault(); openPost(p); });
         li.appendChild(a); list.appendChild(li);
       });
@@ -1640,7 +1656,7 @@
   var legs, mode, multAll, multCombo, singleSmalls = [];
 
   function reset(demo) {
-    legs = (demo ? DEMO : ["", ""]).map(function (o) { return { o: o, s: 1, m: DEF_MULT }; });
+    legs = (Array.isArray(demo) ? demo : demo ? DEMO : ["", ""]).map(function (o) { return { o: o, s: 1, m: DEF_MULT }; });
     mode = "all"; multAll = DEF_MULT; multCombo = {}; multCombo[legs.length] = DEF_MULT;
     renderLegs(); renderRows(); calc();
   }
@@ -1864,7 +1880,10 @@
     var ins = legsEl.querySelectorAll("input"); ins[ins.length - 1].focus();
   });
   $("ccReset").addEventListener("click", function () { reset(false); legsEl.querySelector("input").focus(); });
-  reset(true);
+  var fromHub = [];
+  try { fromHub = (new URLSearchParams(location.search).get("calc") || "").split(","); } catch (e) { fromHub = []; }
+  fromHub = fromHub.filter(function (o) { return /^\d+(\.\d+)?$/.test(o) && +o >= 1 && +o <= 999; }).slice(0, MAX_LEGS);
+  reset(fromHub.length ? fromHub : true);
 })();
 </script>
 </body>
