@@ -1202,7 +1202,7 @@
     <img class="mascot m-sec" src="img/mascot/xiaohua-analyst.webp" alt="" width="190" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">DAILY ANALYSIS</p>
     <h2>每日分析</h2>
-    <p class="lead col">每天挑幾場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，推薦寫在文章最後，點進去就看得到。比賽打完，清單後面會標上結果：<img class="face-i" src="img/face-win.webp" alt="綠色笑臉" width="20" height="20"> 推薦過關、<img class="face-i" src="img/face-lose.webp" alt="紅色哭臉" width="20" height="20"> 沒過。</p>
+    <p class="lead col">每天挑幾場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，推薦寫在文章最後，點進去就看得到。比賽打完，清單後面會標上結果：<img class="face-i" src="img/face-win.webp?v=3" alt="綠色笑臉" width="20" height="20"> 推薦過關、<img class="face-i" src="img/face-lose.webp?v=3" alt="紅色哭臉" width="20" height="20"> 沒過。</p>
 
     <div class="news">
       <a class="board" id="board" href="#" hidden>
@@ -1490,7 +1490,7 @@
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
     function md(d) { var p = d.split("-"); return +p[1] + "/" + +p[2]; }
     function pickOf(p) { return p.market + "　" + p.selection + " @" + p.odds; }
-    var RES = { win: ["img/face-win.webp", "推薦過關"], lose: ["img/face-lose.webp", "推薦沒過"], push: ["走盤", "走盤，退還本金", 1], "void": ["延賽", "延賽，依規定退款", 1] };
+    var RES = { win: ["img/face-win.webp?v=3", "推薦過關"], lose: ["img/face-lose.webp?v=3", "推薦沒過"], push: ["走盤", "走盤，退還本金", 1], "void": ["延賽", "延賽，依規定退款", 1] };
     function faceOf(r) { var i = document.createElement("img"); i.src = r.mark; i.alt = ""; i.width = 32; i.height = 32; return i; }
     function kickDate(p) { var m = String(p.startTW || "").match(/^\d{4}\/(\d{1,2})\/(\d{1,2})/); return m ? +m[1] + "/" + +m[2] : md(p.date); }
     function resultOf(p) {
