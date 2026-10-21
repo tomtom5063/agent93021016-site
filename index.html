@@ -441,6 +441,7 @@
   .pd-body{padding:6px 22px 0}
   .pd-body p{margin:14px 0}
   .pd-body p.pick{font-weight:900; font-size:1.08rem; color:var(--brand-deep)}
+  .pd-body p.pd-disclaimer{color:#b45309; font-size:.9rem; line-height:1.65; margin:6px 0; font-weight:600}
   .pd-warn{margin:8px 22px 22px}
 
     .bf-title em{font-style:normal; background:linear-gradient(135deg,#7a2fd6,#b0287a);
@@ -1458,7 +1459,7 @@
 
     if (document.getElementById("postDlg")) (function () {   // 只有首頁有每日分析；福利頁沒有，整段跳過
     var POSTS = window.POSTS || [];
-    var LG = { MLB: "美國職棒", NPB: "日本職棒" };
+    var LG = { MLB: "美國職棒", NPB: "日本職棒", NBA: "美國職籃", CPBL: "中華職棒" };
     var LIST_MAX = 6;
     var dlg = document.getElementById("postDlg");
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1473,7 +1474,7 @@
       var body = document.getElementById("pdBody"); body.textContent = "";
       p.body.split(/\n+/).forEach(function (para) {
         if (!para.trim()) return;
-        body.appendChild(el("p", /^本場推薦/.test(para) ? "pick" : "", noLabel(para)));
+        var cls = /^(🎯\s*)?本場推薦/.test(para) ? "pick" : (/^(分析文警語|本分析所載之觀點)/.test(para) ? "pd-disclaimer" : ""); body.appendChild(el("p", cls, noLabel(para)));
       });
       if (dlg.showModal) { dlg.showModal(); dlg.scrollTop = 0; }
       else dlg.setAttribute("open", "");
