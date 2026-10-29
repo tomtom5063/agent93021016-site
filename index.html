@@ -456,6 +456,7 @@
   .face-i{width:1.3em; height:1.3em; vertical-align:-.28em}
   .fl-r.sm{font-size:.78rem; font-weight:800; color:var(--muted)}
   .feed-empty{color:var(--muted); padding:14px 4px; margin:0}
+    .feed-all{display:inline-block; margin-top:12px; font-weight:800}
 
   .post-dlg{width:min(760px, calc(100% - 32px)); max-height:min(86vh, 900px); padding:0;
             border:0; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,.35); color:var(--fg)}
@@ -472,6 +473,10 @@
   .pd-body p.pick{font-weight:900; font-size:1.08rem; color:var(--brand-deep)}
   .pd-body p.pd-disclaimer{color:#b45309; font-size:.9rem; line-height:1.65; margin:6px 0; font-weight:600}
   .pd-warn{margin:8px 22px 22px}
+  .pd-page{margin:4px 22px 0; font-size:.9rem; font-weight:700}
+    .post-dlg{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none}
+  .pd-body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22340%22%20height%3D%22220%22%3E%3Cg%20transform%3D%22rotate(-24%20170%20110)%22%20fill%3D%22%23a3151b%22%20fill-opacity%3D%220.075%22%20font-family%3D%22Microsoft%20JhengHei%2CPingFang%20TC%2CNoto%20Sans%20TC%2Csans-serif%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3E%3Ctext%20x%3D%22170%22%20y%3D%22104%22%20font-size%3D%2222%22%3E%E8%8A%B1%E6%83%B9%E7%99%BC%E9%81%8B%E5%8B%95%E5%BD%A9%E5%88%B8%E8%A1%8C%3C%2Ftext%3E%3Ctext%20x%3D%22170%22%20y%3D%22134%22%20font-size%3D%2217%22%3E%E5%8F%B0%E7%81%A3%E9%81%8B%E5%BD%A9%E7%B6%93%E9%8A%B7%E5%95%86%2093021016%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E"); background-repeat:repeat}
+  .pd-copy{margin:14px 22px 0; font-size:.8rem; color:var(--muted)}
 
     .bf-title em{font-style:normal; background:linear-gradient(135deg,#7a2fd6,#b0287a);
     -webkit-background-clip:text; background-clip:text; color:transparent}
@@ -1208,7 +1213,7 @@
     <img class="mascot m-sec" src="img/mascot/xiaohua-analyst.webp" alt="" width="190" height="190" loading="lazy" aria-hidden="true">
     <p class="eyebrow">DAILY ANALYSIS</p>
     <h2>每日分析</h2>
-    <p class="lead col">每天挑幾場可以單場投注的比賽，把先發、打線、交手與盤口一項一項攤開，推薦寫在文章最後，點進去就看得到。比賽打完，清單後面會標上結果：<span class="mk win face-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> 推薦過關、<span class="mk lose face-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span> 沒過。</p>
+    <p class="lead col">每天挑幾場比賽，把攻守數據、交手紀錄與盤口一項一項攤開，推薦寫在文章最後，點進去就看得到。比賽打完，清單後面會標上結果：<span class="mk win face-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> 推薦過關、<span class="mk lose face-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span> 沒過。</p>
 
     <div class="news">
       <a class="board" id="board" href="#" hidden>
@@ -1228,6 +1233,7 @@
         <div class="feed-head" aria-hidden="true"><span>聯盟</span><span><span class="l">賽事</span>編號</span><span>開賽<span class="l">日期</span></span><span>對戰組合</span><span>結果</span></div>
         <ul class="feed-list" id="feedList"></ul>
         <p class="feed-empty" id="feedEmpty" hidden>這個分類目前還沒有文章。</p>
+        <a class="feed-all" href="posts/">看全部分析 →</a>
       </div>
     </div>
 
@@ -1243,6 +1249,8 @@
     <button type="button" class="pd-x" id="pdClose" aria-label="關閉">×</button>
   </div>
   <div class="pd-body" id="pdBody"></div>
+  <p class="pd-copy">© 花惹發運動彩券行（證號 93021016）版權所有。轉載請註明出處並附上文章連結。</p>
+  <p class="pd-page" id="pdPage" hidden><a href="#">這篇的網址（可以轉貼分享）→</a></p>
   <div class="notice pd-warn">
     <strong>分析為個人觀點，不保證結果。</strong>
     未成年人不得購買或兌領運動彩券。勿過度投注。
@@ -1399,7 +1407,7 @@
       <dt>已有台灣運彩會員，可以指定你們為服務經銷商嗎？</dt>
       <dd>可以，證號填 <strong>93021016</strong>。步驟見上方<a href="#apply">「指定服務經銷商」</a>，線上操作即可，方便又快速！</dd>
       <dt>每日分析文是什麼？</dt>
-      <dd>每天挑一場可以單場投注的比賽，寫出推理過程與本場推薦，<a href="#data">在這裡</a>可以看到。<br>
+      <dd>每天挑幾場比賽，寫出推理過程與本場推薦，<a href="#data">在這裡</a>可以看到。<br>
         推薦不保證結果，請當成娛樂消費。</dd>
     </dl>
     <div class="notice">
@@ -1510,10 +1518,18 @@
       var r = RES[p.result]; if (!r) return null;
       return { mark: r[0], sm: !!r[2], text: r[1] + (p.final && p.result !== "void" ? "（比分 " + p.final + "）" : "") };
     }
-    function noLabel(s) { return s.replace(/運彩第\s*(\d+)\s*場/g, "賽事編號 $1").replace(/運彩編號/g, "賽事編號"); }
+    function fixText(s) {
+      return s.replace(/運彩第\s*(\d+)\s*場/g, "賽事編號 $1").replace(/運彩編號/g, "賽事編號")
+        .replace(/博弈投資價值|投資價值/g, "參考價值").replace(/投資吸引力/g, "吸引力").replace(/投資人/g, "玩家")
+        .replace(/投資方向/g, "選擇").replace(/投資/g, "投注").replace(/[（(，,]\s*不限\d+關賽事[）)]?/g, "");
+    }
+    function pageOf(p) {
+      if (p.trial || !/^\d{4}-\d{2}-\d{2}$/.test(p.date) || !/^[A-Z]{2,5}$/.test(p.league) || !/^\d{1,5}$/.test(p.gameNum)) return null;
+      return "posts/" + p.date + "-" + p.league.toLowerCase() + "-" + p.gameNum + ".html";
+    }
     function openPost(p) {
       document.getElementById("pdMeta").textContent =
-        (LG[p.league] || p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + "｜開賽（台北）" + p.startTW +
+        (LG[p.league] || p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + (p.stage ? "・" + p.stage : "") + "｜開賽（台北）" + p.startTW +
         (p.trial ? "｜試產版（未實際發出）" : "") +
         (resultOf(p) ? "｜結果：" + resultOf(p).text : "");
       var rr = resultOf(p);
@@ -1523,13 +1539,18 @@
       p.body.split(/\n+/).forEach(function (para) {
         if (!para.trim()) return;
         var cls = /^(🎯\s*)?本場推薦/.test(para) ? "pick" : (/^(分析文警語|本分析所載之觀點)/.test(para) ? "pd-disclaimer" : "");
-        body.appendChild(el("p", cls, noLabel(para)));
+        body.appendChild(el("p", cls, fixText(para)));
       });
+      var pg = document.getElementById("pdPage"), url = pageOf(p);
+      pg.hidden = !url;
+      if (url) pg.firstChild.href = url;
       if (dlg.showModal) { dlg.showModal(); dlg.scrollTop = 0; }
       else dlg.setAttribute("open", "");
     }
     document.getElementById("pdClose").addEventListener("click", function () { dlg.close ? dlg.close() : dlg.removeAttribute("open"); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+    dlg.addEventListener("copy", function (e) { e.preventDefault(); });
+    dlg.addEventListener("contextmenu", function (e) { if (e.target.closest && e.target.closest(".pd-body")) e.preventDefault(); });
 
     if (POSTS.length) {
       var b = document.getElementById("board"), p0 = POSTS[0];
@@ -1545,6 +1566,7 @@
       b.querySelector(".bd-home").textContent = p0.home;
       b.querySelector(".bd-time").textContent = "開賽（台北）" + p0.startTW;
       b.querySelector(".bd-pk-v").textContent = pickOf(p0);
+      if (pageOf(p0)) b.href = pageOf(p0);
       b.addEventListener("click", function (e) { e.preventDefault(); openPost(p0); });
       b.hidden = false;
     }
@@ -1553,7 +1575,7 @@
       list.textContent = "";
       var rows = POSTS.filter(function (p) { return !lg || p.league === lg; }).slice(0, LIST_MAX);
       rows.forEach(function (p) {
-        var li = el("li"), a = el("a"); a.href = "#";
+        var li = el("li"), a = el("a"); a.href = pageOf(p) || "#";
         var tg = el("span", "fl-tag");
         tg.appendChild(el("span", "l", LG[p.league] || p.league)); tg.appendChild(el("span", "s", LGS[p.league] || p.league));
         a.appendChild(tg);
