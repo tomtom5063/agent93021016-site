@@ -1174,6 +1174,58 @@
   #apply .pc-main .pc-t > b em{color:#8cc4ff; font-size:1.5em}
   #apply .pc-main .pc-t small{color:#c9d0da}
   #apply .pc-main .pc-arrow{color:#8cc4ff}
+
+    #shop{background:#fff}
+  .sh-top{display:grid; gap:24px; margin-top:26px; align-items:stretch}
+  @media (min-width:900px){ .sh-top{grid-template-columns:1.25fr 1fr} }
+  .sh-photo{position:relative; margin:0; border-radius:14px; overflow:hidden; min-height:300px; box-shadow:0 14px 34px rgba(16,24,40,.18)}
+  .sh-photo img{display:block; width:100%; height:100%; min-height:300px; object-fit:cover}
+  .sh-photo figcaption{position:absolute; left:0; right:0; bottom:0; padding:60px 22px 18px; color:#fff;
+    background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.78))}
+  .sh-photo figcaption b{display:block; font-size:1.5rem; font-weight:900; line-height:1.3}
+  .sh-photo figcaption span{display:block; font-size:.875rem; color:#e3e6ea; margin-top:2px}
+  .sh-info{margin:0; background:#fff; border:1px solid var(--line); border-top:4px solid var(--brand); border-radius:14px; padding:6px 24px 10px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04), 0 10px 26px rgba(16,24,40,.08)}
+  .sh-info > div{display:grid; grid-template-columns:6.2em 1fr; gap:12px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--line)}
+  .sh-info > div:last-child{border-bottom:0}
+  .sh-info dt{font-size:.875rem; font-weight:700; color:var(--muted)}
+  .sh-info dd{margin:0; font-weight:700}
+  .sh-info .big{grid-template-columns:1fr; gap:0; padding:16px 0 12px}
+  .sh-info .big dt{font-size:.75rem; letter-spacing:.14em; color:var(--brand-deep); font-weight:800}
+  .sh-info .big dd{font-size:2.4rem; line-height:1.15; font-weight:900; color:var(--brand); font-variant-numeric:tabular-nums; letter-spacing:.02em}
+  .sh-info .ln .btn-line{display:flex; width:max-content; margin-top:8px}
+
+  .aw{display:grid; margin-top:28px; border-radius:14px; overflow:hidden; color:#fff; background:
+      radial-gradient(50% 90% at 88% 10%, rgba(245,181,0,.22), rgba(245,181,0,0) 70%),
+      linear-gradient(90deg,#000 0%,#0b0d11 30%,#1a1e27 100%);
+    box-shadow:0 18px 40px rgba(16,24,40,.28)}
+  @media (min-width:900px){ .aw{grid-template-columns:300px 1fr} }
+  .aw-photo{display:block; width:100%; height:100%; max-height:340px; object-fit:cover; object-position:50% 30%;
+    -webkit-mask-image:linear-gradient(90deg,#000 78%,transparent); mask-image:linear-gradient(90deg,#000 78%,transparent)}
+  .aw-body{padding:26px 30px 22px 14px; min-width:0}
+  .aw-eye{margin:0 0 4px; font-size:.75rem; font-weight:800; letter-spacing:.16em; color:#ffd84d}
+  .aw h3{display:flex; align-items:center; gap:10px; margin:0 0 6px; font-size:1.5rem; font-weight:900; color:#fff}
+  .aw-lead{margin:0; color:#c9d0da; font-size:.875rem}
+  .aw-lead strong{color:#ffd84d}
+  .aw-list{list-style:none; margin:18px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,.16)}
+  .aw-list li{padding:16px 16px 14px 0}
+  .aw-list li + li{padding-left:18px; border-left:1px solid rgba(255,255,255,.16)}
+  .aw-list b{display:block; font-size:2.4rem; line-height:1; font-weight:900; color:#FEDE00; font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+  .aw-list i{display:block; font-style:normal; font-size:.75rem; font-weight:800; letter-spacing:.08em; color:#ffd84d; margin:6px 0 6px}
+  .aw-list span{display:block; font-size:1rem; font-weight:800; line-height:1.5}
+  .aw-src{margin:6px 0 0; font-size:.75rem; color:#9aa6b8}
+  @media (max-width:899px){
+    .aw-photo{max-height:240px; -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent); mask-image:linear-gradient(180deg,#000 80%,transparent)}
+    .aw{background:linear-gradient(180deg,#000 0%,#0b0d11 40%,#1a1e27 100%)}
+    .aw-body{padding:8px 20px 20px}
+    .aw-list{grid-template-columns:1fr}
+    .aw-list li{display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:center; padding:14px 0}
+    .aw-list li + li{padding-left:0; border-left:0; border-top:1px solid rgba(255,255,255,.16)}
+    .aw-list b{grid-row:span 2; font-size:1.8rem}
+    .aw-list i{margin:0}
+    .aw-list span br{display:none}
+    .sh-info .big dd{font-size:1.8rem}
+  }
 </style>
 
 <script type="application/ld+json">
@@ -1274,7 +1326,6 @@
         <li><a href="#apply">開啟福利</a></li>
         <li><a href="#data">每日分析</a></li>
         <li><a href="#shop">店家資訊</a></li>
-        <li><a href="#honors">績優實績</a></li>
         <li><a href="#roi">玩法攻略</a></li>
         <li><a href="#calc">過關計算機</a></li>
         <li><a href="#why">為什麼選我們</a></li>
@@ -1402,53 +1453,39 @@
   </div>
 </dialog>
 
-<section id="shop" class="tex">
+<section id="shop">
   <div class="wrap">
     <p class="eyebrow">STORE</p>
     <h2>店家資訊</h2>
-    <div class="shopgrid">
-      <figure>
-        <div class="ph">
-          <img src="img/storefront.jpg" alt="花惹發運動彩券行店面外觀" width="1200" height="900" loading="lazy">
-        </div>
-        <figcaption>店面外觀｜臺北市中山區民生東路2段115巷16號</figcaption>
+    <div class="sh-top">
+      <figure class="sh-photo">
+        <img src="img/storefront.jpg" alt="花惹發運動彩券行店面外觀" width="1200" height="900" loading="lazy">
+        <figcaption><b>花惹發運動彩券行</b><span>臺北市中山區民生東路2段115巷16號</span></figcaption>
       </figure>
-      <table class="info">
-        <tr><th>店名</th><td>花惹發運動彩券行</td></tr>
-        <tr><th>經銷商證號</th><td><strong>93021016</strong></td></tr>
-        <tr><th>統一編號</th><td>93126882</td></tr>
-        <tr><th>地址</th><td>臺北市中山區民生東路2段115巷16號</td></tr>
-        <tr><th>實體店面</th><td>週一～週六 10:00~20:00</td></tr>
-        <tr><th>線上客服</th><td><strong>24 小時全年無休</strong></td></tr>
-        <tr>
-          <th>LINE</th>
-          <td>
-            官方帳號 <strong>@w93021016</strong><br>
-            <a class="btn btn-line" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">加入 LINE 好友</a>
-          </td>
-        </tr>
-      </table>
+      <dl class="sh-info">
+        <div class="big"><dt>經銷商證號</dt><dd>93021016</dd></div>
+        <div><dt>店名</dt><dd>花惹發運動彩券行</dd></div>
+        <div><dt>統一編號</dt><dd>93126882</dd></div>
+        <div><dt>地址</dt><dd>臺北市中山區民生東路2段115巷16號</dd></div>
+        <div><dt>實體店面</dt><dd>週一～週六 10:00~20:00</dd></div>
+        <div><dt>線上客服</dt><dd><strong>24 小時全年無休</strong></dd></div>
+        <div class="ln"><dt>LINE</dt><dd>官方帳號 <strong>@w93021016</strong>
+          <a class="btn btn-line" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><img src="img/line-square.png" alt="" width="36" height="36">加入 LINE 好友</a></dd></div>
+      </dl>
     </div>
-  </div>
-</section>
 
-<section id="honors">
-  <div class="wrap">
-    <p class="eyebrow">台灣運彩頒發</p>
-    <h2>績優實績<img class="ic-sport ic-trophy" src="img/mascot/ic-trophy.webp" alt="" width="38" height="38" loading="lazy"></h2>
-    <p class="lead col">兩座績優經銷商都是<strong>「全國線上通路」</strong>的年度業績獎——線上服務正是我們的主力。</p>
-    <div class="honors-grid">
-      <figure class="honors-photo">
-        <img src="img/award-trophies.jpg" alt="台灣運彩頒發的 2024、2025 年度全國線上通路年度業績績優經銷商獎座" width="1000" height="1105" loading="lazy">
-        <figcaption>左：2025 年度（2026 年 1 月頒發）｜右：2024 年度（2025 年 2 月頒發）</figcaption>
-      </figure>
-      <div>
-        <div class="honors">
-          <div><span class="yr">2024 年度</span><span class="ttl">全國線上通路年度業績　績優經銷商</span></div>
-          <div><span class="yr">2025 年度・連續第二年</span><span class="ttl">全國線上通路年度業績　績優經銷商</span></div>
-          <div><span class="yr">2026</span><span class="ttl">北一區　2026 世足銷售卓越獎</span></div>
-        </div>
-        <p class="src">以上獎項皆由台灣運彩頒發。</p>
+    <div class="aw" id="honors">
+      <img class="aw-photo" src="img/award-trophies.jpg" alt="台灣運彩頒發的 2024、2025 年度全國線上通路年度業績績優經銷商獎座" width="1000" height="1105" loading="lazy">
+      <div class="aw-body">
+        <p class="aw-eye">台灣運彩頒發</p>
+        <h3>績優實績<img class="ic-sport ic-trophy" src="img/mascot/ic-trophy.webp" alt="" width="38" height="38" loading="lazy"></h3>
+        <p class="aw-lead">兩座績優經銷商都是<strong>「全國線上通路」</strong>的年度業績獎——線上服務正是我們的主力。</p>
+        <ul class="aw-list">
+          <li><b>2024</b><i>年度</i><span>全國線上通路年度業績　<br>績優經銷商</span></li>
+          <li><b>2025</b><i>年度・連續第二年</i><span>全國線上通路年度業績　<br>績優經銷商</span></li>
+          <li><b>2026</b><i>世足</i><span>北一區　<br>2026 世足銷售卓越獎</span></li>
+        </ul>
+        <p class="aw-src">以上獎項皆由台灣運彩頒發。照片左：2025 年度（2026 年 1 月頒發）｜右：2024 年度（2025 年 2 月頒發）</p>
       </div>
     </div>
   </div>
