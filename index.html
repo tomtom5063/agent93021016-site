@@ -1597,7 +1597,12 @@
       var shareP = null, pUrl = pageOf(p);
       if (pUrl) {
         var full = "https://agent93021016.com/" + pUrl;
-        var sTxt = (LG[p.league] || p.league) + " " + kickDate(p) + " " + p.away + " @ " + p.home + " 賽事分析｜花惹發運動彩券行（台灣運彩經銷商 93021016）\n" + full;
+        var SPORT_IC = { NBA: "🏀", MLB: "⚾", NPB: "⚾", CPBL: "⚾", KBO: "⚾" };
+        var sTxt = ["📊 賽事分析",
+          (SPORT_IC[p.league] || "🏅") + " " + (LG[p.league] ? LG[p.league] + " " + p.league : p.league),
+          "📅 " + kickDate(p) + (p.stage ? "・" + p.stage : ""),
+          "🆚 " + p.away + " @ " + p.home,
+          full].join("\n");
         var sa = el("a", "btn-share"), si = document.createElement("img");
         sa.href = isMobile ? "https://line.me/R/share?text=" + encodeURIComponent(sTxt) : "https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(full);
         sa.target = "_blank"; sa.rel = "noopener";
