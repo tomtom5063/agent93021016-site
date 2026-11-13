@@ -1249,35 +1249,45 @@
     .fl-ic{width:16px; height:16px}
   }
     .feed{container-type:inline-size}
-  @media (min-width:561px){
-    .feed-head, .feed-list a{grid-template-columns:64px 52px 44px 52px minmax(0,1fr) 32px; column-gap:6px}
-            .fl-t{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.12fr); column-gap:.3em; white-space:nowrap; font-size:.9375rem}
-    .fl-t .aw, .fl-t .hm{display:block; max-width:none; overflow:hidden; text-overflow:ellipsis}
-    .fl-t .aw{text-align:right}
-    .feed-head > span:nth-child(5){text-align:center}
-  }
+  .feed-head, .feed-list a{grid-template-columns:64px 52px 44px 52px minmax(0,1fr) 30px; column-gap:6px}
+  .feed-head > span:nth-child(5){text-align:center}
+  .fl-no, .fl-d{color:var(--muted); font-weight:700; font-size:.875rem}
+  .fl-t{display:grid; grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr); align-items:center; column-gap:6px;
+        white-space:nowrap; font-size:.9rem; font-weight:700; line-height:1.4}
+  .fl-t .aw, .fl-t .hm{display:block; max-width:none; overflow:hidden; text-overflow:ellipsis}
+  .fl-t .aw{text-align:right}
+  .fl-t .hm{text-align:left}
+  .fl-vs{width:24px; height:19px; border-radius:99px; background:#e4e7eb; color:var(--muted);
+         font-size:.625rem; font-weight:800; display:grid; place-items:center; letter-spacing:0}
   @container (max-width:480px){
-    .feed-head, .feed-list a{grid-template-columns:42px 34px 40px 50px minmax(0,1fr) 30px; column-gap:6px}
-    .feed-head{font-size:.75rem; letter-spacing:0}
-    .feed-head .l{display:none}
-    .fl-tag{flex-direction:column; gap:1px; font-size:.75rem; line-height:1.15}
+    .feed-head, .feed-list a{grid-template-columns:40px 38px 22px minmax(0,1fr) 26px; grid-template-rows:auto auto; column-gap:4px; row-gap:0}
+    .feed-list a{padding:6px 2px}
+    .fl-tag{grid-column:1; grid-row:1 / span 2; flex-direction:column; gap:1px; font-size:.6875rem; line-height:1.15}
     .fl-tag .l{display:none} .fl-tag .s{display:inline}
     .fl-ic{width:16px; height:16px}
-    .fl-m .tag-main{padding:1px 5px 1px 3px; font-size:.75rem}
-    .feed-list a{padding:4px 2px}
-    .fl-t{display:block; white-space:normal; font-size:.875rem; line-height:1.25; text-align:center}
-    .fl-t .aw, .fl-t .hm{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center}
-    .feed-head > span:nth-child(5){text-align:center}
-        .feed-head, .feed-list a{grid-template-columns:42px 38px 40px 50px minmax(0,1fr) 30px}
-    .fl-no{font-size:.8125rem}
+    .fl-no{grid-column:2; grid-row:1; align-self:end; font-size:.75rem; line-height:1.25; text-align:center}
+    .fl-d{grid-column:2; grid-row:2; align-self:start; font-size:.6875rem; line-height:1.25; text-align:center}
+    .fl-m{grid-column:3; grid-row:1 / span 2}
+    .fl-m .tag-main{display:inline-flex; flex-direction:column; align-items:center; padding:3px 2px; border-radius:6px; font-size:.5625rem; line-height:1.15}
+    .fl-t{grid-column:4; grid-row:1 / span 2; font-size:.75rem; column-gap:3px; grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr)}
+    .fl-vs{width:18px; height:15px; font-size:.5rem}
+    .fl-r{grid-column:5; grid-row:1 / span 2}
+    .fl-r .mk{width:22px; height:22px}
+    .feed-head{font-size:.6875rem; letter-spacing:0}
+    .feed-head .l{display:none}
+    .feed-head > span:nth-child(1){grid-column:1; grid-row:1 / span 2}
+    .feed-head > span:nth-child(2){grid-column:2; grid-row:1; text-align:center}
+    .feed-head > span:nth-child(3){grid-column:2; grid-row:2; text-align:center}
+    .feed-head > span:nth-child(4){grid-column:3; grid-row:1 / span 2}
+    .feed-head > span:nth-child(5){grid-column:4; grid-row:1 / span 2}
+    .feed-head > span:nth-child(6){grid-column:5; grid-row:1 / span 2}
   }
-    @container (max-width:350px){
-    .feed-head, .feed-list a{grid-template-columns:38px 34px 36px 44px minmax(0,1fr) 26px; column-gap:5px}
-    .fl-t, .fl-d{font-size:.8125rem}
-    .fl-no{font-size:.75rem}
-    .fl-m .tag-main{font-size:.6875rem; padding:1px 4px 1px 2px}
+    @container (max-width:330px){
+    .feed-head, .feed-list a{grid-template-columns:36px 34px 22px minmax(0,1fr) 22px; column-gap:4px}
+    .fl-t{font-size:.7rem; column-gap:2px; grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr)}
+    .fl-vs{width:16px; height:14px; font-size:.4375rem}
+    .fl-r .mk{width:20px; height:20px}
   }
-    @container (max-width:320px){ .fl-t{font-size:.78rem} }
 </style>
 
 <script type="application/ld+json">
@@ -1870,7 +1880,7 @@
     var MAIN_FROM = "2026-10-22", MAIN_MIN = 10;
     var MAIN_LEAGUES = { NBA: 1 };
     function isMain(p) { return p.stage === "單場" && !p.trial && p.date >= MAIN_FROM && !!MAIN_LEAGUES[p.league]; }
-    function mainTag() { return el("span", "tag-main", "👍主推"); }
+    function mainTag() { var s = el("span", "tag-main"); s.appendChild(el("span", "", "👍")); s.appendChild(el("span", "", "主推")); return s; }
     function showMainRate(arr) {
       var w = 0, l = 0;
       arr.forEach(function (p) { if (!isMain(p)) return; if (p.result === "win") w++; else if (p.result === "lose") l++; });
@@ -1992,7 +2002,7 @@
         var mm = el("span", "fl-m"); if (isMain(p)) mm.appendChild(mainTag());
         a.appendChild(mm);
         var mt = el("span", "fl-t"); mt.title = p.away + " @ " + p.home;
-        mt.appendChild(el("span", "aw", (p.trial ? "（試產）" : "") + p.away)); mt.appendChild(document.createTextNode(" ")); mt.appendChild(el("span", "hm", "@ " + p.home));
+        mt.appendChild(el("span", "aw", (p.trial ? "（試產）" : "") + p.away)); mt.appendChild(el("span", "fl-vs", "VS")); mt.appendChild(el("span", "hm", p.home));
         a.appendChild(mt);
         var r = resultOf(p), mk = el("span", "fl-r" + (r && r.sm ? " sm" : ""), r && r.sm ? r.mark : "");
         if (r && !r.sm) mk.appendChild(faceOf(r));
