@@ -1143,6 +1143,10 @@
   .hr-bar{height:44px}
     #steps a.perk-trial{color:#fff; text-decoration:none; background:var(--brand); box-shadow:none}
   #steps a.perk-trial:hover{box-shadow:0 6px 14px rgba(211,32,39,.3)}
+    #steps a.perk-open{color:var(--gold-ink); text-decoration:none; transition:transform .15s, box-shadow .15s}
+  #steps a.perk-open:hover{transform:translateY(-2px); box-shadow:0 6px 14px rgba(245,181,0,.45)}
+  #steps a.perk-open:focus-visible{outline:3px solid var(--fg); outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){ #steps a.perk-open{transition:none} #steps a.perk-open:hover{transform:none} }
   @media (max-width:560px){ #apply h1.h2{font-size:1.3rem; gap:8px} #apply h1.h2::before{width:26px; height:13px} }
   .cards li{border-top:3px solid var(--gold)}
 
@@ -1159,8 +1163,7 @@
   #apply .pc-main .pc-t small{color:#4a5a70}
   #apply .pc-main .pc-arrow{color:#1454a0}
   #why{background:#fff}
-  #meet{background:#f4f5f7}
-  #faq{background:#fff}
+    #faq{background:#f4f5f7}
 
     #apply .promo-card{background:rgba(211,32,39,.20); border:1.5px solid rgba(255,104,110,.75)}
   #apply .promo-card:hover{background:rgba(211,32,39,.30)}
@@ -1341,7 +1344,7 @@
     <p class="eyebrow">MEMBER BENEFITS</p>
     <h1 class="h2 bf-title">加入花惹發，<em>開啟會員福利</em></h1>
     <a class="promo-card" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener"><span class="pc-ic" aria-hidden="true">✨</span><span class="pc-t"><b>領取試玩金</b><small><span class="nw">新加入本店的會員皆能領取，</span><span class="nw">洽 LINE 客服說：<b class="pc-say">「我要試玩金」</b></span></small></span><span class="pc-go">領取 ›</span><span class="pc-arrow" aria-hidden="true">›</span></a>
-        <a class="promo-card pc-main" id="mainRate" href="#data" hidden><span class="pc-ic" aria-hidden="true">👍</span><span class="pc-t"><b><i class="pc-k">每日分析</i>目前主推 <em id="mrN"></em> 場過 <em id="mrW"></em> 場</b><small><span class="nw">主推＝每天的單場分析，</span><span class="nw" id="mrFrom"></span></small></span><span class="pc-go">去看 ›</span><span class="pc-arrow" aria-hidden="true">›</span></a>
+        <a class="promo-card pc-main" id="mainRate" href="#data" hidden><span class="pc-ic" aria-hidden="true">👍</span><span class="pc-t"><b><i class="pc-k">每日分析</i>目前主推 <em id="mrN"></em> 場過 <em id="mrW"></em> 場</b><small><span class="nw" id="mrFrom"></span><span class="nw" id="mrRate"></span></small></span><span class="pc-go">去看 ›</span><span class="pc-arrow" aria-hidden="true">›</span></a>
     <p class="lead">花惹發會員除了每日分析與玩法攻略，還有專屬福利，加入 LINE 告訴客服就能<strong>一對一開啟</strong>。</p>
     <ul class="hero-chips"><li>台灣運彩績優經銷商</li><li>經銷商證號 93021016</li><li>LINE 客服 24 小時</li></ul>
     <div class="hero-cta">
@@ -1365,7 +1368,7 @@
         <ul class="hero-stats">
       <li><b>2<i>年</i></b><span>連續獲頒全國線上通路<br>績優經銷商</span></li>
       <li><b>24<i>小時</i></b><span>LINE 客服<br>全年無休</span></li>
-      <li><b>3,400<i>場</i></b><span>賽事統計出的<br>各玩法過關率</span></li>
+      <li><b>4,300<i>場</i></b><span>賽事統計出的<br>各玩法過關率</span></li>
     </ul>
   </div>
 </section>
@@ -1373,7 +1376,7 @@
 <section id="steps">
   <div class="wrap">
         <div class="howto steps3">
-      <h2 class="howto-t">3 步驟申辦會員・指定經銷商</h2>
+      <h2 class="howto-t">步驟：新申辦・指定經銷商</h2>
       <p class="steps-sub">全程在台灣運彩官方平台完成，本店不經手帳號密碼，個資安全有保障。</p>
       <ol class="st-list">
         <li class="st"><span class="st-n" aria-hidden="true">1</span><div><h3>點上方按鈕</h3>
@@ -1381,7 +1384,7 @@
         <li class="st"><span class="st-n" aria-hidden="true">2</span><div><h3>在台灣運彩官網完成</h3>
           <p>新會員依指示填寫資料<br>已有會員把服務經銷商指定為 <strong>93021016</strong></p></div></li>
         <li class="st st-3"><span class="st-n" aria-hidden="true">3</span><div><h3><a href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">通知 LINE 客服</a></h3>
-          <p class="st-perks"><span class="perk-pair"><mark class="perk-tag">🎁 開啟會員福利</mark><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></p></div></li>
+          <p class="st-perks"><span class="perk-pair"><a class="perk-tag perk-open" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">🎁 開啟會員福利</a><a class="perk-tag perk-trial" href="https://lin.ee/XRVZUMp" target="_blank" rel="noopener">✨ 領取試玩金</a></span></p></div></li>
       </ol>
     </div>
     <p class="lead howto-help">操作有任何問題，歡迎隨時詢問 24 小時 LINE 客服，也可以到台北市中山區的實體店面，我們當面協助您處理。</p>
@@ -1424,7 +1427,7 @@
         <div class="tabs" role="tablist" aria-label="分析文分類">
           <button type="button" role="tab" data-lg="" aria-selected="true">最新</button>
           <button type="button" role="tab" data-lg="NBA" aria-selected="false">NBA</button>
-          <button type="button" role="tab" data-lg="MLB" aria-selected="false">美國職棒</button>
+          <button type="button" role="tab" data-lg="MLB" aria-selected="false">MLB</button>
         </div>
         <div class="feed-head" aria-hidden="true"><span>聯盟</span><span><span class="l">賽事</span>編號</span><span>開賽<span class="l">日期</span></span><span></span><span>對戰組合</span><span>結果</span></div>
         <ul class="feed-list" id="feedList"></ul>
@@ -1496,27 +1499,35 @@
     <p class="eyebrow">PLAY SMART</p>
     <h2>玩法攻略：各玩法的過關率<small class="h-note">（數據持續累積更新中）</small></h2>
     <p class="lead col">
-      我們統計了 2026 年 4 月以來台灣運彩開出的比賽，共約 3,400 場，算出各種玩法的<strong>過關率</strong>：
-      例如棒球大小，大分過關率 53.9%、小分 46.1%。下注前先看一眼，心裡更有底。
+      我們統計了 2026 年 4 月以來台灣運彩開出的比賽，共約 4,300 場，算出各種玩法的<strong>過關率</strong>：
+      例如棒球大小，大分過關率 54.1%、小分 45.9%。下注前先看一眼，心裡更有底。
     </p>
 
     <div class="hr-group">
-      <h3><img class="ic-sport" src="img/mascot/ic-baseball.webp" alt="" width="30" height="30" loading="lazy">棒球<small>美國職棒、日本職棒、中華職棒，約 2,400 場</small></h3>
-          <div class="hr-row"><span class="hr-lb">獨贏（強弱）</span><span class="hr-bar"><span class="seg s0" style="flex:57.1"><b>熱門贏</b> 57.1%</span><span class="seg s1" style="flex:42.9"><b>冷門贏</b> 42.9%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">獨贏（主客）</span><span class="hr-bar"><span class="seg s0" style="flex:52.4"><b>主隊贏</b> 52.4%</span><span class="seg s1" style="flex:47.6"><b>客隊贏</b> 47.6%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">讓分</span><span class="hr-bar"><span class="seg s0" style="flex:58.9"><b>受讓方過</b> 58.9%</span><span class="seg s1" style="flex:41.1"><b>讓分方過</b> 41.1%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">大小</span><span class="hr-bar"><span class="seg s0" style="flex:53.9"><b>大分</b> 53.9%</span><span class="seg s1" style="flex:46.1"><b>小分</b> 46.1%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:57.8"><b>單</b> 57.8%</span><span class="seg s1" style="flex:42.2"><b>雙</b> 42.2%</span></span></div>
+      <h3><img class="ic-sport" src="img/mascot/ic-basketball.webp" alt="" width="30" height="30" loading="lazy">籃球<small>NBA，本季約 200 場（持續累積中）</small></h3>
+          <div class="hr-row"><span class="hr-lb">獨贏（強弱）</span><span class="hr-bar"><span class="seg s0" style="flex:70.6"><b>熱門贏</b> 70.6%</span><span class="seg s1" style="flex:29.4"><b>冷門贏</b> 29.4%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">獨贏（主客）</span><span class="hr-bar"><span class="seg s0" style="flex:51.8"><b>主隊贏</b> 51.8%</span><span class="seg s1" style="flex:48.2"><b>客隊贏</b> 48.2%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">讓分</span><span class="hr-bar"><span class="seg s0" style="flex:44.2"><b>受讓方過</b> 44.2%</span><span class="seg s1" style="flex:55.8"><b>讓分方過</b> 55.8%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">大小</span><span class="hr-bar"><span class="seg s0" style="flex:48.6"><b>大分</b> 48.6%</span><span class="seg s1" style="flex:51.4"><b>小分</b> 51.4%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:52.4"><b>單</b> 52.4%</span><span class="seg s1" style="flex:47.6"><b>雙</b> 47.6%</span></span></div>
     </div>
     <div class="hr-group">
-      <h3><img class="ic-sport" src="img/mascot/ic-soccer.webp" alt="" width="30" height="30" loading="lazy">足球<small>各國聯賽，約 1,000 場</small></h3>
-          <div class="hr-row"><span class="hr-lb">獨贏（三選一）</span><span class="hr-bar"><span class="seg s0" style="flex:43.0"><b>主勝</b> 43.0%</span><span class="seg s1" style="flex:27.2"><b>和局</b> 27.2%</span><span class="seg s2" style="flex:29.8"><b>客勝</b> 29.8%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">大小 1.5</span><span class="hr-bar"><span class="seg s0" style="flex:79.0"><b>大分</b> 79.0%</span><span class="seg s1" style="flex:21.0"><b>小分</b> 21.0%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">大小 2.5</span><span class="hr-bar"><span class="seg s0" style="flex:57.6"><b>大分</b> 57.6%</span><span class="seg s1" style="flex:42.4"><b>小分</b> 42.4%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">大小 3.5</span><span class="hr-bar"><span class="seg s0" style="flex:33.9"><b>大分</b> 33.9%</span><span class="seg s1" style="flex:66.1"><b>小分</b> 66.1%</span></span></div>
-          <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:50.5"><b>單</b> 50.5%</span><span class="seg s1" style="flex:49.5"><b>雙</b> 49.5%</span></span></div>
+      <h3><img class="ic-sport" src="img/mascot/ic-baseball.webp" alt="" width="30" height="30" loading="lazy">棒球<small>美國職棒、日本職棒、中華職棒，約 2,500 場</small></h3>
+          <div class="hr-row"><span class="hr-lb">獨贏（強弱）</span><span class="hr-bar"><span class="seg s0" style="flex:57.0"><b>熱門贏</b> 57.0%</span><span class="seg s1" style="flex:43.0"><b>冷門贏</b> 43.0%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">獨贏（主客）</span><span class="hr-bar"><span class="seg s0" style="flex:52.3"><b>主隊贏</b> 52.3%</span><span class="seg s1" style="flex:47.7"><b>客隊贏</b> 47.7%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">讓分</span><span class="hr-bar"><span class="seg s0" style="flex:58.9"><b>受讓方過</b> 58.9%</span><span class="seg s1" style="flex:41.1"><b>讓分方過</b> 41.1%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">大小</span><span class="hr-bar"><span class="seg s0" style="flex:54.1"><b>大分</b> 54.1%</span><span class="seg s1" style="flex:45.9"><b>小分</b> 45.9%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:57.6"><b>單</b> 57.6%</span><span class="seg s1" style="flex:42.4"><b>雙</b> 42.4%</span></span></div>
     </div>
-    <p class="src">本店資料庫統計｜2026 年 4 月～10 月台灣運彩開出的賽事｜剛好打平盤口線（走盤）的場次不計｜足球大小三條線都以全部場次的總進球數計算</p>
+    <div class="hr-group">
+      <h3><img class="ic-sport" src="img/mascot/ic-soccer.webp" alt="" width="30" height="30" loading="lazy">足球<small>各國聯賽，約 1,600 場</small></h3>
+          <div class="hr-row"><span class="hr-lb">獨贏（三選一）</span><span class="hr-bar"><span class="seg s0" style="flex:43.5"><b>主勝</b> 43.5%</span><span class="seg s1" style="flex:25.7"><b>和局</b> 25.7%</span><span class="seg s2" style="flex:30.8"><b>客勝</b> 30.8%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">大小 1.5</span><span class="hr-bar"><span class="seg s0" style="flex:79.6"><b>大分</b> 79.6%</span><span class="seg s1" style="flex:20.4"><b>小分</b> 20.4%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">大小 2.5</span><span class="hr-bar"><span class="seg s0" style="flex:58.0"><b>大分</b> 58.0%</span><span class="seg s1" style="flex:42.0"><b>小分</b> 42.0%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">大小 3.5</span><span class="hr-bar"><span class="seg s0" style="flex:34.9"><b>大分</b> 34.9%</span><span class="seg s1" style="flex:65.1"><b>小分</b> 65.1%</span></span></div>
+          <div class="hr-row"><span class="hr-lb">單雙</span><span class="hr-bar"><span class="seg s0" style="flex:49.5"><b>單</b> 49.5%</span><span class="seg s1" style="flex:50.5"><b>雙</b> 50.5%</span></span></div>
+    </div>
+    <p class="src">本店資料庫統計｜2026 年 4 月～11 月台灣運彩開出的賽事｜剛好打平盤口線（走盤）的場次不計｜足球大小三條線都以全部場次的總進球數計算</p>
 
     <h3>數字背後的三個觀察</h3>
     <ul class="cards c3">
@@ -1533,7 +1544,7 @@
       <li>
         <span class="tag">觀察 3</span>
         <b>足球門檻每高一球，差很多</b>
-        <p>總進球超過 1.5 球有近 8 成，2.5 球降到不到 6 成，3.5 球就只剩約 3 成。選哪條線，結果差很大。</p>
+        <p>總進球超過 1.5 球有近 8 成，2.5 球降到不到 6 成，3.5 球就只剩 3 成多。選哪條線，結果差很大。</p>
       </li>
     </ul>
     <p class="src">歷史統計僅供參考，每一場比賽的結果都是獨立的。</p>
@@ -1584,11 +1595,7 @@
     </div>
 
     <p class="src">計算方式：每組獎金＝每組投注金額 × 該組各場賠率相乘（四捨五入到元，同台灣運彩投注單的「最高可能中」），取消的場次以 1 倍計。每組合以 10 元為單位，每張至少 100 元才能出單、最多 10 萬元，單張中獎上限 2,000 萬元。單注（10 元）獎金超過 5,000 元，也就是該組賠率超過 500 倍時，須扣 20% 所得稅與千分之 4 印花稅。實際派彩以台灣運彩為準。</p>
-    <div class="notice">
-      <strong>未成年人不得購買或兌領運動彩券。</strong>
-      勿過度投注，請量力而為。
-    </div>
-  </div>
+      </div>
 </section>
 
 <section id="why">
@@ -1624,36 +1631,6 @@
   </div>
 </section>
 
-<section id="meet" class="tex">
-  <div class="wrap">
-    <p class="eyebrow">MEET THE FOXES</p>
-    <h2>認識小花與阿發</h2>
-    <p class="lead col">花惹發的兩位小夥伴：一個管福利與客服，一個管數據與攻略。點點下面的表情，聽聽他們怎麼說。</p>
-    <div class="meet-grid">
-      <article class="meet-card mc-xh">
-        <img class="mc-portrait" src="img/mascot/meet-xiaohua.webp" alt="吉祥物小花" width="190" height="218" loading="lazy">
-        <div>
-          <p class="mc-tag">福利與客服擔當</p>
-          <h3>小花</h3>
-          <p class="mc-desc">申辦、指定、兌換，不懂的就問我，LINE 客服 24 小時都在。</p>
-          <div class="mc-say"><img class="mc-face" src="img/mascot/face-xh1.webp" alt="" width="54" height="54"><span class="mc-line" aria-live="polite">歡迎加入花惹發！</span></div>
-          <div class="mc-chips" role="group" aria-label="小花的表情"><button type="button" aria-label="開心" aria-pressed="true" data-face="img/mascot/face-xh1.webp" data-say="歡迎加入花惹發！"><img src="img/mascot/face-xh1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="眨眼" aria-pressed="false" data-face="img/mascot/face-xh2.webp" data-say="福利怎麼開啟，LINE 問我就對了～"><img src="img/mascot/face-xh2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-xh3.webp" data-say="咦？指定經銷商填 93021016 了嗎？"><img src="img/mascot/face-xh3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="思考" aria-pressed="false" data-face="img/mascot/face-xh4.webp" data-say="步驟看不懂？看上面的 3 步驟，或直接問客服"><img src="img/mascot/face-xh4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
-        </div>
-      </article>
-      <article class="meet-card mc-af">
-        <img class="mc-portrait" src="img/mascot/meet-afa.webp" alt="吉祥物阿發" width="190" height="203" loading="lazy">
-        <div>
-          <p class="mc-tag">數據與攻略擔當</p>
-          <h3>阿發</h3>
-          <p class="mc-desc">每日分析、各玩法過關率，我來整理，攤開給你看。</p>
-          <div class="mc-say"><img class="mc-face" src="img/mascot/face-af1.webp" alt="" width="54" height="54"><span class="mc-line" aria-live="polite">每天一篇賽事分析，我幫你攤開來看</span></div>
-          <div class="mc-chips" role="group" aria-label="阿發的表情"><button type="button" aria-label="壞笑" aria-pressed="true" data-face="img/mascot/face-af1.webp" data-say="每天一篇賽事分析，我幫你攤開來看"><img src="img/mascot/face-af1.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="挑眉" aria-pressed="false" data-face="img/mascot/face-af2.webp" data-say="各玩法的過關率都整理好了，下注前先看一眼"><img src="img/mascot/face-af2.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="驚訝" aria-pressed="false" data-face="img/mascot/face-af3.webp" data-say="同樣是大小，不同門檻的差距可不小喔"><img src="img/mascot/face-af3.webp" alt="" width="50" height="50" loading="lazy"></button><button type="button" aria-label="專注" aria-pressed="false" data-face="img/mascot/face-af4.webp" data-say="分析只是參考，勿過度投注、量力而為"><img src="img/mascot/face-af4.webp" alt="" width="50" height="50" loading="lazy"></button></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section id="faq">
   <div class="wrap col">
     <p class="eyebrow">FAQ</p>
@@ -1673,19 +1650,14 @@
       <dd>每天挑幾場比賽，寫出推理過程與本場推薦，<a href="#data">在這裡</a>可以看到。<br>
         推薦不保證結果，請當成娛樂消費。</dd>
     </dl>
-    <div class="notice">
-      <strong>未成年人不得購買或兌領運動彩券。</strong>
-      勿過度投注。若你或身邊的人有賭博困擾，請尋求專業協助。
-    </div>
-  </div>
+      </div>
 </section>
 
 <footer class="site">
   <div class="wrap">
     <p>花惹發運動彩券行｜台灣運彩績優經銷商｜<strong>證號 93021016</strong>｜統一編號 93126882</p>
     <p>
-      本網站為經銷商資訊網站，<strong>不提供運彩代購服務</strong>，
-      投注與會員申辦一律於台灣運彩官方平台進行。
+      本網站為經銷商資訊網站，投注與會員申辦一律於台灣運彩官方平台進行。
     </p>
     <p><strong>未成年人不得購買或兌領運動彩券。勿過度投注。</strong></p>
     <p><a class="foot-link" href="privacy.html">隱私權政策</a></p>
@@ -1761,7 +1733,9 @@
     if (document.getElementById("postDlg")) (function () {   // 只有首頁有每日分析；福利頁沒有，整段跳過
     var POSTS = window.POSTS || [];
     var LG = { MLB: "美國職棒", NPB: "日本職棒", NBA: "美國職籃", CPBL: "中華職棒" };
-    var LGS = { MLB: "美職", NPB: "日職", NBA: "NBA", CPBL: "中職", KBO: "韓職" };
+    var LGS = { MLB: "MLB", NPB: "日職", NBA: "NBA", CPBL: "中職", KBO: "韓職" };
+    var LGD = { MLB: "MLB", NBA: "NBA" };
+    function lgLabel(lg) { return LGD[lg] || LG[lg] || lg; }
     var LIST_MAX = 12;
     var dlg = document.getElementById("postDlg");
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1792,7 +1766,7 @@
     }
     function openPost(p) {
       document.getElementById("pdMeta").textContent =
-        (LG[p.league] || p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + (p.stage ? "・" + p.stage : "") + (isMain(p) ? "・👍主推" : "") + "｜開賽（台北）" + p.startTW +
+        lgLabel(p.league) + "｜" + p.date + "｜賽事編號 " + p.gameNum + (p.stage ? "・" + p.stage : "") + (isMain(p) ? "・👍主推" : "") + "｜開賽（台北）" + p.startTW +
         (p.trial ? "｜試產版（未實際發出）" : "") +
         (resultOf(p) ? "｜結果：" + resultOf(p).text : "");
       var rr = resultOf(p);
@@ -1845,7 +1819,8 @@
       if (!card || w + l < MAIN_MIN) return;
       document.getElementById("mrN").textContent = w + l;
       document.getElementById("mrW").textContent = w;
-      document.getElementById("mrFrom").textContent = md(MAIN_FROM) + " 起累計";
+      document.getElementById("mrFrom").textContent = md(MAIN_FROM) + " 起累計，";
+      document.getElementById("mrRate").textContent = "主推過關率 " + Math.round(w / (w + l) * 100) + "%";
       card.hidden = false;
     }
     var REC_ROWS = [["讓分", "讓分"], ["大小", "大小"], ["獨贏", "獨贏"]];
@@ -1894,7 +1869,7 @@
 
     if (POSTS.length) {
       var b = document.getElementById("board"), p0 = POSTS[0];
-      b.querySelector(".bd-lg").textContent = LG[p0.league] || p0.league;
+      b.querySelector(".bd-lg").textContent = lgLabel(p0.league);
       b.querySelector(".bd-no").textContent = "賽事編號 " + p0.gameNum + (p0.stage ? "・" + p0.stage : "");
       if (isMain(p0)) b.querySelector(".bd-no").appendChild(mainTag());
       var r0 = resultOf(p0);
@@ -1918,7 +1893,7 @@
       rows.forEach(function (p) {
         var li = el("li"), a = el("a"); a.href = pageOf(p) || "#";
         var tg = el("span", "fl-tag");
-        tg.appendChild(el("span", "l", LG[p.league] || p.league)); tg.appendChild(el("span", "s", LGS[p.league] || p.league));
+        tg.appendChild(el("span", "l", lgLabel(p.league))); tg.appendChild(el("span", "s", LGS[p.league] || p.league));
         a.appendChild(tg);
         a.appendChild(el("span", "fl-no", p.gameNum));
         a.appendChild(el("span", "fl-d", kickDate(p)));
