@@ -1248,6 +1248,29 @@
     .fl-tag{flex-direction:column; gap:1px; font-size:.75rem; line-height:1.15}
     .fl-ic{width:16px; height:16px}
   }
+    .feed{container-type:inline-size}
+  @media (min-width:561px){
+    .feed-head, .feed-list a{grid-template-columns:64px 52px 44px 52px minmax(0,1fr) 32px; column-gap:6px}
+    .fl-t{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .fl-t .aw, .fl-t .hm{display:inline}
+  }
+  @container (max-width:480px){
+    .feed-head, .feed-list a{grid-template-columns:42px 34px 40px 50px minmax(0,1fr) 30px; column-gap:6px}
+    .feed-head{font-size:.75rem; letter-spacing:0}
+    .feed-head .l{display:none}
+    .fl-tag{flex-direction:column; gap:1px; font-size:.75rem; line-height:1.15}
+    .fl-tag .l{display:none} .fl-tag .s{display:inline}
+    .fl-ic{width:16px; height:16px}
+    .fl-m .tag-main{padding:1px 5px 1px 3px; font-size:.75rem}
+    .feed-list a{padding:4px 2px}
+    .fl-t{white-space:normal; font-size:.875rem; line-height:1.25}
+    .fl-t .aw, .fl-t .hm{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  }
+    @container (max-width:350px){
+    .feed-head, .feed-list a{grid-template-columns:38px 30px 36px 44px minmax(0,1fr) 26px; column-gap:5px}
+    .fl-t, .fl-no, .fl-d{font-size:.8125rem}
+    .fl-m .tag-main{font-size:.6875rem; padding:1px 4px 1px 2px}
+  }
 </style>
 
 <script type="application/ld+json">
