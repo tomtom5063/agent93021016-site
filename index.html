@@ -1232,6 +1232,14 @@
     .tabs button{display:inline-flex; align-items:center; gap:6px}
   .tabs button img{width:18px; height:18px; object-fit:contain}
   .tabs button[hidden]{display:none}
+    .lgtabs{display:flex; gap:6px; margin:0 0 8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .lgtabs::-webkit-scrollbar{display:none}
+  .lgtabs[hidden]{display:none}
+  .lgtabs button{flex:none; font:inherit; font-size:.8125rem; font-weight:800; padding:4px 13px; border-radius:99px;
+    border:1.5px solid #c9cfd6; background:#fff; color:var(--fg); cursor:pointer}
+  .lgtabs button[aria-pressed="true"]{border-color:var(--brand); color:var(--brand-deep); background:#fdf0f0}
+  .feed-note{margin:0 0 8px; font-size:.8125rem; color:var(--muted)}
+    @media (max-width:560px){ .tabs{flex-wrap:nowrap; gap:4px} .tabs button{padding:7px 12px} }
   .feed{--fcols:78px 54px 46px 52px minmax(0,1fr) 36px}
   .fl-tag{display:inline-flex; align-items:center; gap:4px}
   .fl-ic{width:18px; height:18px; object-fit:contain; flex:none}
@@ -1441,6 +1449,8 @@
           <button type="button" role="tab" data-sp="BSB" aria-selected="false"><img src="img/mascot/ic-baseball.webp" alt="" width="18" height="18">棒球</button>
           <button type="button" role="tab" data-sp="FBL" aria-selected="false"><img src="img/mascot/ic-soccer.webp" alt="" width="18" height="18">足球</button>
         </div>
+        <div class="lgtabs" id="lgTabs" role="group" aria-label="聯盟" hidden></div>
+        <p class="feed-note" id="feedNote" hidden></p>
         <div class="feed-head" aria-hidden="true"><span>聯盟</span><span><span class="l">賽事</span>編號</span><span>開賽<span class="l">日期</span></span><span></span><span>對戰組合</span><span>結果</span></div>
         <ul class="feed-list" id="feedList"></ul>
         <p class="feed-empty" id="feedEmpty" hidden>這個分類目前還沒有文章。</p>
@@ -1746,7 +1756,7 @@
     var POSTS = window.POSTS || [];
     var LG = { MLB: "美國職棒", NPB: "日本職棒", NBA: "美國職籃", CPBL: "中華職棒" };
     var LGS = { MLB: "MLB", NPB: "日職", NBA: "NBA", CPBL: "中職", KBO: "韓職" };
-    var LGD = { MLB: "MLB", NBA: "NBA" };
+    var LGD = { MLB: "MLB", NBA: "NBA", NPB: "日職", CPBL: "中職", KBO: "韓職" };   // 亞洲棒球也用簡稱，聯盟按鈕、清單、看板同一個寫法
     function lgLabel(lg) { return LGD[lg] || LG[lg] || lg; }
     var SOCCER = { EPL: "英超", LIGA: "西甲", BUND: "德甲", SERA: "義甲", LIGUE: "法甲", EFLC: "英冠", LIGB: "西乙", UEL: "歐霸",
                    UNL: "歐國聯", ACL: "亞冠", MLS: "美職足", JLG: "日職聯", KLG: "韓K聯", ALG: "澳A", INTL: "友誼賽" };
@@ -1883,6 +1893,7 @@
       var seen = {}, all = [];
       POSTS.concat(a).forEach(function (p) { var k = p.date + "|" + p.league + "|" + p.gameNum; if (!seen[k]) { seen[k] = 1; all.push(p); } });
       showStats(all);
+      setAll(all);
     }).catch(function () {});
 
     if (POSTS.length) {
@@ -1905,9 +1916,39 @@
       b.hidden = false;
     }
     var list = document.getElementById("feedList"), empty = document.getElementById("feedEmpty");
-    function renderList(sp) {
+    var SP_NAME = { BKB: "籃球", BSB: "棒球", FBL: "足球" };
+    var LG_ORDER = ["NBA", "MLB", "NPB", "CPBL", "KBO", "EPL", "LIGA", "BUND", "SERA", "LIGUE", "EFLC", "LIGB", "UEL", "UNL", "ACL", "MLS", "JLG", "KLG", "ALG", "INTL"];
+    var ALL = POSTS.slice(), curSp = "", curLg = "";
+    var lgBox = document.getElementById("lgTabs"), note = document.getElementById("feedNote");
+    function setAll(arr) {
+      var rest = arr.slice(POSTS.length).map(function (p, i) { return [p, i]; });
+      rest.sort(function (x, y) { return x[0].date === y[0].date ? x[1] - y[1] : (x[0].date < y[0].date ? 1 : -1); });
+      ALL = POSTS.concat(rest.map(function (x) { return x[0]; }));
+      renderLeagues(); renderList();
+    }
+    var MAIN = "*main";
+    function renderLeagues() {
+      lgBox.textContent = "";
+      lgBox.hidden = !curSp;
+      if (!curSp) { curLg = ""; return; }
+      var cnt = {};
+      ALL.forEach(function (p) { if (sportOf(p.league) === curSp) cnt[p.league] = 1; });
+      var lgs = Object.keys(cnt).sort(function (a, b) { return (LG_ORDER.indexOf(a) + 1 || 99) - (LG_ORDER.indexOf(b) + 1 || 99); });
+      ["", MAIN].concat(lgs.length > 1 ? lgs : []).forEach(function (lg) {
+        var b = el("button", "", lg === MAIN ? "👍主推" : lg ? lgLabel(lg) : "全部"); b.type = "button";
+        b.setAttribute("aria-pressed", lg === curLg ? "true" : "false");
+        b.addEventListener("click", function () { curLg = lg; renderLeagues(); renderList(); });
+        lgBox.appendChild(b);
+      });
+    }
+    function renderList() {
       list.textContent = "";
-      var rows = POSTS.filter(function (p) { return !sp || sportOf(p.league) === sp; }).slice(0, LIST_MAX);
+      var rows = ALL.filter(function (p) { return (!curSp || sportOf(p.league) === curSp) && (!curLg || (curLg === MAIN ? isMain(p) : p.league === curLg)); }).slice(0, LIST_MAX);
+      var nm = curLg === MAIN ? SP_NAME[curSp] + "主推" : curLg ? lgLabel(curLg) : SP_NAME[curSp];
+      var cut = new Date(Date.now() + 8 * 3600e3 - 14 * 864e5).toISOString().slice(0, 10);
+      note.hidden = !(curSp && rows.length && rows[0].date < cut);
+      if (!note.hidden) note.textContent = nm + "最近沒有新的分析，以下是過去的分析與結果。";
+      empty.textContent = curSp ? "目前還沒有" + nm + "分析。" : "目前還沒有文章。";
       rows.forEach(function (p) {
         var li = el("li"), a = el("a"); a.href = pageOf(p) || "#";
         var tg = el("span", "fl-tag"), icSrc = SP_IC[sportOf(p.league)];
@@ -1931,15 +1972,12 @@
       empty.hidden = rows.length > 0;
     }
     var tabs = document.querySelectorAll(".tabs button");
-    for (var t = 0; t < tabs.length; t++) {
-      var sp0 = tabs[t].dataset.sp;
-      if (sp0 && !POSTS.some(function (p) { return sportOf(p.league) === sp0; })) tabs[t].hidden = true;
-      tabs[t].addEventListener("click", function () {
-        for (var u = 0; u < tabs.length; u++) tabs[u].setAttribute("aria-selected", tabs[u] === this ? "true" : "false");
-        renderList(this.dataset.sp);
-      });
-    }
-    renderList("");
+    for (var t = 0; t < tabs.length; t++) tabs[t].addEventListener("click", function () {
+      for (var u = 0; u < tabs.length; u++) tabs[u].setAttribute("aria-selected", tabs[u] === this ? "true" : "false");
+      curSp = this.dataset.sp; curLg = "";
+      renderLeagues(); renderList();
+    });
+    renderList();
     })();
 
     var hdr = document.querySelector("header.site");
