@@ -89,6 +89,10 @@ main.post{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2
 .list .lg .s{display:none}
 .list .lg{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .list .lg .ic{width:18px;height:18px;object-fit:contain;flex:none}
+/* 11/13 Tom：對戰組合改計分板式（客隊靠右、@主隊靠左，@ 對成一直線）；手機上下兩行置中 */
+.list .t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:.3em}
+.list .t .aw,.list .t .hm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list .t .aw{text-align:right}
 .flt-sp,.flt-lg{display:flex;gap:6px;margin:14px 0 0;overflow-x:auto;scrollbar-width:none}
 .flt-sp::-webkit-scrollbar,.flt-lg::-webkit-scrollbar{display:none}
 .flt-lg{margin-top:8px}
@@ -101,7 +105,7 @@ main.post{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2
 .flt-lg[hidden],.flt-note[hidden],.flt-empty[hidden],.flt[hidden]{display:none}
 .flt-note{margin:8px 0 0;font-size:.85rem;color:var(--muted)}
 .flt-empty{color:var(--muted);margin:0 0 24px}
-@media (max-width:560px){.list .lg{flex-direction:column;gap:1px;font-size:.72rem;line-height:1.15}.list .lg .ic{width:16px;height:16px}.list .t{white-space:normal;font-size:.85rem;line-height:1.3}.list .t .aw,.list .t .hm{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:560px){.list .lg{flex-direction:column;gap:1px;font-size:.72rem;line-height:1.15}.list .lg .ic{width:16px;height:16px}.list .t{display:block;white-space:normal;font-size:.85rem;line-height:1.3;text-align:center}.list .t .aw,.list .t .hm{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}}
 @media (max-width:370px){.list li a{grid-template-columns:3em 3em 3.4em 1fr 24px;gap:5px}.list .t{font-size:.8rem}}
 .sub .mk{width:22px;height:22px;vertical-align:-5px}
 @media (max-width:560px){h1{font-size:1.4rem}.list li a{grid-template-columns:3.2em 3.2em 3.6em 1fr 26px;gap:7px}.list .tag-main{font-size:.66rem;padding:1px 5px 1px 3px}.list .no{display:none}.list .lg .l{display:none}.list .lg .s{display:inline}.pn{grid-template-columns:1fr}.pn .nx{grid-column:1}}
@@ -122,18 +126,18 @@ footer.site p{margin:6px 0}
 <main class="wrap">
 <nav class="crumb" aria-label="導覽路徑"><a href="/">首頁</a> › 每日分析</nav>
 <h1>每日賽事分析</h1>
-<p class="sub">每天挑幾場比賽逐項分析，推薦寫在文章最後；比賽打完標上結果：<span class="mk win" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> 推薦過關、<span class="mk lose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span> 沒過。標 <span class="tag-main">👍主推</span> 的是單場的分析。</p>
+<p class="sub">每天挑幾場比賽逐項分析，推薦寫在文章最後；比賽打完標上結果：<span class="mk win" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> 推薦過關、<span class="mk lose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span> 沒過。標 <span class="tag-main">👍主推</span> 的是 NBA 單場的分析。</p>
 <div class="flt" id="flt" hidden>
 <div class="flt-sp"><button type="button" data-sp="" aria-pressed="true">全部</button><button type="button" data-sp="basketball" aria-pressed="false"><img src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18">籃球</button><button type="button" data-sp="baseball" aria-pressed="false"><img src="/img/mascot/ic-baseball.webp" alt="" width="18" height="18">棒球</button><button type="button" data-sp="soccer" aria-pressed="false"><img src="/img/mascot/ic-soccer.webp" alt="" width="18" height="18">足球</button></div>
 <div class="flt-lg" id="fltLg" hidden></div>
 <p class="flt-note" id="fltNote" hidden></p>
 </div>
 <ul class="list">
-<li data-sp="soccer" data-lg="UNL" data-d="2026-11-14" data-main="1"><a href="/posts/2026-11-14-unl-1034.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-soccer.webp" alt="" width="18" height="18"><span class="l">歐國聯</span><span class="s">歐國聯</span></span><span class="no">1034</span><span class="m"><span class="tag-main">👍主推</span></span><span class="t"><span class="aw">瑞士</span> <span class="hm">@ 斯洛維尼亞</span></span><span class="r"></span></a></li>
+<li data-sp="soccer" data-lg="UNL" data-d="2026-11-14"><a href="/posts/2026-11-14-unl-1034.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-soccer.webp" alt="" width="18" height="18"><span class="l">歐國聯</span><span class="s">歐國聯</span></span><span class="no">1034</span><span class="m"></span><span class="t"><span class="aw">瑞士</span> <span class="hm">@ 斯洛維尼亞</span></span><span class="r"></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-14" data-main="1"><a href="/posts/2026-11-14-nba-318.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">318</span><span class="m"><span class="tag-main">👍主推</span></span><span class="t"><span class="aw">紐約尼克</span> <span class="hm">@ 印第安那溜馬</span></span><span class="r"></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-14"><a href="/posts/2026-11-14-nba-322.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">322</span><span class="m"></span><span class="t"><span class="aw">亞特蘭大老鷹</span> <span class="hm">@ 芝加哥公牛</span></span><span class="r"></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-14"><a href="/posts/2026-11-14-nba-327.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">327</span><span class="m"></span><span class="t"><span class="aw">奧克拉荷馬雷霆</span> <span class="hm">@ 洛杉磯快艇</span></span><span class="r"></span></a></li>
-<li data-sp="soccer" data-lg="LIGB" data-d="2026-11-14" data-main="1"><a href="/posts/2026-11-14-ligb-1006.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-soccer.webp" alt="" width="18" height="18"><span class="l">西乙</span><span class="s">西乙</span></span><span class="no">1006</span><span class="m"><span class="tag-main">👍主推</span></span><span class="t"><span class="aw">希洪競技</span> <span class="hm">@ 皇家社會B隊</span></span><span class="r"></span></a></li>
+<li data-sp="soccer" data-lg="LIGB" data-d="2026-11-14"><a href="/posts/2026-11-14-ligb-1006.html"><span class="d">11/14</span><span class="lg"><img class="ic" src="/img/mascot/ic-soccer.webp" alt="" width="18" height="18"><span class="l">西乙</span><span class="s">西乙</span></span><span class="no">1006</span><span class="m"></span><span class="t"><span class="aw">希洪競技</span> <span class="hm">@ 皇家社會B隊</span></span><span class="r"></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-13"><a href="/posts/2026-11-13-nba-315.html"><span class="d">11/13</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">315</span><span class="m"></span><span class="t"><span class="aw">底特律活塞</span> <span class="hm">@ 華盛頓巫師</span></span><span class="r" title="推薦沒過" aria-label="推薦沒過"><span class="mk lose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-13" data-main="1"><a href="/posts/2026-11-13-nba-313.html"><span class="d">11/13</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">313</span><span class="m"><span class="tag-main">👍主推</span></span><span class="t"><span class="aw">達拉斯獨行俠</span> <span class="hm">@ 明尼蘇達灰狼</span></span><span class="r" title="推薦沒過" aria-label="推薦沒過"><span class="mk lose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span></span></a></li>
 <li data-sp="basketball" data-lg="NBA" data-d="2026-11-13"><a href="/posts/2026-11-13-nba-314.html"><span class="d">11/13</span><span class="lg"><img class="ic" src="/img/mascot/ic-basketball.webp" alt="" width="18" height="18"><span class="l">NBA</span><span class="s">NBA</span></span><span class="no">314</span><span class="m"></span><span class="t"><span class="aw">夏洛特黃蜂</span> <span class="hm">@ 鳳凰城太陽</span></span><span class="r"></span></a></li>
@@ -216,11 +220,12 @@ var box = document.getElementById("flt"); if (!box) return; box.hidden = false;
 var items = [].slice.call(document.querySelectorAll(".list li")), lgBox = document.getElementById("fltLg"), note = document.getElementById("fltNote"), empty = document.getElementById("fltEmpty");
 var NAME = { basketball: "籃球", baseball: "棒球", soccer: "足球" }, LGN = {"MLB":"MLB","NPB":"日職","NBA":"NBA","CPBL":"中職","KBO":"韓職","EPL":"英超","LIGA":"西甲","BUND":"德甲","SERA":"義甲","LIGUE":"法甲","EFLC":"英冠","LIGB":"西乙","UEL":"歐霸","UNL":"歐國聯","ACL":"亞冠","MLS":"美職足","JLG":"日職聯","KLG":"韓K聯","ALG":"澳A","INTL":"友誼賽"}, ORDER = ["NBA","MLB","NPB","CPBL","KBO","EPL","LIGA","BUND","SERA","LIGUE","EFLC","LIGB","UEL","UNL","ACL","MLS","JLG","KLG","ALG","INTL"], sp = "", lg = "";
 function leagues() {
-  lgBox.textContent = ""; var seen = {};
-  items.forEach(function (li) { if (li.dataset.sp === sp) seen[li.dataset.lg] = 1; });
+  lgBox.textContent = ""; var seen = {}, hasMain = false;
+  items.forEach(function (li) { if (sp && li.dataset.sp === sp) { seen[li.dataset.lg] = 1; if (li.dataset.main === "1") hasMain = true; } });
   var ls = Object.keys(seen).sort(function (a, b) { return (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99); });
-  lgBox.hidden = !sp; if (!sp) { lg = ""; return; }
-  ["", "*main"].concat(ls.length > 1 ? ls : []).forEach(function (x) { var b = document.createElement("button"); b.type = "button"; b.textContent = x === "*main" ? "👍主推" : x ? (LGN[x] || x) : "全部";
+  var chips = [""].concat(hasMain ? ["*main"] : [], ls.length > 1 ? ls : []);
+  lgBox.hidden = chips.length < 2; if (lgBox.hidden) { lg = ""; return; }
+  chips.forEach(function (x) { var b = document.createElement("button"); b.type = "button"; b.textContent = x === "*main" ? "👍主推" : x ? (LGN[x] || x) : "全部";
     b.setAttribute("aria-pressed", x === lg ? "true" : "false"); b.onclick = function () { lg = x; leagues(); show(); }; lgBox.appendChild(b); });
 }
 function show() {
