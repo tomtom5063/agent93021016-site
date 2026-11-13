@@ -79,7 +79,7 @@ main.post{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2
 .pn .nx{text-align:right;grid-column:2}
 .all{margin:8px 0 28px;font-weight:700}
 .list{list-style:none;margin:18px 0 28px;padding:0;border-top:1px solid var(--line)}
-.list li a{display:grid;grid-template-columns:4.2em 5.2em 3.4em 4em 1fr 30px;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--fg);font-size:.95rem}
+.list li a{display:grid;grid-template-columns:4.2em 6.4em 3.4em 4em 1fr 30px;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--fg);font-size:.95rem}
 .list li a:hover{background:var(--surface)}
 .list .d,.list .no{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700}
 .list .lg{font-weight:800;color:var(--brand-deep);font-size:.88rem}
@@ -87,8 +87,11 @@ main.post{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2
 .list .m{text-align:center;line-height:1}
 .list .r{font-size:.78rem;color:var(--muted);text-align:center}
 .list .lg .s{display:none}
+.list .lg{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.list .lg .ic{width:18px;height:18px;object-fit:contain;flex:none}
+@media (max-width:560px){.list .lg{flex-direction:column;gap:1px;font-size:.72rem;line-height:1.15}.list .lg .ic{width:16px;height:16px}}
 .sub .mk{width:22px;height:22px;vertical-align:-5px}
-@media (max-width:560px){h1{font-size:1.4rem}.list li a{grid-template-columns:3.2em 2.6em 3.6em 1fr 26px;gap:7px}.list .tag-main{font-size:.66rem;padding:1px 5px 1px 3px}.list .no{display:none}.list .lg .l{display:none}.list .lg .s{display:inline}.pn{grid-template-columns:1fr}.pn .nx{grid-column:1}}
+@media (max-width:560px){h1{font-size:1.4rem}.list li a{grid-template-columns:3.2em 3.2em 3.6em 1fr 26px;gap:7px}.list .tag-main{font-size:.66rem;padding:1px 5px 1px 3px}.list .no{display:none}.list .lg .l{display:none}.list .lg .s{display:inline}.pn{grid-template-columns:1fr}.pn .nx{grid-column:1}}
 footer.site{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.9rem;margin-top:12px}
 footer.site p{margin:6px 0}
 </style>

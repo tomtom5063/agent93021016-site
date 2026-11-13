@@ -1229,6 +1229,17 @@
     .aw-list span br{display:none}
     .sh-info .big dd{font-size:1.8rem}
   }
+    .tabs button{display:inline-flex; align-items:center; gap:6px}
+  .tabs button img{width:18px; height:18px; object-fit:contain}
+  .tabs button[hidden]{display:none}
+  .feed{--fcols:78px 54px 46px 52px minmax(0,1fr) 36px}
+  .fl-tag{display:inline-flex; align-items:center; gap:4px}
+  .fl-ic{width:18px; height:18px; object-fit:contain; flex:none}
+  @media (max-width:560px){
+    .feed{--fcols:42px 34px 40px 50px minmax(0,1fr) 30px}
+    .fl-tag{flex-direction:column; gap:1px; font-size:.75rem; line-height:1.15}
+    .fl-ic{width:16px; height:16px}
+  }
 </style>
 
 <script type="application/ld+json">
@@ -1425,9 +1436,10 @@
 
       <div class="feed">
         <div class="tabs" role="tablist" aria-label="分析文分類">
-          <button type="button" role="tab" data-lg="" aria-selected="true">最新</button>
-          <button type="button" role="tab" data-lg="NBA" aria-selected="false">NBA</button>
-          <button type="button" role="tab" data-lg="MLB" aria-selected="false">MLB</button>
+          <button type="button" role="tab" data-sp="" aria-selected="true">最新</button>
+          <button type="button" role="tab" data-sp="BKB" aria-selected="false"><img src="img/mascot/ic-basketball.webp" alt="" width="18" height="18">籃球</button>
+          <button type="button" role="tab" data-sp="BSB" aria-selected="false"><img src="img/mascot/ic-baseball.webp" alt="" width="18" height="18">棒球</button>
+          <button type="button" role="tab" data-sp="FBL" aria-selected="false"><img src="img/mascot/ic-soccer.webp" alt="" width="18" height="18">足球</button>
         </div>
         <div class="feed-head" aria-hidden="true"><span>聯盟</span><span><span class="l">賽事</span>編號</span><span>開賽<span class="l">日期</span></span><span></span><span>對戰組合</span><span>結果</span></div>
         <ul class="feed-list" id="feedList"></ul>
@@ -1736,6 +1748,12 @@
     var LGS = { MLB: "MLB", NPB: "日職", NBA: "NBA", CPBL: "中職", KBO: "韓職" };
     var LGD = { MLB: "MLB", NBA: "NBA" };
     function lgLabel(lg) { return LGD[lg] || LG[lg] || lg; }
+    var SOCCER = { EPL: "英超", LIGA: "西甲", BUND: "德甲", SERA: "義甲", LIGUE: "法甲", EFLC: "英冠", LIGB: "西乙", UEL: "歐霸",
+                   UNL: "歐國聯", ACL: "亞冠", MLS: "美職足", JLG: "日職聯", KLG: "韓K聯", ALG: "澳A", INTL: "友誼賽" };
+    for (var sk in SOCCER) { LG[sk] = SOCCER[sk]; LGS[sk] = SOCCER[sk]; }
+    var SPORT_OF = { NBA: "BKB", MLB: "BSB", NPB: "BSB", CPBL: "BSB", KBO: "BSB" };
+    function sportOf(lg) { return SPORT_OF[lg] || (SOCCER[lg] ? "FBL" : ""); }
+    var SP_IC = { BKB: "img/mascot/ic-basketball.webp", BSB: "img/mascot/ic-baseball.webp", FBL: "img/mascot/ic-soccer.webp" };
     var LIST_MAX = 12;
     var dlg = document.getElementById("postDlg");
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1887,12 +1905,13 @@
       b.hidden = false;
     }
     var list = document.getElementById("feedList"), empty = document.getElementById("feedEmpty");
-    function renderList(lg) {
+    function renderList(sp) {
       list.textContent = "";
-      var rows = POSTS.filter(function (p) { return !lg || p.league === lg; }).slice(0, LIST_MAX);
+      var rows = POSTS.filter(function (p) { return !sp || sportOf(p.league) === sp; }).slice(0, LIST_MAX);
       rows.forEach(function (p) {
         var li = el("li"), a = el("a"); a.href = pageOf(p) || "#";
-        var tg = el("span", "fl-tag");
+        var tg = el("span", "fl-tag"), icSrc = SP_IC[sportOf(p.league)];
+        if (icSrc) { var ic = el("img", "fl-ic"); ic.src = icSrc; ic.alt = ""; ic.width = 18; ic.height = 18; tg.appendChild(ic); }
         tg.appendChild(el("span", "l", lgLabel(p.league))); tg.appendChild(el("span", "s", LGS[p.league] || p.league));
         a.appendChild(tg);
         a.appendChild(el("span", "fl-no", p.gameNum));
@@ -1912,10 +1931,14 @@
       empty.hidden = rows.length > 0;
     }
     var tabs = document.querySelectorAll(".tabs button");
-    for (var t = 0; t < tabs.length; t++) tabs[t].addEventListener("click", function () {
-      for (var u = 0; u < tabs.length; u++) tabs[u].setAttribute("aria-selected", tabs[u] === this ? "true" : "false");
-      renderList(this.dataset.lg);
-    });
+    for (var t = 0; t < tabs.length; t++) {
+      var sp0 = tabs[t].dataset.sp;
+      if (sp0 && !POSTS.some(function (p) { return sportOf(p.league) === sp0; })) tabs[t].hidden = true;
+      tabs[t].addEventListener("click", function () {
+        for (var u = 0; u < tabs.length; u++) tabs[u].setAttribute("aria-selected", tabs[u] === this ? "true" : "false");
+        renderList(this.dataset.sp);
+      });
+    }
     renderList("");
     })();
 
