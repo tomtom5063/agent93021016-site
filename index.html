@@ -1893,6 +1893,7 @@
       card.hidden = false;
     }
     var REC_ROWS = [["讓分", "讓分"], ["大小", "大小"], ["獨贏", "獨贏"]];
+    var REC_LEAGUES = { NBA: 1 };
     function recStat(arr) {
       var w = 0, l = 0, pf = 0;
       arr.forEach(function (p) {
@@ -1914,7 +1915,7 @@
     function showRecord(arr) {
       var box = document.getElementById("rec"), body = document.getElementById("recBody");
       if (!box) return;
-      var base = arr.filter(function (p) { return !p.trial && p.date >= MAIN_FROM; }), all = recStat(base);
+      var base = arr.filter(function (p) { return !p.trial && p.date >= MAIN_FROM && !!REC_LEAGUES[p.league]; }), all = recStat(base);
       if (all.w + all.l < MAIN_MIN) return;
       body.textContent = "";
       REC_ROWS.forEach(function (r) {
@@ -1924,7 +1925,7 @@
       body.appendChild(recRow("sum", "總計", all));
       var mn = recStat(base.filter(isMain));
       if (mn.w + mn.l) body.appendChild(recRow("main", "主推", mn, true));
-      document.getElementById("recFrom").textContent = md(MAIN_FROM) + " 起累計・共 " + (all.w + all.l) + " 場";
+      document.getElementById("recFrom").textContent = "NBA・" + md(MAIN_FROM) + " 起累計・共 " + (all.w + all.l) + " 場";
       box.hidden = false;
     }
     function showStats(arr) { showMainRate(arr); showRecord(arr); }
