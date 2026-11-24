@@ -118,6 +118,21 @@ footer.site{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mut
 footer.site p{margin:6px 0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"每日賽事分析總覽","url":"https://agent93021016.com/posts/","inLanguage":"zh-TW","publisher":{"@type":"Organization","name":"花惹發運動彩券行","url":"https://agent93021016.com/","logo":"https://agent93021016.com/img/tsl-mark.png"}}</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SH4T157K96"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
+(function(){var k='hfa_internal',m=location.search.match(/[?&]hfa_internal=([01])/),v=null;
+try{if(m)localStorage.setItem(k,m[1]);v=localStorage.getItem(k);}catch(e){}
+if(v==='1')window['ga-disable-G-SH4T157K96']=true;
+gtag('config','G-SH4T157K96');
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;
+var h=a.getAttribute('href')||'',n='',s='';
+if(/retailerId=93021016/.test(h)){n='click_register';s='official';}
+else if(/(^|\/)register\/?([?#]|$)/.test(h)){n='click_register';s='guide';}
+else if(/(^|\/)transfer\/?([?#]|$)/.test(h)){n='click_transfer';s='guide';}
+else if(/daily-coupons\/event/.test(h)){n='click_bet';}
+if(n)gtag('event',n,s?{step:s,link_url:a.href}:{link_url:a.href});},true);})();</script>
+<!-- /GA4 -->
 </head>
 <body>
 <header class="site">
